@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Waby</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password">Password</string>
+    <string name="google">Google</string>
+    <string name="email">Email</string>
+    <string name="request_key">request_key</string>
+    <string name="bundle_key">bundle_key</string>
+
+    <string name="login_success">Success</string>
+    <string name="login_error">The username or password are wrong</string>
+    <string name="login_email">Email is not verified</string>
+    <string name="signup_username">Enter your username</string>
+    <string name="signup_password">Enter your password</string>
+    <string name="signup_password_repeat">Enter your password again</string>
+    <string name="signup_button">Signup</string>
+    <string name="signup_error_username">You should enter a valid username</string>
+    <string name="signup_error_password">You should enter a valid password</string>
+    <string name="signup_error_email">You should enter a valid email</string>
+    <string name="signup_error_password_notequals">You should enter the same password twice</string>
+    <string name="signup_success">Sign up success</string>
+    <string name="signup_error">An error has occurred</string>
+    <string name="login_error_email">Debes introducir un email</string>
+    <string name="login_error_passwd">Debe introducir una contraseña</string>
+
+    <!-- MAPBOX -->
+    <string name="access_token">sk.eyJ1IjoiYW5kcm9pZHNoYWtpbCIsImEiOiJja2k0bDMzcjcwMGZ5MnBuMml5ZGtyeDd6In0.cxt1NubVuc6yVE5CdS6iUQ</string>
+    <string name="start_navigation">Comenzar ruta</string>
+    <string name="user_location_permission_explanation">Waby necesita que aceptes los permisos de localizacion para funcionar correctamente.</string>
+    <string name="user_location_permission_not_granted">No has aceptado los permisos de localizacion.</string>
+    <string name="map_style">mapbox://styles/cristiangonz/ckw9hu3k75nx514lcde4lo4vb</string>
+</resources>
