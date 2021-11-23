@@ -1,5 +1,6 @@
 package com.racoon.waby.ui.view.home.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentMainHomeBinding
+import com.racoon.waby.ui.view.map.MapActivity
 import com.racoon.waby.ui.viewmodel.home.main.MainHomeViewModel
 
 
@@ -36,6 +38,10 @@ class MainHomeFragment : Fragment() {
 
         binding.myProfileButton.setOnClickListener {
             gotoMyProfile()
+        }
+
+        binding.mapButton.setOnClickListener{
+            startActivity(Intent(context, MapActivity::class.java))
         }
     }
 
