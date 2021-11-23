@@ -55,10 +55,10 @@ dependencies {
     //firebase
     implementation platform('com.google.firebase:firebase-bom:29.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
-        //Authentication
+    //Authentication
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
-        //data base firestore
+    //data base firestore
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
 
@@ -73,16 +73,18 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-rc01"
 
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'
+    //recyclerview
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    // For control over item selection of both touch and mouse driven selection
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
 
-    implementation ('com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'){
+    //Mapitas
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'
+    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0') {
         exclude group: 'group_name', module: 'module_name'
     }
-
     implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.6'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.42.6'
-
     implementation 'com.google.android.material:material:1.2.1'
-
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-places-v9:0.12.0'
 }
