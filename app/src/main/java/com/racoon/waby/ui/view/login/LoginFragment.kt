@@ -40,38 +40,42 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUp()
-    }
-
-    private fun setUp() {
-
         binding.registerButton.setOnClickListener {
             openSignUp()
         }
-
         binding.signInButton.setOnClickListener {
-            val email = binding.emailEditText2.text.toString()
-            val passwd = binding.passwordEditText2.text.toString()
+            setUp()
+            viewModelSetup()
+        }
 
-            if (email.isEmpty()) {
-                Toast.makeText(context,R.string.login_error_email,Toast.LENGTH_SHORT).show()
+    }
+
+
+
+    private fun setUp() {
+
+        val email = binding.emailEditText2.text.toString()
+        val passwd = binding.passwordEditText2.text.toString()
+
+        viewModel.login(email, passwd)
+
+    }
+
+    private fun viewModelSetup() {
+        with(viewModel) {
+            signUpLD.observe(viewLifecycleOwner) {
+                openSignUp()
             }
-            if (passwd.isEmpty()) {
-                Toast.makeText(context,R.string.login_error_passwd,Toast.LENGTH_SHORT).show()
-            }else {
-                viewModel.login(email,passwd).observe(viewLifecycleOwner, Observer {
-                    when (it) {
-                        is Resource.Loading -> {
-                            //todo
-                        }
-                        is Resource.Result -> {
-                            openAux()
-                        }
-                        is Resource.Failure -> {
-                            Toast.makeText(context,R.string.login_failed,Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                })
+            successLD.observe(viewLifecycleOwner) {
+                activity?.also {
+                    Toast.makeText(context,R.string.login_success,Toast.LENGTH_SHORT).show()
+                }
+                openAux()
+            }
+            errorLD.observe(viewLifecycleOwner) { msg->
+                activity?.also {
+                    Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -83,6 +87,4 @@ class LoginFragment : Fragment() {
     private fun openSignUp() {
         findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
     }
-
-
 }

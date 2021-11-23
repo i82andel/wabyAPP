@@ -34,6 +34,8 @@ class SplashFragment : Fragment() {
         viewModel.finishLD.observe(viewLifecycleOwner) { isUserLogged->
             if (isUserLogged) {
                 findNavController().navigate(R.id.action_splashFragment_to_registerUserFragment)
+
+
             } else {
                 findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
             }
