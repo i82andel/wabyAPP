@@ -62,17 +62,36 @@ dependencies {
     //data base firestore
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
+    implementation 'androidx.compose.ui:ui:1.0.5'
+    // Tooling support (Previews, etc.)
+    implementation 'androidx.compose.ui:ui-tooling:1.0.5'
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation 'androidx.compose.foundation:foundation:1.0.5'
+    // Material Design
+    implementation 'androidx.compose.material:material:1.0.5'
+    // Material design icons
+    implementation 'androidx.compose.material:material-icons-core:1.0.5'
+    implementation 'androidx.compose.material:material-icons-extended:1.0.5'
+    // Integration with observables
+    implementation 'androidx.compose.runtime:runtime-livedata:1.0.5'
+    implementation 'androidx.compose.runtime:runtime-rxjava2:1.0.5'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.5'
+    
+
+    // UI Tests
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.0.5'
 
     //Fragments
-    implementation("androidx.fragment:fragment-ktx:1.3.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.5")
+    implementation'androidx.fragment:fragment-ktx:1.3.6'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-dynamic-features-fragment:2.3.5'
 
     //ViewModel y livedata
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     //ktx viewmodel y livedata
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-rc01"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-rc01'
 
     //recyclerview
     implementation("androidx.recyclerview:recyclerview:1.2.1")
