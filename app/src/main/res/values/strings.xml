@@ -33,6 +33,10 @@
     <string name="login_error_email">Debes introducir un email</string>
     <string name="login_error_passwd">Debe introducir una contraseña</string>
 
+    <!-- PROFILE -->
+    <string name="config_button">Configuración</string>
+    <string name="edit_button">Editar Perfil</string>
+
     <!-- MAPBOX -->
     <string name="access_token">sk.eyJ1IjoiYW5kcm9pZHNoYWtpbCIsImEiOiJja2k0bDMzcjcwMGZ5MnBuMml5ZGtyeDd6In0.cxt1NubVuc6yVE5CdS6iUQ</string>
     <string name="start_navigation">Comenzar ruta</string>
