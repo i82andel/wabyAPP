@@ -41,37 +41,41 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUp()
-    }
-
-
-    private fun setUp() {
-
-
 
         binding.registerButton.setOnClickListener {
+            setUp()
+            setUpViewModel()
+        }
 
-            val email = binding.emailEditText.text.toString()
-            val passwd = binding.passwordEditText.text.toString()
-            val passwdRepeat = binding.repeatPasswordEditText.text.toString()
 
-            viewModel.create(email, passwd,passwdRepeat).observe(viewLifecycleOwner, Observer {
-                when (it) {
-                    is Resource.Loading -> {
-                        //todo
-                    }
-                    is Resource.Result -> {
-                        openRegisterFragment()
-                    }
-                    is Resource.Failure -> {
-                        Toast.makeText(context,R.string.signup_error,Toast.LENGTH_SHORT).show()
-                    }
+    }
+
+    private fun setUp() {
+        val email = binding.emailEditText.text.toString()
+        val passwd = binding.passwordEditText.text.toString()
+        val passwdRepeat = binding.repeatPasswordEditText.text.toString()
+
+        viewModel.create(email, passwd,passwdRepeat)
+
+    }
+
+    private fun setUpViewModel() {
+        with(viewModel) {
+            successLD.observe(viewLifecycleOwner) {
+                activity?.also {
+                    Toast.makeText(context,R.string.signup_success,Toast.LENGTH_SHORT).show()
                 }
-            })
+                openRegisterFragment()
+            }
+            errorLD.observe(viewLifecycleOwner) {
+                activity?.also {
+                    Toast.makeText(context,R.string.signup_error,Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
     private fun openRegisterFragment() {
-        findNavController().navigate(R.id.action_signUpFragment_to_registerUserFragment)
+        findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
     }
 }
