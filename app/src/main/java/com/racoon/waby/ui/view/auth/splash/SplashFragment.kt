@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.view.splash
+package com.racoon.waby.ui.view.auth.splash
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,11 +33,11 @@ class SplashFragment : Fragment() {
 
         viewModel.finishLD.observe(viewLifecycleOwner) { isUserLogged->
             if (isUserLogged) {
-                findNavController().navigate(R.id.action_splashFragment_to_registerUserFragment)
 
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
 
             } else {
-                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_registerUserFragment)
             }
         }
     }

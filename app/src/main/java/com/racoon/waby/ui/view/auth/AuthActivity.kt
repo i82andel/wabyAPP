@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.view
+package com.racoon.waby.ui.view.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.navigation.ui.NavigationUI
 import com.racoon.waby.R
 import com.racoon.waby.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(){
+class AuthActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController

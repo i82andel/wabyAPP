@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.view.registerdata
+package com.racoon.waby.ui.view.auth.registerdata
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
