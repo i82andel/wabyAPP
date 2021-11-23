@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.racoon.waby">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Waby"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.SpotActivity"
+            android:exported="false"
+            android:label="@string/title_activity_spot" />
         <activity
             android:name=".ui.view.map.MapActivity"
             android:exported="false" />

@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3101851851851852" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3101851851851852" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3101851851851852" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/activity_spot.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_dashboard.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_home.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_notifications.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_wabis.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3101851851851852" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/Waby/app/src/main/res/drawable/ic_location_on_red_24dp.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/Waby/app/src/main/res/layout/activity_map.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/Waby/app/src/main/res/layout/fragment_login_user.xml" value="0.1793478260869565" />

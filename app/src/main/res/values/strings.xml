@@ -39,4 +39,8 @@
     <string name="user_location_permission_explanation">Waby necesita que aceptes los permisos de localizacion para funcionar correctamente.</string>
     <string name="user_location_permission_not_granted">No has aceptado los permisos de localizacion.</string>
     <string name="map_style">mapbox://styles/cristiangonz/ckw9hu3k75nx514lcde4lo4vb</string>
+    <string name="title_activity_spot">SpotActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
