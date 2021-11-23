@@ -1,5 +1,7 @@
 package com.racoon.waby.ui.viewmodel.auth.login
 
+import android.content.Context
+import android.view.View
 import androidx.annotation.IntegerRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +15,9 @@ import com.racoon.waby.common.SingleLiveEvent
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCase
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
+import android.content.Intent
+import com.racoon.waby.ui.view.home.HomeActivity
+
 
 class LoginViewModel(private val authUserUseCase: AuthUserUseCase) : ViewModel() {
 
@@ -52,6 +57,12 @@ class LoginViewModel(private val authUserUseCase: AuthUserUseCase) : ViewModel()
             }
         }
 
+    }
+
+    fun gotoHome(view: View) {
+        val context: Context = view.context
+        val intent = Intent(context, HomeActivity::class.java)
+        context.startActivity(intent)
     }
 }
 

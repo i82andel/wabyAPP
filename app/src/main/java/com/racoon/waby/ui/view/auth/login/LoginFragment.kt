@@ -43,7 +43,7 @@ class LoginFragment : Fragment() {
         }
         binding.signInButton.setOnClickListener {
             setUp()
-            viewModelSetup()
+            viewModelSetup(view)
         }
 
     }
@@ -59,7 +59,7 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun viewModelSetup() {
+    private fun viewModelSetup(view: View) {
         with(viewModel) {
             signUpLD.observe(viewLifecycleOwner) {
                 openSignUp()
@@ -68,7 +68,7 @@ class LoginFragment : Fragment() {
                 activity?.also {
                     Toast.makeText(context,R.string.login_success,Toast.LENGTH_SHORT).show()
                 }
-                openAux()
+                openHome(view)
             }
             errorLD.observe(viewLifecycleOwner) { msg->
                 activity?.also {
@@ -78,8 +78,9 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun openAux() {
-        findNavController().navigate(R.id.action_loginFragment_to_registerUserFragment)
+    private fun openHome(view: View) {
+        //findNavController().navigate(R.id.action_loginFragment_to_registerUserFragment)
+        viewModel.gotoHome(view)
     }
 
     private fun openSignUp() {

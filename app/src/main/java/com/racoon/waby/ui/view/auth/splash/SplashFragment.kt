@@ -33,11 +33,11 @@ class SplashFragment : Fragment() {
 
         viewModel.finishLD.observe(viewLifecycleOwner) { isUserLogged->
             if (isUserLogged) {
-
-                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+                openHome(view)
+                //findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
 
             } else {
-                findNavController().navigate(R.id.action_splashFragment_to_registerUserFragment)
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
             }
         }
     }
@@ -45,6 +45,11 @@ class SplashFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.resume()
+    }
+
+    private fun openHome(view: View) {
+        //findNavController().navigate(R.id.action_loginFragment_to_registerUserFragment)
+        viewModel.gotoHome(view)
     }
 
 }

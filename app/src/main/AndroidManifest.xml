@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Waby"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.view.home.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SpotActivity"
             android:exported="false"
             android:label="@string/title_activity_spot" />
