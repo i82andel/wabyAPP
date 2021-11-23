@@ -32,5 +32,9 @@ class SpotActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        binding.btConsultar.setOnClickListener{
+
+        }
     }
 }

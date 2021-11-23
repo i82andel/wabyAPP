@@ -42,10 +42,7 @@ class UserRepositoryImp : UserRepository {
             null
         }
 
-
     }
-
-
 
     override fun signInDefault(email: String, passwd: String) : Resource<FirebaseUser?>{
 
