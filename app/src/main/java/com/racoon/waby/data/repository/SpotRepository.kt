@@ -1,7 +1,7 @@
 package com.racoon.waby.data.repository
 
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
+import com.racoon.waby.common.Result
 import com.racoon.waby.data.model.Spot
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

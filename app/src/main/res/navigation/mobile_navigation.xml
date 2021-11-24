@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.racoon.waby.ui.home.HomeFragment"
+        android:name="com.racoon.waby.ui.spotHome.SpotHomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_spot_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

@@ -1,4 +1,4 @@
-package com.racoon.waby.data.repository
+package com.racoon.waby.common
 
 sealed class Result<T> (
     val data: T? = null,

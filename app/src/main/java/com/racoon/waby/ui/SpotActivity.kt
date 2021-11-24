@@ -8,11 +8,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.racoon.waby.R
+import com.racoon.waby.data.model.Spot
 import com.racoon.waby.databinding.ActivitySpotBinding
 
 class SpotActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySpotBinding
+    private val spot : Spot? = null
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,4 +40,7 @@ class SpotActivity : AppCompatActivity() {
 
         }
     }
+
+
+
 }

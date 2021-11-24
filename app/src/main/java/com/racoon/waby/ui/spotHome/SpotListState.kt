@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.home
+package com.racoon.waby.ui.spotHome
 
 import com.racoon.waby.data.model.Spot
 
