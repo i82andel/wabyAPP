@@ -3,17 +3,17 @@ package com.racoon.waby.data.model
 import android.location.Location
 
 data class Spot (val idSpot: String,
-                 val name: String,
-                 val adminUser: AdminUser,
-                 val phoneNumber: String,
-                 var capacity: Int,
-                 val location: Location,
-                 var rating: Float,
-                 val website: String,
-                 val spotType: SpotType,
-                 val badges: ArrayList<Badge>,
-                 val images: ArrayList<Image>,
-                 val description: String
+                 val name: String? = null,
+                 val adminUser: String? = null,
+                 val phoneNumber: String? = null,
+                 var capacity: Int? = null,
+                 val location: Location? = null,
+                 var rating: Float? = null,
+                 val website: String? = null,
+                 val spotType: SpotType? = null,
+                 val badges: ArrayList<Badge>? = null,
+                 val images: ArrayList<Image>? = null,
+                 val description: String? = null
 )
 
 enum class SpotType {

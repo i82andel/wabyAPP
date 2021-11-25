@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.spotHome
+package com.racoon.waby.ui.spothome
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
