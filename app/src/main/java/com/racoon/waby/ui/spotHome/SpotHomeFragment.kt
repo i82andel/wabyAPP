@@ -8,8 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
 import com.racoon.waby.databinding.FragmentSpotHomeBinding
 
 class SpotHomeFragment : Fragment() {
@@ -32,7 +30,7 @@ class SpotHomeFragment : Fragment() {
         _binding = FragmentSpotHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textView4
+        val textView: TextView = binding.textSpotHome
         spotHomeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
@@ -42,12 +40,6 @@ class SpotHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-    }
-
-    fun NavGraphBuilder.addBookList(
-        navController: NavController
-    ){
 
     }
 
