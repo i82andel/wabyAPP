@@ -4,11 +4,11 @@ import android.location.Location
 
 data class Spot (val idSpot: String,
                  val name: String,
-                 val adminUser: AdminUser,
+                 val adminUser: String,
                  val phoneNumber: String,
                  var capacity: Int,
                  val location: Location,
-                 var rating: Float,
+                 var ratings: Array<Int>,
                  val website: String,
                  val spotType: SpotType,
                  val badges: ArrayList<Badge>,
