@@ -15,20 +15,20 @@
         android:theme="@style/Theme.Waby"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.view.home.HomeActivity"
+            android:name="com.racoon.waby.ui.home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SpotActivity"
             android:exported="false"
             android:label="@string/title_activity_spot" />
         <activity
-            android:name=".ui.view.map.MapActivity"
+            android:name="com.racoon.waby.ui.home.map.MapActivity"
             android:exported="false" />
         <activity
             android:name=".ui.view.AuxiliarActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.auth.AuthActivity"
+            android:name="com.racoon.waby.ui.auth.AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
