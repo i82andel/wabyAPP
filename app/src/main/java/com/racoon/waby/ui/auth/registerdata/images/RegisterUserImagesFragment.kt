@@ -17,6 +17,29 @@ class RegisterUserImagesFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val name = arguments?.getString("name")
+        val surname = arguments?.getString("surname")
+        val username = arguments?.getString("username")
+        val gender = arguments?.getString("gender")
+        val day = arguments?.getInt("day")
+        val month = arguments?.getInt("month")
+        val year = arguments?.getInt("year")
+        val tags = arguments?.getStringArrayList("tags")
+
+        println(name)
+        println(surname)
+        println(username)
+        println(gender)
+        println(day)
+        println(month)
+        println(year)
+        println(tags)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

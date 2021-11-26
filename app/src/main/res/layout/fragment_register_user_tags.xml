@@ -10,7 +10,7 @@
         android:id="@+id/chipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,73 +18,66 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip1"
-            android:text="videojuegos"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            style="@style/Widget.MaterialComponents.Chip.Filter"/>
+            android:text="videojuegos" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip2"
-            android:text="lectura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            />
+            android:text="lectura" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip3"
-            android:text="salir a tomar algo"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            />
+            android:text="salir a tomar algo" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
-            android:text="gamer"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            />
+            android:text="gamer" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
-            android:text="música"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            />
+            android:text="música" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
-            android:text="naturaleza"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            />
+            android:text="naturaleza" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip7"
-            android:text="cine"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            />
+            android:text="cine" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip8"
-            android:text="cocina"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            style="@style/Widget.MaterialComponents.Chip.Filter"
-            />
+            android:text="cocina" />
     </com.google.android.material.chip.ChipGroup>
 
     <Button

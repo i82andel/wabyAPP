@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Nombre" />
+            android:hint="Nombre" />
 
         <Space
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Apellidos" />
+            android:hint="Apellidos" />
 
         <Space
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Nombre de usuario" />
+            android:hint="Nombre de usuario" />
 
         <Button
             android:id="@+id/nextButton"

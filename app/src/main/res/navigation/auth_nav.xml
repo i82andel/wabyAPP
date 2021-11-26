@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_registerUserTagsFragment_to_registerUserImagesFragment"
             app:destination="@id/registerUserImagesFragment" />
+        <action
+            android:id="@+id/action_registerUserTagsFragment_self"
+            app:destination="@id/registerUserTagsFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerUserImagesFragment"
