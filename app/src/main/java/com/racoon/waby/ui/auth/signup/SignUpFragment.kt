@@ -12,8 +12,8 @@ import com.racoon.waby.R
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentSignUpBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
-import com.racoon.waby.ui.auth.login.viewmodel.LoginVMFactory
-import com.racoon.waby.ui.auth.login.viewmodel.LoginViewModel
+import com.racoon.waby.ui.auth.login.LoginVMFactory
+import com.racoon.waby.ui.auth.login.LoginViewModel
 
 class SignUpFragment : Fragment() {
 
@@ -80,6 +80,9 @@ class SignUpFragment : Fragment() {
             }
         }
     }
+
+    //para determinar si ir al registro o al home, de momento
+    //pongo otro login en el registro que se activa si le damos a un boton
 
     private fun loginSetUp() {
         val email = binding.emailEditText.text.toString()

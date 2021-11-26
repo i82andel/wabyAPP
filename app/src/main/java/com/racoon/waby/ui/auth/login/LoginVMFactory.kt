@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.auth.login.viewmodel
+package com.racoon.waby.ui.auth.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
