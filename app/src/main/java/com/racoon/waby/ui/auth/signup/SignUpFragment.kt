@@ -12,6 +12,8 @@ import com.racoon.waby.R
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentSignUpBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
+import com.racoon.waby.ui.auth.login.viewmodel.LoginVMFactory
+import com.racoon.waby.ui.auth.login.viewmodel.LoginViewModel
 
 class SignUpFragment : Fragment() {
 
@@ -19,6 +21,10 @@ class SignUpFragment : Fragment() {
     private val  viewModel by viewModels<SignUpViewModel> {
         SignUpVMFactory(AuthUserUseCaseImpl(UserRepositoryImp()))
     }
+    private val loginViewModel by viewModels<LoginViewModel> {
+        LoginVMFactory(AuthUserUseCaseImpl(UserRepositoryImp()))
+    }
+
     //ViewBiding
     private  var _binding: FragmentSignUpBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
@@ -39,6 +45,12 @@ class SignUpFragment : Fragment() {
         binding.registerButton.setOnClickListener {
             setUp()
             setUpViewModel()
+
+        }
+
+        binding.goInButton.setOnClickListener {
+            loginSetUp()
+            viewModelLoginSetUp()
         }
 
 
@@ -59,7 +71,7 @@ class SignUpFragment : Fragment() {
                 activity?.also {
                     Toast.makeText(context,R.string.signup_success,Toast.LENGTH_SHORT).show()
                 }
-                openRegisterFragment()
+
             }
             errorLD.observe(viewLifecycleOwner) {
                 activity?.also {
@@ -69,7 +81,31 @@ class SignUpFragment : Fragment() {
         }
     }
 
+    private fun loginSetUp() {
+        val email = binding.emailEditText.text.toString()
+        val passwd = binding.passwordEditText.text.toString()
+
+        loginViewModel.login(email, passwd)
+    }
+
+    private fun viewModelLoginSetUp() {
+        with(loginViewModel) {
+            successLD.observe(viewLifecycleOwner) {
+                activity?.also {
+                    Toast.makeText(context,R.string.login_success,Toast.LENGTH_SHORT).show()
+                }
+                openRegisterFragment()
+            }
+            errorLD.observe(viewLifecycleOwner) { msg->
+                activity?.also {
+                    Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+    }
+
     private fun openRegisterFragment() {
-        findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+        findNavController().navigate(R.id.action_signUpFragment_to_registerUserFragment)
     }
 }

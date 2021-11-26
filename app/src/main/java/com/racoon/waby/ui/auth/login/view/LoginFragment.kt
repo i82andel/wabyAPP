@@ -79,7 +79,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun openHome(view: View) {
-        //findNavController().navigate(R.id.action_loginFragment_to_registerUserFragment)
         viewModel.gotoHome(view)
     }
 

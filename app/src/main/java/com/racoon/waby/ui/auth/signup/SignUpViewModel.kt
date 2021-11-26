@@ -51,4 +51,5 @@ class SignUpViewModel(private val authUserUseCase: AuthUserUseCase) : ViewModel(
 
 
     }
+
 }
