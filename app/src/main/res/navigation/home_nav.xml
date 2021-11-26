@@ -6,7 +6,7 @@
     app:startDestination="@id/mainHomeFragment">
     <fragment
         android:id="@+id/mainHomeFragment"
-        android:name="com.racoon.waby.ui.view.home.main.MainHomeFragment"
+        android:name="com.racoon.waby.ui.home.main.MainHomeFragment"
         android:label="fragment_main_home"
         tools:layout="@layout/fragment_main_home" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.racoon.waby.ui.view.home.myprofile.MyProfileFragment"
+        android:name="com.racoon.waby.ui.home.myprofile.MyProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.racoon.waby.ui.view.home.settings.SettingsFragment"
+        android:name="com.racoon.waby.ui.home.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
