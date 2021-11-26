@@ -30,10 +30,10 @@ class SpotHomeFragment : Fragment() {
         _binding = FragmentSpotHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSpotHome
+        /*val textView: TextView = binding.textSpotHome
         spotHomeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
-        })
+        })*/
         return root
     }
 

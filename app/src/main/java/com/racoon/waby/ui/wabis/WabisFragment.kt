@@ -30,10 +30,10 @@ class WabisFragment : Fragment() {
         _binding = FragmentWabisBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val textView: TextView = binding.textWabis
+        /*val textView: TextView = binding.textWabis
         wabisViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
-        })
+        })*/
         return root
     }
 

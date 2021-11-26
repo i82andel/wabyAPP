@@ -24,7 +24,7 @@ class addSpotUseCase @Inject constructor(private val spotRepository: SpotReposit
         description: String
     ) {
 
-        val spot = Spot(
+        /*val spot = Spot(
             idSpot = UUID.randomUUID().toString(),
             name = name,
             adminUser = adminUser,
@@ -40,7 +40,7 @@ class addSpotUseCase @Inject constructor(private val spotRepository: SpotReposit
         )
 
         spotRepository.addNewSpot(spot)
-
+*/
     }
 
 
