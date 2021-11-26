@@ -30,6 +30,7 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onResume()
 
         viewModel.finishLD.observe(viewLifecycleOwner) { isUserLogged->
             if (isUserLogged) {

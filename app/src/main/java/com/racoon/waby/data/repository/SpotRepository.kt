@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 @Singleton
 class SpotRepository @Inject constructor(private val spotList: CollectionReference) {
-    class SpotRepository @Inject constructor(private val spotList: CollectionReference) {
+    /*class SpotRepository @Inject constructor(private val spotList: CollectionReference) {
 
         fun addNewSpot(spot: Spot) {
             try {
@@ -63,4 +63,5 @@ class SpotRepository @Inject constructor(private val spotList: CollectionReferen
         }
 
 
-    }
+    }*/
+}
