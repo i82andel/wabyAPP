@@ -74,7 +74,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
             mapboxMap.addOnMapClickListener(this)
 
             btnStart.setOnClickListener { v: View? ->
-                val simulateRoute = true
+                val simulateRoute = false
                 val options = NavigationLauncherOptions.builder()
                     .directionsRoute(currentRoute)
                     .shouldSimulateRoute(simulateRoute)

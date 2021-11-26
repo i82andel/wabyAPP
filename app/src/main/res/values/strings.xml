@@ -64,4 +64,8 @@
     <string name="register_tags_error">No puedes seleccionar más de cinco tags</string>
     <string name="register_tags_error2">Debe seleccionar al menos tres tags</string>
 
+    <!-- NFC -->
+    <string name="not_nfc_supported">Su telefono movil no tiene NFC</string>
+    <string name="success_nfc">Acerque el telefono movil al tag NFC</string>
+    <string name="nfc_disabled">Debe activar NFC en su telefono movil</string>
 </resources>
