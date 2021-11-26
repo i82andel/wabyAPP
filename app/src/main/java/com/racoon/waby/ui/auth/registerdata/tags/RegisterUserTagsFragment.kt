@@ -1,32 +1,30 @@
-package com.racoon.waby.ui.auth.registerdata
+package com.racoon.waby.ui.auth.registerdata.tags
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.racoon.waby.databinding.FragmentRegisterUserBinding
+import com.racoon.waby.databinding.FragmentRegisterUserTagsBinding
 
-class RegisterUserFragment : Fragment() {
+
+class RegisterUserTagsFragment : Fragment() {
 
     //ViewBiding
-    private  var _binding: FragmentRegisterUserBinding? = null
+    private  var _binding: FragmentRegisterUserTagsBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentRegisterUserBinding.inflate(inflater,container,false)
+        _binding = FragmentRegisterUserTagsBinding.inflate(inflater,container,false)
         return binding.root
     }
+
 
 
 }

@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.racoon.waby.ui.auth.login.LoginFragment"
+        android:name="com.racoon.waby.ui.auth.login.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -40,7 +40,52 @@
     </fragment>
     <fragment
         android:id="@+id/registerUserFragment"
-        android:name="com.racoon.waby.ui.auth.registerdata.RegisterUserFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.name.RegisterUserFragment"
         android:label="fragment_register_user"
-        tools:layout="@layout/fragment_register_user" />
+        tools:layout="@layout/fragment_register_user" >
+        <action
+            android:id="@+id/action_registerUserFragment_to_registerUserGenderFragment"
+            app:destination="@id/registerUserGenderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerUserGenderFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.gender.RegisterUserGenderFragment"
+        android:label="fragment_register_user_gender"
+        tools:layout="@layout/fragment_register_user_gender" >
+        <action
+            android:id="@+id/action_registerUserGenderFragment_to_registerUserBirthdateFragment"
+            app:destination="@id/registerUserBirthdateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerUserTagsFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.tags.RegisterUserTagsFragment"
+        android:label="fragment_register_user_tags"
+        tools:layout="@layout/fragment_register_user_tags" >
+        <action
+            android:id="@+id/action_registerUserTagsFragment_to_registerUserImagesFragment"
+            app:destination="@id/registerUserImagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerUserImagesFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.images.RegisterUserImagesFragment"
+        android:label="fragment_register_user_images"
+        tools:layout="@layout/fragment_register_user_images" >
+        <action
+            android:id="@+id/action_registerUserImagesFragment_to_registerUserDescriptionFragment"
+            app:destination="@id/registerUserDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerUserDescriptionFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.description.RegisterUserDescriptionFragment"
+        android:label="fragment_register_user_description"
+        tools:layout="@layout/fragment_register_user_description" />
+    <fragment
+        android:id="@+id/registerUserBirthdateFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.birthdate.RegisterUserBirthdateFragment"
+        android:label="fragment_register_user_birthdate"
+        tools:layout="@layout/fragment_register_user_birthdate" >
+        <action
+            android:id="@+id/action_registerUserBirthdateFragment_to_registerUserTagsFragment"
+            app:destination="@id/registerUserTagsFragment" />
+    </fragment>
 </navigation>

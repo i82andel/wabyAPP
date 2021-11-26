@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.auth.login
+package com.racoon.waby.ui.auth.login.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,6 +12,8 @@ import com.racoon.waby.R
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentLoginBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
+import com.racoon.waby.ui.auth.login.viewmodel.LoginVMFactory
+import com.racoon.waby.ui.auth.login.viewmodel.LoginViewModel
 
 class LoginFragment : Fragment() {
 
@@ -83,5 +85,6 @@ class LoginFragment : Fragment() {
 
     private fun openSignUp() {
         findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+
     }
 }

@@ -17,6 +17,7 @@
     <string name="request_key">request_key</string>
     <string name="bundle_key">bundle_key</string>
 
+    <!-- AUTH -->
     <string name="login_success">Success</string>
     <string name="login_error">The username or password are wrong</string>
     <string name="login_email">Email is not verified</string>
@@ -32,6 +33,17 @@
     <string name="signup_error">An error has occurred</string>
     <string name="login_error_email">Debes introducir un email</string>
     <string name="login_error_passwd">Debe introducir una contraseña</string>
+    <string name="register_success">Genial</string>
+    <string name="register_username_error">Debe introducir un nombre de usuario</string>
+    <string name="register_surname_error">Debe de introducir unos apellidos</string>
+    <string name="register_name_error">Debe introducir un nombre</string>
+    <!-- GENDERS -->
+    <string-array name="genderType">
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>No binario</item>
+        <item>Otro</item>
+    </string-array>
 
     <!-- PROFILE -->
     <string name="config_button">Configuración</string>
@@ -47,4 +59,5 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.auth.login
+package com.racoon.waby.ui.auth.login.viewmodel
 
 import android.content.Context
 import android.view.View
