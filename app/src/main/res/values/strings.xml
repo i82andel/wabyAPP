@@ -61,5 +61,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="register_gender_error">Debe seleccionar un genero</string>
     <string name="register_bithdate_error">Debe introducir su fecha de nacimiento</string>
+    <string name="register_tags_error">No puedes seleccionar más de cinco tags</string>
+    <string name="register_tags_error2">Debe seleccionar al menos tres tags</string>
 
 </resources>

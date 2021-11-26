@@ -15,53 +15,76 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <com.google.android.material.chip.Chip
-            android:id="@+id/videojuegos"
+            android:id="@+id/chip1"
             android:text="videojuegos"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            style="@style/Widget.MaterialComponents.Chip.Filter"/>
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/lectura"
+            android:id="@+id/chip2"
             android:text="lectura"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/salir_a_tomar_algo"
+            android:id="@+id/chip3"
             android:text="salir a tomar algo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/gamer"
+            android:id="@+id/chip4"
             android:text="gamer"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/musica"
+            android:id="@+id/chip5"
             android:text="música"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/naturaleza"
+            android:id="@+id/chip6"
             android:text="naturaleza"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/cine"
+            android:id="@+id/chip7"
             android:text="cine"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/cocina"
+            android:id="@+id/chip8"
             android:text="cocina"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            />
     </com.google.android.material.chip.ChipGroup>
 
     <Button

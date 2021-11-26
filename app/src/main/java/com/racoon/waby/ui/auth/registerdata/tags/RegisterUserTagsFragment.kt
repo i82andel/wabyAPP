@@ -1,15 +1,18 @@
 package com.racoon.waby.ui.auth.registerdata.tags
 
+import android.graphics.Insets.add
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentRegisterUserTagsBinding
+import kotlinx.android.synthetic.main.fragment_register_user_tags.*
 
 
 class RegisterUserTagsFragment : Fragment() {
@@ -21,6 +24,7 @@ class RegisterUserTagsFragment : Fragment() {
     private var DAY = 0
     private var MONTH = 0
     private var YEAR = 0
+    private var TAGS = ArrayList<String>()
 
 
     //ViewBiding
@@ -54,13 +58,83 @@ class RegisterUserTagsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
+        setUp()
+        binding.nextButton.setOnClickListener {
+            if (TAGS.size >= 3) {
+                goNext()
+            }else {
+                Toast.makeText(context,R.string.register_tags_error2,Toast.LENGTH_LONG).show()
+            }
+        }
 
     }
 
-
-
+    private fun setUp() {
+        binding.chip1.setOnClickListener {
+            val chip = binding.chip1.text.toString()
+            if (TAGS.size <= 5) {
+                TAGS.add(chip)
+            }else {
+                Toast.makeText(context,R.string.register_tags_error,Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.chip2.setOnClickListener {
+            val chip = binding.chip1.text.toString()
+            if (TAGS.size != 5) {
+                TAGS.add(chip)
+            }else {
+                Toast.makeText(context,R.string.register_tags_error,Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.chip3.setOnClickListener {
+            val chip = binding.chip1.text.toString()
+            if (TAGS.size != 5) {
+                TAGS.add(chip)
+            }else {
+                Toast.makeText(context,R.string.register_tags_error,Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.chip4.setOnClickListener {
+            val chip = binding.chip1.text.toString()
+            if (TAGS.size != 5) {
+                TAGS.add(chip)
+            }else {
+                Toast.makeText(context,R.string.register_tags_error,Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.chip5.setOnClickListener {
+            val chip = binding.chip1.text.toString()
+            if (TAGS.size != 5) {
+                TAGS.add(chip)
+            }else {
+                Toast.makeText(context,R.string.register_tags_error,Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.chip6.setOnClickListener {
+            val chip = binding.chip1.text.toString()
+            if (TAGS.size != 5) {
+                TAGS.add(chip)
+            }else {
+                Toast.makeText(context,R.string.register_tags_error,Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.chip7.setOnClickListener {
+            val chip = binding.chip1.text.toString()
+            if (TAGS.size != 5) {
+                TAGS.add(chip)
+            }else {
+                Toast.makeText(context,R.string.register_tags_error,Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.chip8.setOnClickListener {
+            val chip = binding.chip1.text.toString()
+            if (TAGS.size != 5) {
+                TAGS.add(chip)
+            }else {
+                Toast.makeText(context,R.string.register_tags_error,Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
 
     private fun goNext() {
