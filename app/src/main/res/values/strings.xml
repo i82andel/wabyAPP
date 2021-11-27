@@ -68,4 +68,6 @@
     <string name="not_nfc_supported">Su telefono movil no tiene NFC</string>
     <string name="success_nfc">Acerque el telefono movil al tag NFC</string>
     <string name="nfc_disabled">Debe activar NFC en su telefono movil</string>
+    <string name="register_images_success">Imagen subida con éxito</string>
+    <string name="register_images_error">Error al subir la imagen</string>
 </resources>

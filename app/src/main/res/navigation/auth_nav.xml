@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_signUpFragment_to_registerUserFragment"
             app:destination="@id/registerUserFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_registerUserImagesFragment"
+            app:destination="@id/registerUserImagesFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

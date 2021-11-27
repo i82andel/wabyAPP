@@ -109,6 +109,7 @@ class SignUpFragment : Fragment() {
     }
 
     private fun openRegisterFragment() {
-        findNavController().navigate(R.id.action_signUpFragment_to_registerUserFragment)
+        //findNavController().navigate(R.id.action_signUpFragment_to_registerUserFragment)
+        findNavController().navigate(R.id.action_signUpFragment_to_registerUserImagesFragment)
     }
 }
