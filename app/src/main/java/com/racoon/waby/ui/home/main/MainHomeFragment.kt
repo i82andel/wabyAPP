@@ -17,9 +17,11 @@ import com.racoon.waby.ui.home.map.MapActivity
 import android.nfc.NdefMessage
 import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
+import android.provider.Settings
 import android.nfc.Tag
 import android.nfc.tech.Ndef
 import android.nfc.tech.NfcF
+import androidx.appcompat.app.AlertDialog
 
 
 class MainHomeFragment : Fragment() {
@@ -58,6 +60,18 @@ class MainHomeFragment : Fragment() {
         binding.mapButton.setOnClickListener{
             startActivity(Intent(context, MapActivity::class.java))
         }
+
+        binding.nfcButton.setOnClickListener{
+            if (nfcAdapter == null){
+                Toast.makeText(context,R.string.not_nfc_supported,Toast.LENGTH_SHORT).show()
+            }else if (!nfcAdapter!!.isEnabled){
+                Toast.makeText(context,R.string.nfc_disabled,Toast.LENGTH_SHORT).show()
+                startActivity(Intent(Settings.ACTION_NFC_SETTINGS))
+            }
+            else{
+                Toast.makeText(context,R.string.success_nfc,Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun gotoMyProfile() {
@@ -72,13 +86,5 @@ class MainHomeFragment : Fragment() {
         )
 
         val ndef = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED)
-
-        if (nfcAdapter == null){
-            Toast.makeText(context,R.string.login_success,Toast.LENGTH_SHORT).show()
-        }
-
-
-
-
     }
 }
