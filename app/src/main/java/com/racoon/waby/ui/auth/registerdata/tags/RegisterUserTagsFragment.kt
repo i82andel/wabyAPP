@@ -118,65 +118,67 @@ class RegisterUserTagsFragment : Fragment() {
     private fun setUp() {
         binding.chip1.setOnClickListener {
             val chip = binding.chip1.text.toString()
-            if (TAGS.size <= 5) {
+            if (binding.chip1.isChecked) {
                 TAGS.add(chip)
-
+            }else {
+                TAGS.remove(chip)
             }
+
         }
         binding.chip2.setOnClickListener {
             val chip = binding.chip2.text.toString()
-            if (TAGS.size <= 5) {
+            if (binding.chip2.isChecked) {
                 TAGS.add(chip)
-            } else {
-                Toast.makeText(context, R.string.register_tags_error, Toast.LENGTH_LONG).show()
+            }else {
+                TAGS.remove(chip)
             }
         }
         binding.chip3.setOnClickListener {
             val chip = binding.chip3.text.toString()
-            if (TAGS.size <= 5) {
+            if (binding.chip3.isChecked) {
                 TAGS.add(chip)
-            } else {
-                Toast.makeText(context, R.string.register_tags_error, Toast.LENGTH_LONG).show()
+            }else {
+                TAGS.remove(chip)
             }
         }
         binding.chip4.setOnClickListener {
             val chip = binding.chip4.text.toString()
-            if (TAGS.size <= 5) {
+            if (binding.chip4.isChecked) {
                 TAGS.add(chip)
-            } else {
-                Toast.makeText(context, R.string.register_tags_error, Toast.LENGTH_LONG).show()
+            }else {
+                TAGS.remove(chip)
             }
         }
         binding.chip5.setOnClickListener {
             val chip = binding.chip5.text.toString()
-            if (TAGS.size <= 5) {
+            if (binding.chip5.isChecked) {
                 TAGS.add(chip)
-            } else {
-                Toast.makeText(context, R.string.register_tags_error, Toast.LENGTH_LONG).show()
+            }else {
+                TAGS.remove(chip)
             }
         }
         binding.chip6.setOnClickListener {
             val chip = binding.chip6.text.toString()
-            if (TAGS.size <= 5) {
+            if (binding.chip6.isChecked) {
                 TAGS.add(chip)
-            } else {
-                Toast.makeText(context, R.string.register_tags_error, Toast.LENGTH_LONG).show()
+            }else {
+                TAGS.remove(chip)
             }
         }
         binding.chip7.setOnClickListener {
             val chip = binding.chip7.text.toString()
-            if (TAGS.size <= 5) {
+            if (binding.chip7.isChecked) {
                 TAGS.add(chip)
-            } else {
-                Toast.makeText(context, R.string.register_tags_error, Toast.LENGTH_LONG).show()
+            }else {
+                TAGS.remove(chip)
             }
         }
         binding.chip8.setOnClickListener {
             val chip = binding.chip8.text.toString()
-            if (TAGS.size <= 5) {
+            if (binding.chip8.isChecked) {
                 TAGS.add(chip)
-            } else {
-                Toast.makeText(context, R.string.register_tags_error, Toast.LENGTH_LONG).show()
+            }else {
+                TAGS.remove(chip)
             }
         }
 
