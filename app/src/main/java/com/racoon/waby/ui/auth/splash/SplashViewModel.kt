@@ -20,7 +20,7 @@ class SplashViewModel() : ViewModel() {
         Looper.myLooper()?.also {
             Handler(it).postDelayed({
                 finishSLE.value = (Firebase.auth.currentUser!=null)
-            },2000)
+            },1000)
         }
     }
 

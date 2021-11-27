@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.chip.Chip
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentRegisterUserTagsBinding
-import kotlinx.android.synthetic.main.fragment_register_user_tags.*
 
 
 class RegisterUserTagsFragment : Fragment() {
@@ -85,36 +83,6 @@ class RegisterUserTagsFragment : Fragment() {
 
     }
 
-    private fun clearChips() {
-        binding.chip1.isChecked = false
-        binding.chip2.isChecked = false
-        binding.chip3.isChecked = false
-        binding.chip4.isChecked = false
-        binding.chip5.isChecked = false
-        binding.chip6.isChecked = false
-        binding.chip7.isChecked = false
-        binding.chip8.isChecked = false
-    }
-
-    private fun goNext() {
-
-        val bundle = bundleOf(
-            "name" to NAME,
-            "surname" to SURNAME,
-            "username" to USERNAME,
-            "gender" to GENDER,
-            "day" to DAY,
-            "month" to MONTH,
-            "year" to YEAR,
-            "tags" to TAGS
-        )
-        findNavController().navigate(
-            R.id.action_registerUserTagsFragment_to_registerUserImagesFragment,
-            bundle)
-
-
-    }
-
     private fun setUp() {
         binding.chip1.setOnClickListener {
             val chip = binding.chip1.text.toString()
@@ -181,6 +149,36 @@ class RegisterUserTagsFragment : Fragment() {
                 TAGS.remove(chip)
             }
         }
+
+
+    }
+
+    private fun clearChips() {
+        binding.chip1.isChecked = false
+        binding.chip2.isChecked = false
+        binding.chip3.isChecked = false
+        binding.chip4.isChecked = false
+        binding.chip5.isChecked = false
+        binding.chip6.isChecked = false
+        binding.chip7.isChecked = false
+        binding.chip8.isChecked = false
+    }
+
+    private fun goNext() {
+
+        val bundle = bundleOf(
+            "name" to NAME,
+            "surname" to SURNAME,
+            "username" to USERNAME,
+            "gender" to GENDER,
+            "day" to DAY,
+            "month" to MONTH,
+            "year" to YEAR,
+            "tags" to TAGS
+        )
+        findNavController().navigate(
+            R.id.action_registerUserTagsFragment_to_registerUserImagesFragment,
+            bundle)
 
 
     }

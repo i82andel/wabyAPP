@@ -26,19 +26,14 @@ class AuthActivity : AppCompatActivity(){
         //llama al metodo para volver al fragmet anterior
         NavigationUI.setupActionBarWithNavController(this,navController)
 
-        //from loginUserFragment
-        /*supportFragmentManager
-            .setFragmentResultListener(
-                "request_key",this) { requestKey, bundle ->
-                val email = bundle.getString("bundle_key")
-                authentication(email)
-            }*/
+
 
     }
     //para volver al fragment anterior
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
+
 
 
 
