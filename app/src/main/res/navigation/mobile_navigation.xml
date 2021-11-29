@@ -27,8 +27,4 @@
         android:name="com.racoon.waby.ui.spot.swipe.SwipeFragment"
         android:label="fragment_swipe"
         tools:layout="@layout/fragment_swipe" />
-    <fragment
-        android:id="@+id/extrasFragment"
-        android:name="com.racoon.waby.ui.spot.extras.ExtrasFragment"
-        android:label="ExtrasFragment" />
 </navigation>
