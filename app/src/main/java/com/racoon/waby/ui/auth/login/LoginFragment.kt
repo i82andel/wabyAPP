@@ -47,14 +47,9 @@ class LoginFragment : Fragment() {
                 setUp()
                 viewModelSetup(view)
         }
-        binding.googleButton.setOnClickListener {
-            googleSetup()
-        }
+        
     }
 
-    private fun googleSetup() {
-        viewModel.googleLogin()
-    }
 
 
     private fun setUp() {
