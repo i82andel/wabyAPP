@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_registerUserFragment"
-            app:destination="@id/registerUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -26,11 +23,8 @@
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <action
-            android:id="@+id/action_signUpFragment_to_registerUserFragment"
-            app:destination="@id/registerUserFragment" />
-        <action
-            android:id="@+id/action_signUpFragment_to_registerUserImagesFragment"
-            app:destination="@id/registerUserImagesFragment" />
+            android:id="@+id/action_signUpFragment_to_verifyEmailFragment"
+            app:destination="@id/verifyEmailFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -67,9 +61,6 @@
         <action
             android:id="@+id/action_registerUserTagsFragment_to_registerUserImagesFragment"
             app:destination="@id/registerUserImagesFragment" />
-        <action
-            android:id="@+id/action_registerUserTagsFragment_self"
-            app:destination="@id/registerUserTagsFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerUserImagesFragment"
@@ -93,5 +84,14 @@
         <action
             android:id="@+id/action_registerUserBirthdateFragment_to_registerUserTagsFragment"
             app:destination="@id/registerUserTagsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyEmailFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.emailverify.VerifyEmailFragment"
+        android:label="fragment_verify_email"
+        tools:layout="@layout/fragment_verify_email" >
+        <action
+            android:id="@+id/action_verifyEmailFragment_to_registerUserFragment"
+            app:destination="@id/registerUserFragment" />
     </fragment>
 </navigation>

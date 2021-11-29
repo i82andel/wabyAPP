@@ -109,8 +109,8 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.38.1")
 
     //Mapitas
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'
-    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0') {
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.4.0'
+    implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:9.4.0') {
         exclude group: 'group_name', module: 'module_name'
     }
     implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.6'

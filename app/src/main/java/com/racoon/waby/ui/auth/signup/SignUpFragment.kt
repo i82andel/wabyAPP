@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
@@ -19,13 +20,14 @@ import com.racoon.waby.ui.auth.login.LoginViewModel
 
 class SignUpFragment : Fragment() {
 
+    private lateinit var EMAIL: String
+    private lateinit var PASSWD: String
+
     //private val viewModel by viewModels<SignUpViewModel>()
     private val  viewModel by viewModels<SignUpViewModel> {
         SignUpVMFactory(AuthUserUseCaseImpl(UserRepositoryImp()))
     }
-    private val loginViewModel by viewModels<LoginViewModel> {
-        LoginVMFactory(AuthUserUseCaseImpl(UserRepositoryImp()))
-    }
+
 
     //ViewBiding
     private  var _binding: FragmentSignUpBinding? = null
@@ -50,10 +52,10 @@ class SignUpFragment : Fragment() {
 
         }
 
-        binding.goInButton.setOnClickListener {
+       /* binding.goInButton.setOnClickListener {
             loginSetUp()
             viewModelLoginSetUp()
-        }
+        }*/
 
 
     }
@@ -65,11 +67,17 @@ class SignUpFragment : Fragment() {
 
         viewModel.create(email, passwd,passwdRepeat)
 
+        EMAIL = email
+        PASSWD = passwd
+
     }
 
     private fun setUpViewModel() {
         with(viewModel) {
             successLD.observe(viewLifecycleOwner) {
+
+                openEmailVerify()
+
                 activity?.also {
                     Toast.makeText(context,R.string.signup_success,Toast.LENGTH_SHORT).show()
                 }
@@ -83,34 +91,12 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    //para determinar si ir al registro o al home, de momento
-    //pongo otro login en el registro que se activa si le damos a un boton
+    private fun openEmailVerify() {
+        val bundle = bundleOf(
+            "email" to EMAIL,
+            "passwd" to PASSWD,
 
-    private fun loginSetUp() {
-        val email = binding.emailEditText.text.toString()
-        val passwd = binding.passwordEditText.text.toString()
-
-        loginViewModel.login(email, passwd)
-    }
-
-    private fun viewModelLoginSetUp() {
-        with(loginViewModel) {
-            successLD.observe(viewLifecycleOwner) {
-                activity?.also {
-                    Toast.makeText(context,R.string.login_success,Toast.LENGTH_SHORT).show()
-                }
-                openRegisterFragment()
-            }
-            errorLD.observe(viewLifecycleOwner) { msg->
-                activity?.also {
-                    Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-
-    }
-
-    private fun openRegisterFragment() {
-        findNavController().navigate(R.id.action_signUpFragment_to_registerUserFragment)
+        )
+        findNavController().navigate(R.id.action_signUpFragment_to_verifyEmailFragment,bundle)
     }
 }
