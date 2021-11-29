@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.racoon.waby.R
 import com.racoon.waby.data.model.Spot
+import kotlinx.android.synthetic.main.spot_item.view.*
 
-class MySpotAdapter(private val context: Context): RecyclerView.Adapter<MySpotAdapter.MyViewHolder>() {
+class MySpotAdapter(private val context: Context?): RecyclerView.Adapter<MySpotAdapter.MyViewHolder>() {
 
     private var spotMutableList = mutableListOf<Spot>()
 
@@ -24,10 +26,7 @@ class MySpotAdapter(private val context: Context): RecyclerView.Adapter<MySpotAd
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currenItem = spotMutableList[position]
-
-        holder.spotName.text = currenItem.name
-        holder.spotDescription.text = currenItem.description
-        holder.spotWebsite.text = currenItem.website
+        holder.bindView(currenItem)
     }
 
     override fun getItemCount(): Int {
@@ -37,13 +36,11 @@ class MySpotAdapter(private val context: Context): RecyclerView.Adapter<MySpotAd
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         fun bindView(spot: Spot){
-
-
-
+            Glide.with(context!!).load(spot.images?.get(1)).into(itemView.circleImageView)
+            itemView.tvSpotName.text = spot.name
+            itemView.tvSpotDescription.text = spot.description
+            itemView.tvSpotWebSite.text = spot.website
         }
-        val spotName : TextView = itemView.findViewById(R.id.tvSpotName)
-        val spotDescription : TextView = itemView.findViewById(R.id.tvSpotDescription)
-        val spotWebsite : TextView = itemView.findViewById(R.id.tvSpotWebSite)
 
     }
 

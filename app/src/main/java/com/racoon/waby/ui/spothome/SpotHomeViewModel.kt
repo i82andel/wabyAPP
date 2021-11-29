@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.racoon.waby.common.Result
+import com.racoon.waby.data.model.Spot
 import com.racoon.waby.data.repository.SpotRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -17,6 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SpotHomeViewModel @Inject constructor(private val spotRepository: SpotRepository): ViewModel() {
 
+
     private val _state: MutableState<SpotListState> = mutableStateOf(SpotListState())
     val state : State<SpotListState>
         get() = _state
@@ -25,13 +27,12 @@ class SpotHomeViewModel @Inject constructor(private val spotRepository: SpotRepo
         getSpotList()
     }
 
-    fun getSpotList() {
-
+    fun getSpotList():LiveData<MutableList<Spot>> {
+        val mutableData = MutableLiveData<MutableList<Spot>>()
+        spotRepository.getAllSpots().observeForever{ spotList ->
+            mutableData.value = spotList
+        }
+        return mutableData
     }
 
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
 }
