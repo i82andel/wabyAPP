@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
                 setUp()
                 viewModelSetup(view)
         }
-        
+
     }
 
 

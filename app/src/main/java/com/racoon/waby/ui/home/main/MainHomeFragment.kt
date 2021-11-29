@@ -22,6 +22,7 @@ import android.nfc.Tag
 import android.nfc.tech.Ndef
 import android.nfc.tech.NfcF
 import androidx.appcompat.app.AlertDialog
+import com.racoon.waby.ui.spothome.SpotActivity
 
 
 class MainHomeFragment : Fragment() {
@@ -59,6 +60,10 @@ class MainHomeFragment : Fragment() {
 
         binding.mapButton.setOnClickListener{
             startActivity(Intent(context, MapActivity::class.java))
+        }
+
+        binding.buttonRandom.setOnClickListener{
+            startActivity(Intent(context, SpotActivity::class.java))
         }
 
         binding.nfcButton.setOnClickListener{
