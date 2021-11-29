@@ -44,12 +44,13 @@ class LoginFragment : Fragment() {
             openSignUp()
         }
         binding.signInButton.setOnClickListener {
-                setUp()
-                viewModelSetup(view)
+            binding.progressBar.visibility = View.VISIBLE
+            setUp()
+            viewModelSetup(view)
+            binding.progressBar.visibility = View.GONE
         }
 
     }
-
 
 
     private fun setUp() {

@@ -88,7 +88,9 @@ class RegisterUserTagsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.progressBar.visibility = View.VISIBLE
         setUp()
+        binding.progressBar.visibility = View.GONE
 
         binding.nextButton.setOnClickListener {
             if (TAGS.size >= 3 && TAGS.size <= 5) {

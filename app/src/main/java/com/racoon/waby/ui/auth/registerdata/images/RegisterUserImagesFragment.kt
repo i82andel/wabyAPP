@@ -99,7 +99,10 @@ class RegisterUserImagesFragment : Fragment() {
 
 
         binding.nextButton.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             goNext()
+            binding.progressBar.visibility = View.GONE
+
         }
 
         binding.galleryButton.setOnClickListener {
