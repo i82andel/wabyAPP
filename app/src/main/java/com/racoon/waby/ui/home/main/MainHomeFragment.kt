@@ -16,6 +16,7 @@ import com.racoon.waby.databinding.FragmentMainHomeBinding
 import com.racoon.waby.ui.home.map.MapActivity
 import android.nfc.NfcAdapter
 import android.provider.Settings
+import com.racoon.waby.ui.auxiliarActivity
 import com.racoon.waby.ui.spot.SpotActivity
 
 
@@ -55,7 +56,9 @@ class MainHomeFragment : Fragment() {
         binding.mapButton.setOnClickListener{
             startActivity(Intent(context, MapActivity::class.java))
         }
-
+        binding.ola.setOnClickListener {
+            startActivity(Intent(context, auxiliarActivity::class.java))
+        }
         binding.buttonRandom.setOnClickListener{
             startActivity(Intent(context, SpotActivity::class.java))
         }
