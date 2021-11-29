@@ -84,6 +84,7 @@ class MainHomeFragment : Fragment() {
             context,0,Intent(context, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),0
         )
 
+        
         val ndef = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED)
     }
 }
