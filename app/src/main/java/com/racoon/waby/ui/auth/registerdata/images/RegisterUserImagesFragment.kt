@@ -3,6 +3,8 @@ package com.racoon.waby.ui.auth.registerdata.images
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -13,12 +15,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentRegisterUserImagesBinding
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -26,11 +31,14 @@ import kotlin.collections.ArrayList
 
 class RegisterUserImagesFragment : Fragment() {
 
+    private val IMAGE_CHOOSE = 1000
+
     private val SELECT_ACTIVITY = 50
     private var imageUri: Uri? = null
 
     private val database = Firebase.database
     private val myRef = database.getReference("/profileImages")
+    private lateinit var storage: FirebaseStorage
 
     private var NAME = "name"
     private var SURNAME = "surname"
@@ -43,7 +51,8 @@ class RegisterUserImagesFragment : Fragment() {
     private var IMAGES = ArrayList<String>()
 
     //ViewBiding
-    private  var _binding: FragmentRegisterUserImagesBinding? = null
+    private var _binding: FragmentRegisterUserImagesBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -59,6 +68,9 @@ class RegisterUserImagesFragment : Fragment() {
         val month = arguments?.getInt("month")
         val year = arguments?.getInt("year")
         val tags = arguments?.getStringArrayList("tags")
+
+        storage = Firebase.storage
+
         println(name)
         println(surname)
         println(username)
@@ -73,59 +85,50 @@ class RegisterUserImagesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentRegisterUserImagesBinding.inflate(inflater,container,false)
+        _binding = FragmentRegisterUserImagesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUp()
 
         binding.nextButton.setOnClickListener {
             goNext()
         }
+
+        binding.galleryButton.setOnClickListener {
+            chooseImageGallery()
+        }
     }
 
-    private fun setUp() {
-        binding.imageView1.setOnClickListener {
+    private fun chooseImageGallery() {
+        /*binding.imageView1.setOnClickListener {
             activity?.let { it1 ->
                 ImageController.selectPhotoFromGallery(it1,SELECT_ACTIVITY)
             }
-        }
+        }*/
 
-        binding.imageView2.setOnClickListener {
-            activity?.let { it1 ->
-                ImageController.selectPhotoFromGallery(it1,SELECT_ACTIVITY)
-            }
-        }
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_CHOOSE)
 
-        binding.imageView3.setOnClickListener {
-            activity?.let { it1 ->
-                ImageController.selectPhotoFromGallery(it1,SELECT_ACTIVITY)
-            }
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        when {
-            requestCode == SELECT_ACTIVITY && resultCode == Activity.RESULT_OK -> {
-                imageUri = data!!.data
-                println(imageUri.toString())
-
-                binding.imageView1.setImageURI(imageUri)
-
-            }
+        if (requestCode == IMAGE_CHOOSE && resultCode == Activity.RESULT_OK) {
+            imageUri = data?.data
+            binding.imageView1.setImageURI(imageUri)
         }
     }
 
-    private fun fileUpload(imageUri: Uri) {
-        val formatter = SimpleDateFormat("yyy_MM_dd_HH_mm_ss", Locale.getDefault())
+    private fun fileUpload() {
+        /*val formatter = SimpleDateFormat("yyy_MM_dd_HH_mm_ss", Locale.getDefault())
         val now = Date()
         val filename = formatter.format(now)
         val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$filename")
@@ -136,14 +139,34 @@ class RegisterUserImagesFragment : Fragment() {
 
         }.addOnFailureListener {
             Toast.makeText(context,R.string.register_images_error, Toast.LENGTH_SHORT).show()
+        }*/
+
+        val storageRef = storage.reference
+        val email = Firebase.auth.currentUser?.email.toString()
+        val pathImage = storageRef.child("profiles/$email/images.png")
+
+        // Get the data from an ImageView as bytes
+        //binding.imageView1.isDrawingCacheEnabled = true
+        //binding.imageView1.buildDrawingCache()
+        val bitmap = (binding.imageView1.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        val data = baos.toByteArray()
+
+        var uploadTask = pathImage.putBytes(data)
+        uploadTask.addOnFailureListener {
+            // Handle unsuccessful uploads
+            println("failure")
+        }.addOnSuccessListener { taskSnapshot ->
+            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            println("success")
         }
 
 
     }
 
     private fun goNext() {
-
-        fileUpload(imageUri!!)
+        fileUpload()
 
         val bundle = bundleOf(
             "name" to NAME,
@@ -155,7 +178,7 @@ class RegisterUserImagesFragment : Fragment() {
             "year" to YEAR,
             "tags" to TAGS,
 
-        )
+            )
         findNavController().navigate(
             R.id.action_registerUserImagesFragment_to_registerUserDescriptionFragment,
             bundle)
