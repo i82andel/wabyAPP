@@ -62,7 +62,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
         super.onCreate(savedInstanceState)
         Mapbox.getInstance(this, getString(R.string.access_token))
         setContentView(R.layout.activity_map)
-        mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
     }
 
