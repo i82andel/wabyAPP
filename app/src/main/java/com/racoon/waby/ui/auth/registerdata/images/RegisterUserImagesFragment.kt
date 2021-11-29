@@ -128,18 +128,6 @@ class RegisterUserImagesFragment : Fragment() {
     }
 
     private fun fileUpload() {
-        /*val formatter = SimpleDateFormat("yyy_MM_dd_HH_mm_ss", Locale.getDefault())
-        val now = Date()
-        val filename = formatter.format(now)
-        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$filename")
-
-        storageReference.putFile(imageUri).addOnSuccessListener {
-            binding.imageView1.setImageURI(null)
-            Toast.makeText(context,R.string.register_images_success,Toast.LENGTH_SHORT).show()
-
-        }.addOnFailureListener {
-            Toast.makeText(context,R.string.register_images_error, Toast.LENGTH_SHORT).show()
-        }*/
 
         val storageRef = storage.reference
         val email = Firebase.auth.currentUser?.email.toString()
@@ -150,16 +138,16 @@ class RegisterUserImagesFragment : Fragment() {
         //binding.imageView1.buildDrawingCache()
         val bitmap = (binding.imageView1.drawable as BitmapDrawable).bitmap
         val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        bitmap.compress(Bitmap.CompressFormat.PNG, 20, baos)
         val data = baos.toByteArray()
 
         var uploadTask = pathImage.putBytes(data)
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads
-            println("failure")
+            Toast.makeText(context,R.string.register_images_error, Toast.LENGTH_SHORT).show()
         }.addOnSuccessListener { taskSnapshot ->
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-            println("success")
+            Toast.makeText(context,R.string.register_images_success,Toast.LENGTH_SHORT).show()
         }
 
 

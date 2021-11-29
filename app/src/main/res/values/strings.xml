@@ -70,4 +70,6 @@
     <string name="nfc_disabled">Debe activar NFC en su telefono movil</string>
     <string name="register_images_success">Imagen subida con éxito</string>
     <string name="register_images_error">Error al subir la imagen</string>
+    <string name="firestore_upload_success">Genial</string>
+    <string name="firestore_upload_failure">Ha ocurrido un error al subir los datos</string>
 </resources>
