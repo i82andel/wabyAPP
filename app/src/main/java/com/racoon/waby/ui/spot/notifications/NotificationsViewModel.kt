@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.notifications
+package com.racoon.waby.ui.spot.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.spothome
+package com.racoon.waby.ui.spot.spothome
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.spothome
+package com.racoon.waby.ui.spot.spothome
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,7 +21,7 @@ class SpotHomeFragment @Inject constructor ( spotHomeViewModel: SpotHomeViewMode
 
     private lateinit var spotHomeViewModel: SpotHomeViewModel
     private var _binding: FragmentSpotHomeBinding? = null
-    private lateinit var adapter:MySpotAdapter
+    private lateinit var adapter: MySpotAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.

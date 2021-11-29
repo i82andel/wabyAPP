@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.racoon.waby.ui.spothome.SpotHomeFragment"
+        android:name="com.racoon.waby.ui.spot.spothome.SpotHomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_spot_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.racoon.waby.ui.wabis.WabisFragment"
+        android:name="com.racoon.waby.ui.spot.wabis.WabisFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_wabis" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.racoon.waby.ui.notifications.NotificationsFragment"
+        android:name="com.racoon.waby.ui.spot.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -14,15 +14,9 @@ import androidx.navigation.fragment.findNavController
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentMainHomeBinding
 import com.racoon.waby.ui.home.map.MapActivity
-import android.nfc.NdefMessage
-import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
 import android.provider.Settings
-import android.nfc.Tag
-import android.nfc.tech.Ndef
-import android.nfc.tech.NfcF
-import androidx.appcompat.app.AlertDialog
-import com.racoon.waby.ui.spothome.SpotActivity
+import com.racoon.waby.ui.spot.SpotActivity
 
 
 class MainHomeFragment : Fragment() {

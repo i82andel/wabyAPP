@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.spothome
+package com.racoon.waby.ui.spot
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

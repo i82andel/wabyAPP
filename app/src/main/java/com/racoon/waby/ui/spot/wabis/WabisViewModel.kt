@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.wabis
+package com.racoon.waby.ui.spot.wabis
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
