@@ -8,16 +8,13 @@
     app:cardCornerRadius="8dp"
     android:layout_margin="16dp">
 
-<<<<<<< Updated upstream
 
-=======
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:civ_border_width="2dp"
             android:background="@color/colorPrimary"/>
->>>>>>> Stashed changes
 
     <LinearLayout
         android:layout_width="251dp"
