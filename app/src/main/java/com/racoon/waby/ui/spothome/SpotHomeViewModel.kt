@@ -26,20 +26,8 @@ class SpotHomeViewModel @Inject constructor(private val spotRepository: SpotRepo
     }
 
     fun getSpotList() {
-        /*spotRepository.getSpotList().onEach { result ->
-            when(result){
-                is Result.Error -> {
-                    _state.value = SpotListState(error = result.message?: "Error inesperado")
-                }
-                is Result.Loading -> {
-                    _state.value = SpotListState(isLoading = true)
-                }
-                is Result.Success -> {
-                    _state.value = SpotListState(spots = result.data ?: emptyList())
-                }
-            }
-        }.launchIn(viewModelScope)
-    */}
+
+    }
 
 
     private val _text = MutableLiveData<String>().apply {

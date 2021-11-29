@@ -8,10 +8,10 @@ data class Spot (val idSpot: String,
                  val phoneNumber: String? = null,
                  var capacity: Int? = null,
                  val location: Location? = null,
-                 var rating: Float? = null,
+                 var rating: ArrayList<Int>? = null,
                  val website: String? = null,
                  val spotType: SpotType? = null,
-                 val badges: ArrayList<Badge>? = null,
+                 val badges: ArrayList<String>? = null,
                  val images: ArrayList<Image>? = null,
                  val description: String? = null
 )
