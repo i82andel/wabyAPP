@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentLoginBinding
@@ -16,20 +18,22 @@ import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
 class LoginFragment : Fragment() {
 
     //private val viewModel by viewModels<LoginViewModel>()
-    private val  viewModel by viewModels<LoginViewModel> {
+    private val viewModel by viewModels<LoginViewModel> {
         LoginVMFactory(AuthUserUseCaseImpl(UserRepositoryImp()))
     }
+
     //ViewBiding
-    private  var _binding: FragmentLoginBinding? = null
+    private var _binding: FragmentLoginBinding? = null
+
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentLoginBinding.inflate(inflater,container,false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,12 +44,17 @@ class LoginFragment : Fragment() {
             openSignUp()
         }
         binding.signInButton.setOnClickListener {
-            setUp()
-            viewModelSetup(view)
+                setUp()
+                viewModelSetup(view)
         }
-
+        binding.googleButton.setOnClickListener {
+            googleSetup()
+        }
     }
 
+    private fun googleSetup() {
+        viewModel.googleLogin()
+    }
 
 
     private fun setUp() {
@@ -64,13 +73,13 @@ class LoginFragment : Fragment() {
             }
             successLD.observe(viewLifecycleOwner) {
                 activity?.also {
-                    Toast.makeText(context,R.string.login_success,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT).show()
                 }
                 openHome(view)
             }
-            errorLD.observe(viewLifecycleOwner) { msg->
+            errorLD.observe(viewLifecycleOwner) { msg ->
                 activity?.also {
-                    Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
                 }
             }
         }

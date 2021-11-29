@@ -15,8 +15,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -130,8 +132,10 @@ class RegisterUserImagesFragment : Fragment() {
     private fun fileUpload() {
 
         val storageRef = storage.reference
-        val email = Firebase.auth.currentUser?.email.toString()
-        val pathImage = storageRef.child("profiles/$email/images.png")
+        val name = Firebase.auth.currentUser?.uid.toString()
+        val sdf = SimpleDateFormat("dd/M/yyyy_hh:mm:ss")
+        val currentDate = sdf.format(Date()).toString()
+        val pathImage = storageRef.child("profiles/$name/$currentDate.png")
 
         // Get the data from an ImageView as bytes
         //binding.imageView1.isDrawingCacheEnabled = true
@@ -144,14 +148,37 @@ class RegisterUserImagesFragment : Fragment() {
         var uploadTask = pathImage.putBytes(data)
         uploadTask.addOnFailureListener {
             // Handle unsuccessful uploads
-            Toast.makeText(context,R.string.register_images_error, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.register_images_error, Toast.LENGTH_SHORT).show()
         }.addOnSuccessListener { taskSnapshot ->
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-            Toast.makeText(context,R.string.register_images_success,Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.register_images_success, Toast.LENGTH_SHORT).show()
         }
 
 
+        val url = pathImage.downloadUrl.toString()
+        uploadDataFirestore(url)
+
     }
+
+    private fun uploadDataFirestore(url: String) {
+        val userId = Firebase.auth.currentUser?.uid.toString()
+
+        val db = Firebase.firestore
+        db.collection("User")
+            .document(userId)
+            .update("images", url)
+            .addOnSuccessListener {
+                Toast.makeText(context, R.string.firestore_upload_success, Toast.LENGTH_SHORT)
+                    .show()
+
+            }.addOnFailureListener {
+
+                Toast.makeText(context, R.string.firestore_upload_failure, Toast.LENGTH_SHORT)
+                    .show()
+
+            }
+    }
+
 
     private fun goNext() {
         fileUpload()
@@ -173,5 +200,6 @@ class RegisterUserImagesFragment : Fragment() {
 
 
     }
+
 
 }

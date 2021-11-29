@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentSignUpBinding
@@ -110,6 +112,5 @@ class SignUpFragment : Fragment() {
 
     private fun openRegisterFragment() {
         findNavController().navigate(R.id.action_signUpFragment_to_registerUserFragment)
-        //findNavController().navigate(R.id.action_signUpFragment_to_registerUserImagesFragment)
     }
 }

@@ -42,7 +42,6 @@ class SignUpViewModel(private val authUserUseCase: AuthUserUseCase) : ViewModel(
                 Firebase.auth.signOut()
                 successSLE.postValue(authResult.isSuccessful)
             }else {
-                println("No se ha podido registrar")
                 errorSLE.value = R.string.signup_error
 
 

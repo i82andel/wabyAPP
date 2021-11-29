@@ -1,5 +1,6 @@
 package com.racoon.waby.ui.auth.login
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -10,10 +11,15 @@ import com.racoon.waby.R
 import com.racoon.waby.common.SingleLiveEvent
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCase
 import android.content.Intent
+import android.provider.Settings.Global.getString
+import androidx.core.app.ActivityCompat.startActivityForResult
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.racoon.waby.ui.home.HomeActivity
 
 
 class LoginViewModel(private val authUserUseCase: AuthUserUseCase) : ViewModel() {
+
 
     private val signUpSLE = SingleLiveEvent<Unit>()
     private val errorSLE = SingleLiveEvent<Int>()
@@ -47,11 +53,11 @@ class LoginViewModel(private val authUserUseCase: AuthUserUseCase) : ViewModel()
 
             }else {
                 errorSLE.value = R.string.login_error
-                println("No se ha podido loggear")
             }
         }
 
     }
+
 
     fun gotoHome(view: View) {
         val context: Context = view.context

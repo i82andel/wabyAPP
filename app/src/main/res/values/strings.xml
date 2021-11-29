@@ -37,6 +37,12 @@
     <string name="register_username_error">Debe introducir un nombre de usuario</string>
     <string name="register_surname_error">Debe de introducir unos apellidos</string>
     <string name="register_name_error">Debe introducir un nombre</string>
+    <string name="register_images_success">Imagen subida con éxito</string>
+    <string name="register_images_error">Error al subir la imagen</string>
+    <string name="firestore_upload_success">Genial</string>
+    <string name="firestore_upload_failure">Ha ocurrido un error al subir los datos</string>
+    <string name="login_notregistered_error">Aún no ha terminado de registrarse</string>
+    <string name="google_token">572056344226-p71e51v4gn6d2qti983cnmq4vi9dh3mo.apps.googleusercontent.com</string>
     <!-- GENDERS -->
     <string-array name="genderType">
         <item>Hombre</item>
@@ -68,8 +74,5 @@
     <string name="not_nfc_supported">Su telefono movil no tiene NFC</string>
     <string name="success_nfc">Acerque el telefono movil al tag NFC</string>
     <string name="nfc_disabled">Debe activar NFC en su telefono movil</string>
-    <string name="register_images_success">Imagen subida con éxito</string>
-    <string name="register_images_error">Error al subir la imagen</string>
-    <string name="firestore_upload_success">Genial</string>
-    <string name="firestore_upload_failure">Ha ocurrido un error al subir los datos</string>
+
 </resources>

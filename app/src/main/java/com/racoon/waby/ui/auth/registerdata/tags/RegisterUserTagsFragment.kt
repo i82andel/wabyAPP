@@ -93,7 +93,7 @@ class RegisterUserTagsFragment : Fragment() {
         binding.nextButton.setOnClickListener {
             if (TAGS.size >= 3 && TAGS.size <= 5) {
 
-                makeHashmap()
+                uploadDataFirestore()
 
                 goNext()
             } else if (TAGS.size < 3) {
@@ -111,7 +111,7 @@ class RegisterUserTagsFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun makeHashmap() {
+    private fun uploadDataFirestore() {
         val birthdate = Calendar.getInstance()
 
         birthdate.clear()
