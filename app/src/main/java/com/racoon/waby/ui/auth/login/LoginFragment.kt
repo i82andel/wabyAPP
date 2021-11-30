@@ -1,5 +1,6 @@
 package com.racoon.waby.ui.auth.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
@@ -16,6 +22,8 @@ import com.racoon.waby.databinding.FragmentLoginBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
 
 class LoginFragment : Fragment() {
+
+    private val GOOGLE_SIGN_IN = 10
 
     //private val viewModel by viewModels<LoginViewModel>()
     private val viewModel by viewModels<LoginViewModel> {
@@ -50,6 +58,51 @@ class LoginFragment : Fragment() {
             binding.progressBar.visibility = View.GONE
         }
 
+        binding.googleButton.setOnClickListener {
+            setUpGoogle()
+        }
+    }
+
+    private fun setUpGoogle() {
+        val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.google_token))
+            .requestEmail()
+            .build()
+
+        val googleClient = GoogleSignIn.getClient(requireActivity(),googleConf)
+        googleClient.signOut()
+
+        startActivityForResult(googleClient.signInIntent,GOOGLE_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == GOOGLE_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+
+            try {
+                val account = task.getResult(ApiException::class.java)
+
+                if (account != null) {
+
+                    val credential = GoogleAuthProvider.getCredential(account.idToken,null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+
+                        if (it.isSuccessful) {
+                            Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT).show()
+                            viewModel.gotoHome(requireView())
+                        }else {
+                            Toast.makeText(context, R.string.login_error, Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+                }
+            }catch (e: ApiException) {
+                println("Google exception")
+            }
+
+        }
     }
 
 

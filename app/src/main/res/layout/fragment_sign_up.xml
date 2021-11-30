@@ -62,24 +62,6 @@
             android:layout_height="wrap_content"
             android:text="Regístrate" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="O registrate con google" />
-
-        <Button
-            android:id="@+id/googleButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Google" />
-
-        <Button
-            android:id="@+id/goInButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Acceder" />
-
     </LinearLayout>
 
 </FrameLayout>
