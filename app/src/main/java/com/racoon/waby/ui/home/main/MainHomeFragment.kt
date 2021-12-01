@@ -28,6 +28,7 @@ import java.io.UnsupportedEncodingException
 import java.nio.charset.Charset
 import kotlin.experimental.and
 import android.app.Activity
+import com.google.zxing.integration.android.IntentIntegrator
 
 
 class MainHomeFragment : Fragment() {
@@ -70,7 +71,7 @@ class MainHomeFragment : Fragment() {
             startActivity(Intent(context, MapActivity::class.java))
         }
         binding.ola.setOnClickListener {
-            startActivity(Intent(context, auxiliarActivity::class.java))
+            initScanner()
         }
         binding.buttonRandom.setOnClickListener{
             startActivity(Intent(context, SpotActivity::class.java))
@@ -147,6 +148,24 @@ class MainHomeFragment : Fragment() {
         }
 
         binding.textView6.setText("Contenido NFC:" + text)
+    }
+
+    private fun initScanner(){
+        IntentIntegrator(activity).initiateScan()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (result != null){
+            if(result.contents == null){
+                Toast.makeText(context, "Cancelado", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, "El valor escaneado es ${result.contents}", Toast.LENGTH_SHORT).show()
+            }
+        }
+        else{
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
 
 }
