@@ -12,7 +12,7 @@ data class Spot (val idSpot: String,
                  val website: String? = null,
                  val spotType: SpotType? = null,
                  val badges: ArrayList<String>? = null,
-                 val images: ArrayList<Image>? = null,
+                 val images: ArrayList<String>? = null,
                  val description: String? = null
 )
 

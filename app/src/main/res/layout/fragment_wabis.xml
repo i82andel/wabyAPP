@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.spot.wabis.WabisFragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wabis"
+        tools:layout_editor_absoluteX="187dp"
+        tools:layout_editor_absoluteY="424dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wabisList"
         android:layout_width="409dp"
         android:layout_height="729dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="1dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

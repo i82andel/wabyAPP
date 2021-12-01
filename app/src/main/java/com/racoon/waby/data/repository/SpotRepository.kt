@@ -3,6 +3,7 @@ package com.racoon.waby.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -32,7 +33,7 @@ class SpotRepository{
         spotList.get().addOnSuccessListener {
             val spotDataList = mutableListOf<Spot>()
             for (document in it){
-                val spot = document.toObject(Spot::class.java)
+                val spot = documentToSpot(document)
                 spotDataList.add(spot)
             }
             mutableList.value = spotDataList
@@ -49,36 +50,46 @@ class SpotRepository{
             .addOnSuccessListener { document ->
                 if (document.exists()) {
 
-                    spot = document.toObject(Spot::class.java)!!
-                    /*val adminUser = document.getString("adminUser")
-                    val badges = document.get("badges") to ArrayList<String>()
-                    val capacity = document.getLong("capacity")?.toInt()
-                    val description = document.get("description").toString()
-                    val images = document.get("images") to ArrayList<String>()
-                    val location = document.getString("location")
-                    val name = document.get("name").toString()
-                    val phoneNumber = document.get("phoneNumber").toString()
-                    val spotType = document.getString("spotType")
-                    val website = document.getString("website")
-                    val ratings = document.get("ratings") to ArrayList<Int>()
-
-                    val spot = Spot(
-                        idSpot,
-                        name,
-                        adminUser,
-                        phoneNumber,
-                        capacity,
-                        location,
-                        ratings,
-                        website,
-                        spotType,
-                        badges,
-                        images,
-                        description
-                    )*/
+                    val spot = documentToSpot(document)
 
                 }
             }
+        return spot
+    }
+
+    fun documentToSpot(document : DocumentSnapshot) : Spot{
+
+
+        val adminUser = document.getString("adminUser")
+        val badges = document.getString("badges") to ArrayList<String>()
+        val capacity = document.getLong("capacity")?.toInt()
+        val description = document.get("description").toString()
+        val image = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.sojoribera.com%2F&psig=AOvVaw300KUGc-fAABBRnU86Mh3j&ust=1638471612060000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPCln8Wkw_QCFQAAAAAdAAAAABAD"
+        val location = document.getString("location")
+        val name = document.get("name").toString()
+        val phoneNumber = document.get("phoneNumber").toString()
+        val spotType = document.getString("spotType")
+        val website = document.getString("website")
+        val ratings = document.get("ratings") to ArrayList<Int>()
+
+        val images = ArrayList<String>()
+        images.add(image)
+
+        val spot = Spot(
+            "idSpot",
+            name,
+            adminUser,
+            phoneNumber,
+            capacity,
+            null,
+            rating = null,
+            website,
+            null,
+            null,
+            images,
+            description
+        )
+
         return spot
     }
 
