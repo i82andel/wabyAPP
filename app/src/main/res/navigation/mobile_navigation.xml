@@ -23,7 +23,7 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
-        android:id="@+id/fragment_swipe"
+        android:id="@+id/navigation_swipe"
         android:name="com.racoon.waby.ui.spot.swipe.SwipeFragment"
         android:label="fragment_swipe"
         tools:layout="@layout/fragment_swipe" />
