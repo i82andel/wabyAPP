@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,9 +18,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SpotHomeFragment @Inject constructor ( spotHomeViewModel: SpotHomeViewModel) : Fragment() {
+class SpotHomeFragment: Fragment() {
 
-    private lateinit var spotHomeViewModel: SpotHomeViewModel
+    private val spotHomeViewModel by viewModels<SpotHomeViewModel>()
     private var _binding: FragmentSpotHomeBinding? = null
     private lateinit var adapter: MySpotAdapter
 
@@ -32,13 +33,13 @@ class SpotHomeFragment @Inject constructor ( spotHomeViewModel: SpotHomeViewMode
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        spotHomeViewModel =
-            ViewModelProvider(this).get(SpotHomeViewModel::class.java)
+
 
         _binding = FragmentSpotHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        /*val root: View = binding.root
 
-        return root
+        return root*/
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

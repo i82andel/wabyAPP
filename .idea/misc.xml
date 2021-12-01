@@ -47,7 +47,9 @@
         <entry key="..\:/Users/youne/AndroidStudioProjects/Waby/app/src/main/res/layout/fragment_register_user.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/Waby/app/src/main/res/layout/fragment_sign_up.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_auxiliar2.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_map.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_spot.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_blank.xml" value="0.1" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_extras.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
@@ -59,6 +61,7 @@
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_register_user_images.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_register_user_tags.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_spot_home.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_verify_email.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/list_item.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/youne/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/spot_item.xml" value="0.20520833333333333" />

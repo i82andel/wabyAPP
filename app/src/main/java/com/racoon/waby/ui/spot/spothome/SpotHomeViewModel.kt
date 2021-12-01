@@ -15,9 +15,10 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-@HiltViewModel
-class SpotHomeViewModel @Inject constructor(private val spotRepository: SpotRepository): ViewModel() {
 
+class SpotHomeViewModel : ViewModel() {
+
+    private val spotRepository = SpotRepository()
 
     private val _state: MutableState<SpotListState> = mutableStateOf(SpotListState())
     val state : State<SpotListState>
