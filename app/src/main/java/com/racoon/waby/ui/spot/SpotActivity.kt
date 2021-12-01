@@ -31,7 +31,7 @@ class SpotActivity : AppCompatActivity() {
 
         //val navController = findNavController(R.id.fragmentContainerView2)
         val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.fragmentContainerView2) as NavHostFragment
+            .findFragmentById(R.id.nav_host_fragment_activity_spot) as NavHostFragment
         navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(
             setOf(R.id.navigation_chat,R.id.navigation_swipe,R.id.navigation_home, R.id.navigation_wabis, R.id.navigation_extras)
