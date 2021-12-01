@@ -151,7 +151,11 @@ class MainHomeFragment : Fragment() {
     }
 
     private fun initScanner(){
-        IntentIntegrator(activity).initiateScan()
+        val integrator = IntentIntegrator(activity)
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+        integrator.setPrompt("Escanea el código QR")
+        integrator.setBeepEnabled(true)
+        integrator.initiateScan()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
