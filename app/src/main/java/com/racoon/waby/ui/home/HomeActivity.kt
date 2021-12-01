@@ -1,7 +1,10 @@
 package com.racoon.waby.ui.home
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -23,7 +26,12 @@ class HomeActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         //llama al metodo para volver al fragmet anterior
-        NavigationUI.setupActionBarWithNavController(this,navController)
+        //NavigationUI.setupActionBarWithNavController(this,navController)
+
+        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        // Remember that you should never show the action bar if the
+        // status bar is hidden, so hide that too if necessary.
+        actionBar?.hide()
     }
 
     //para volver al fragment anterior

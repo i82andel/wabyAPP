@@ -36,7 +36,7 @@ class SpotActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(R.id.navigation_chat,R.id.navigation_swipe,R.id.navigation_home, R.id.navigation_wabis, R.id.navigation_extras)
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
     }

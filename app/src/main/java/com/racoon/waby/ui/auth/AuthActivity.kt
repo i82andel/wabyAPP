@@ -24,7 +24,7 @@ class AuthActivity : AppCompatActivity(){
         navController = navHostFragment.navController
 
         //llama al metodo para volver al fragmet anterior
-        NavigationUI.setupActionBarWithNavController(this,navController)
+        //NavigationUI.setupActionBarWithNavController(this,navController)
 
 
 
