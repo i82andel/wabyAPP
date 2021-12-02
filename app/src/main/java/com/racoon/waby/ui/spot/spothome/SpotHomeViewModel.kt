@@ -21,8 +21,7 @@ class SpotHomeViewModel : ViewModel() {
     private val spotRepository = SpotRepository()
 
     private val _state: MutableState<SpotListState> = mutableStateOf(SpotListState())
-    val state : State<SpotListState>
-        get() = _state
+
 
     init {
         getSpotList()

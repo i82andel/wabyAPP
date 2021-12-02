@@ -34,7 +34,7 @@ class SpotActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment_activity_spot) as NavHostFragment
         navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_notifications,R.id.navigation_swipe,R.id.navigation_home, R.id.navigation_wabis)
+            setOf(R.id.navigation_notifications,R.id.navigation_swipe,R.id.navigation_home, R.id.navigation_wabis,R.id.navigation_extras)
         )
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

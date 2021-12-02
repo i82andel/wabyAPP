@@ -61,16 +61,16 @@ class SpotRepository{
 
 
         val adminUser = document.getString("adminUser")
-        val badges = document.getString("badges") to ArrayList<String>()
+       // val badges = document.getString("badges") to ArrayList<String>()
         val capacity = document.getLong("capacity")?.toInt()
         val description = document.get("description").toString()
         val image = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.sojoribera.com%2F&psig=AOvVaw300KUGc-fAABBRnU86Mh3j&ust=1638471612060000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPCln8Wkw_QCFQAAAAAdAAAAABAD"
-        val location = document.getString("location")
+        //val location = document.getString("location")
         val name = document.get("name").toString()
         val phoneNumber = document.get("phoneNumber").toString()
         val spotType = document.getString("spotType")
         val website = document.getString("website")
-        val ratings = document.get("ratings") to ArrayList<Int>()
+        //val ratings = document.get("ratings") to ArrayList<Int>()
 
         val images = ArrayList<String>()
         images.add(image)

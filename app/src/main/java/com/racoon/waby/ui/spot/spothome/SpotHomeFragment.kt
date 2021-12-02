@@ -48,11 +48,12 @@ class SpotHomeFragment: Fragment() {
         adapter = MySpotAdapter(context)
         binding.spotList.layoutManager = LinearLayoutManager(context)
         binding.spotList.adapter = adapter
+        observeData()
 
     }
 
     fun observeData(){
-        spotHomeViewModel.getSpotList().observe(this, Observer {
+        spotHomeViewModel.getSpotList().observe(viewLifecycleOwner, Observer {
             adapter.setSpotList(it)
             adapter.notifyDataSetChanged()
         })

@@ -25,8 +25,8 @@ class MySpotAdapter(private val context: Context?): RecyclerView.Adapter<MySpotA
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currenItem = spotMutableList[position]
-        holder.bindView(currenItem)
+        val currentItem = spotMutableList[position]
+        holder.bindView(currentItem)
     }
 
     override fun getItemCount(): Int {
@@ -36,7 +36,7 @@ class MySpotAdapter(private val context: Context?): RecyclerView.Adapter<MySpotA
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         fun bindView(spot: Spot){
-            Glide.with(context!!).load(spot.images?.get(1)).into(itemView.circleImageView)
+            Glide.with(context!!).load(spot.images?.get(0)).into(itemView.circleImageView)
             itemView.tvSpotName.text = spot.name
             itemView.tvSpotDescription.text = spot.description
             itemView.tvSpotWebSite.text = spot.website
