@@ -208,6 +208,14 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
     }
 
     private fun enableLocationComponent(loadedMapStyle: Style?) {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_PHONE_STATE
+        ) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_PHONE_STATE), REQUEST_CODE_AUTOCOMPLETE)
+            return
+        }
         //Check if permissions are enabled and if not request
         if (PermissionsManager.areLocationPermissionsGranted(this)) {
             // Activity the MapboxMap LocationComponent to show user location
@@ -220,6 +228,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
                 ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                     this,
                     Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.READ_PHONE_STATE
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 // TODO: Consider calling
