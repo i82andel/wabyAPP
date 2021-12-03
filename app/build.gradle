@@ -109,6 +109,8 @@ dependencies {
     //Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.38.1")
 
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
     //Mapitas
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.0'
     implementation('com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.0') {
