@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:padding="16dp"
-        android:background="@drawable/gradation_black">
+        android:background="@drawable/gradiation_black">
 
         <TextView
             android:id="@+id/item_name"
@@ -88,5 +88,3 @@
 
 </androidx.cardview.widget.CardView>
 
-
-</layout>
