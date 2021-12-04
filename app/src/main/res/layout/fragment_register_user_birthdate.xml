@@ -20,7 +20,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
-        android:background="@drawable/inputs"/>
+        android:background="@drawable/inputs"
+        android:drawableStart="@drawable/ic_calendar"
+        android:drawablePadding="20dp"
+        android:paddingStart="30dp"
+        android:textColorHint="@color/colorHint"
+        android:textAlignment="textStart"/>
 
     <TextView
         android:id="@+id/textView14"
