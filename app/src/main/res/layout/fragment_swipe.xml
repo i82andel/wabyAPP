@@ -78,14 +78,14 @@
 
             </RelativeLayout>
 
-            <com.yuyakaido.android.cardstackview.CardStackView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/card_stack_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@+id/button_container"
                 android:padding="4dp"
                 android:clipToPadding="false">
-            </com.yuyakaido.android.cardstackview.CardStackView>
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 
