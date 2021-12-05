@@ -28,6 +28,7 @@ import java.io.UnsupportedEncodingException
 import java.nio.charset.Charset
 import kotlin.experimental.and
 import android.app.Activity
+import android.app.AlertDialog
 import com.google.zxing.integration.android.IntentIntegrator
 
 
@@ -71,23 +72,14 @@ class MainHomeFragment : Fragment() {
             startActivity(Intent(context, MapActivity::class.java))
         }
         binding.ola.setOnClickListener {
-            initScanner()
+
         }
         binding.buttonRandom.setOnClickListener{
             startActivity(Intent(context, SpotActivity::class.java))
         }
 
         binding.nfcButton.setOnClickListener{
-            if (nfcAdapter == null){
-                Toast.makeText(context,R.string.not_nfc_supported,Toast.LENGTH_SHORT).show()
-            }else if (!nfcAdapter!!.isEnabled){
-                Toast.makeText(context,R.string.nfc_disabled,Toast.LENGTH_SHORT).show()
-                startActivity(Intent(Settings.ACTION_NFC_SETTINGS))
-            }
-            else{
-                Toast.makeText(context,R.string.success_nfc,Toast.LENGTH_SHORT).show()
-
-            }
+            showDefaultDialog()
         }
     }
 
@@ -174,6 +166,29 @@ class MainHomeFragment : Fragment() {
         else{
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    private fun showDefaultDialog(){
+        var alertDialog = AlertDialog.Builder(context)
+
+        alertDialog.apply {
+            setTitle("Unirse al spot")
+            setMessage("Seleccione el método con el que se quiere unir al spot en el que se encuentra")
+            setPositiveButton("QR"){_, _ ->
+                initScanner()
+            }
+            setNegativeButton("NFC"){_, _ ->
+                if (nfcAdapter == null){
+                    Toast.makeText(context,R.string.not_nfc_supported,Toast.LENGTH_SHORT).show()
+                }else if (!nfcAdapter!!.isEnabled){
+                    Toast.makeText(context,R.string.nfc_disabled,Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(Settings.ACTION_NFC_SETTINGS))
+                }
+                else{
+                    Toast.makeText(context,R.string.success_nfc,Toast.LENGTH_SHORT).show()
+                }
+            }
+        }.create().show()
     }
 
 }
