@@ -1,5 +1,6 @@
 package com.racoon.waby.ui.home.myprofile
 
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,6 +18,8 @@ import com.racoon.waby.ui.auth.login.LoginVMFactory
 import com.racoon.waby.ui.auth.login.LoginViewModel
 import com.racoon.waby.ui.auth.login.MyProfileVMFactory
 import com.racoon.waby.ui.auth.signup.SignUpVMFactory
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class MyProfileFragment : Fragment() {
 
@@ -46,7 +49,12 @@ class MyProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCurrentUser()
-        binding.nameText.setText(user.name)
+        binding.nameText.setText(user.name+ " " + user.surname)
+        binding.DescriptionText.setText(user.description)
+        binding.emailText.setText(user.email)
+        binding.usernameText.setText(user.userName)
+        binding.textBD.setText("01/01/2000")
+        binding.textPhone.setText(user.phoneNumber)
 
         binding.settingsButton.setOnClickListener {
             gotoSettings()

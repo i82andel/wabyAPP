@@ -1,5 +1,6 @@
 package com.racoon.waby.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.CollectionReference
@@ -38,6 +39,7 @@ class SpotRepository{
             }
             mutableList.value = spotDataList
         }
+        Log.d("creation", "$mutableList")
         return mutableList
     }
 

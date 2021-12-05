@@ -125,4 +125,7 @@ dependencies {
     //zxing
     implementation 'com.google.zxing:core:3.3.0'
     implementation('com.journeyapps:zxing-android-embedded:4.1.0') { transitive = false }
+
+    //circular image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
