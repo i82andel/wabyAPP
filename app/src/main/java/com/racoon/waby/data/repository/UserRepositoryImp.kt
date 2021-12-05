@@ -13,8 +13,10 @@ import com.racoon.waby.R
 import com.racoon.waby.common.Resource
 import com.racoon.waby.common.SingleLiveEvent
 import com.racoon.waby.data.model.Gender
+import com.racoon.waby.data.model.Image
 import com.racoon.waby.data.model.User
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class UserRepositoryImp : UserRepository {
@@ -70,15 +72,33 @@ class UserRepositoryImp : UserRepository {
         val uid = "7dscT5MXidZQjtL51MPQRi5ZdK62"
         val db = Firebase.firestore
         val userList = db.collection("User")
-        var user : User =  User()
 
-        userList.document(uid).get().addOnSuccessListener { document ->
+        val RefDoc = userList.document(uid).get().addOnSuccessListener { document ->
             if (document.exists()) {
-                user = documentToUser(document)
+                //user = documentToUser(document)
+
             }
         }
 
-        Log.d("creation", "$user")
+        val image = Image("1", "@drawable/img")
+        val images = ArrayList<Image>()
+        images.add(image)
+
+        val user = User(
+            "",
+            "Paco",
+            "Martinez",
+            "pacoo23",
+            Date(1,1, 2000),
+            "paquito@gmail.com",
+            "",
+            Gender.MEN,
+            "600123456",
+            "Hola me llamo Paco",
+            null,
+            null,
+            images)
+
 
         return user
 
