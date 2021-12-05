@@ -41,6 +41,7 @@ import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions
 import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute
 import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute
 import com.racoon.waby.R
+import com.racoon.waby.ui.spot.SpotActivity
 import kotlinx.android.synthetic.main.activity_map.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -208,14 +209,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
     }
 
     private fun enableLocationComponent(loadedMapStyle: Style?) {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_PHONE_STATE
-        ) != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_PHONE_STATE), REQUEST_CODE_AUTOCOMPLETE)
-            return
-        }
+        var permsRequestCode = 100
+        var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_PHONE_STATE)
         //Check if permissions are enabled and if not request
         if (PermissionsManager.areLocationPermissionsGranted(this)) {
             // Activity the MapboxMap LocationComponent to show user location
@@ -228,7 +224,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
                 ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                     this,
                     Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                ) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(
                     this,
                     Manifest.permission.READ_PHONE_STATE
                 ) != PackageManager.PERMISSION_GRANTED
@@ -240,6 +236,12 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
                 //                                          int[] grantResults)
                 // to handle the case where the user grants the permission. See the documentation
                 // for ActivityCompat#requestPermissions for more details.
+                var permsRequestCode = 100
+                var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_PHONE_STATE)
+
+
+                ActivityCompat.requestPermissions(this, permissions, permsRequestCode)
                 return
             }
             locationComponent!!.setLocationComponentEnabled(true)
@@ -250,7 +252,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
 
         else {
             permissionsManager = PermissionsManager(this)
-            permissionsManager!!.requestLocationPermissions(this)
+            ActivityCompat.requestPermissions(this, permissions, permsRequestCode)
         }
     }
 
@@ -260,6 +262,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
 
     override fun onPermissionResult(granted: Boolean) {
         if (granted) {
+            Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show()
             enableLocationComponent(mapboxMap!!.style)
         }
         else {
