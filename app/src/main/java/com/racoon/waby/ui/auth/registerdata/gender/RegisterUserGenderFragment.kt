@@ -70,7 +70,7 @@ class RegisterUserGenderFragment : Fragment(), AdapterView.OnItemClickListener {
         val adapter = context?.let {
             ArrayAdapter(
                 it,
-                R.layout.list_item,
+                R.layout.instruction_list_layout,
                 genders
             )
         }

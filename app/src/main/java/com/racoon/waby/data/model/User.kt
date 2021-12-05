@@ -4,7 +4,7 @@ import java.util.Date
 
 
 data class User (val idUser: String? = null,
-                 val name: String? = null,
+                 var name: String? = null,
                  val surname: String? = null,
                  val userName: String? = null,
                  val birthdate: Date? = null,

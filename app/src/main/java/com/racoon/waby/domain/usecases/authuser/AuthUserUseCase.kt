@@ -5,10 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseUser
 import com.racoon.waby.common.Resource
 import com.racoon.waby.common.SingleLiveEvent
+import com.racoon.waby.data.model.User
 
 interface AuthUserUseCase {
 
     fun firebaseDefaultAuthSignUp(email: String, passwd: String, repeatedPasswd: String) : Resource<FirebaseUser?>?
     fun firebaseDefaultAuthSignIn(email: String, passwd: String) : Resource<FirebaseUser?>
+    fun firebaseDefaultGetCurrentUser() : User
 
 }

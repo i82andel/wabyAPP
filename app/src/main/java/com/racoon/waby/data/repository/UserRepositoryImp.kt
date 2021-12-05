@@ -1,12 +1,20 @@
 package com.racoon.waby.data.repository
 
+import android.util.Log
 import androidx.annotation.IntegerRes
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
 import com.racoon.waby.common.Resource
 import com.racoon.waby.common.SingleLiveEvent
+import com.racoon.waby.data.model.Gender
+import com.racoon.waby.data.model.User
+import java.util.*
 
 
 class UserRepositoryImp : UserRepository {
@@ -56,6 +64,52 @@ class UserRepositoryImp : UserRepository {
         }
         return Resource.Result(user)
     }
+
+    override fun getCurrentUser() : User{
+
+        val uid = "7dscT5MXidZQjtL51MPQRi5ZdK62"
+        val db = Firebase.firestore
+        val userList = db.collection("User")
+        var user : User =  User()
+
+        userList.document(uid).get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                user = documentToUser(document)
+            }
+        }
+
+        Log.d("creation", "$user")
+
+        return user
+
+    }
+
+    override fun documentToUser(document: DocumentSnapshot) : User {
+
+        val email = document.getString("email")
+        val name = document.getString("name")
+        val surname = document.getString("surname")
+        val userName = document.getString("username")
+        val birthdate = Date(2,1,2000)
+        val phoneNumber = document.getString("phoneNumber")
+        val description = document.getString("description")
+
+
+        val user = User(
+            "",
+            name,
+            surname,
+            userName,
+            birthdate,
+            email,
+            "",
+            Gender.MEN,
+            phoneNumber,
+            description)
+
+        return user
+    }
+
 
 }
 
