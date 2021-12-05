@@ -151,20 +151,24 @@ class MainHomeFragment : Fragment() {
     }
 
     private fun initScanner(){
-        val integrator = IntentIntegrator(activity)
+        val integrator = IntentIntegrator.forSupportFragment(this)
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
         integrator.setPrompt("Escanea el código QR")
+        integrator.setCameraId(0)
         integrator.setBeepEnabled(true)
+        integrator.setBarcodeImageEnabled(false)
         integrator.initiateScan()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        println(result)
+
         if (result != null){
             if(result.contents == null){
                 Toast.makeText(context, "Cancelado", Toast.LENGTH_SHORT).show()
             }else{
-                Toast.makeText(context, "El valor escaneado es ${result.contents}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "El valor escaneado es ${result.contents.toString()}", Toast.LENGTH_SHORT).show()
             }
         }
         else{
