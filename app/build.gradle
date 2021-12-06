@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-android-extensions'
     //firebase
     id 'com.google.gms.google-services'
+    //stream chat
+    id 'kotlin-kapt'
 }
 
 android {
