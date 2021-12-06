@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
@@ -47,7 +48,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener, MapboxMap.OnMapClickListener {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapboxMap.OnMapClickListener {
 
     private val REQUEST_CODE_AUTOCOMPLETE = 7171
     private var mapboxMap: MapboxMap? = null
@@ -58,6 +59,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
     private val TAG = "DirectionsActivity"
     private val geoJsonSourceLayerId = "GeoJsonSourceLayerId"
     private val symbolIconId = "SymbolIconId"
+    var permsRequestCode = 100
+    var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_PHONE_STATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -209,71 +213,51 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, PermissionsListener
     }
 
     private fun enableLocationComponent(loadedMapStyle: Style?) {
-        var permsRequestCode = 100
-        var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_PHONE_STATE)
         //Check if permissions are enabled and if not request
-        if (PermissionsManager.areLocationPermissionsGranted(this)) {
-            // Activity the MapboxMap LocationComponent to show user location
-            // Adding in LocationComponentOptions is also an optional parameter
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_PHONE_STATE
+            ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED){
+            requestMapPermissions()
+        }
+        else{
             locationComponent = mapboxMap!!.locationComponent
             locationComponent!!.activateLocationComponent(this, loadedMapStyle!!)
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.READ_PHONE_STATE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                var permsRequestCode = 100
-                var permissions = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_PHONE_STATE)
-
-
-                ActivityCompat.requestPermissions(this, permissions, permsRequestCode)
-                return
-            }
             locationComponent!!.setLocationComponentEnabled(true)
-
             //Set the component's camera mode
             locationComponent!!.setCameraMode(CameraMode.TRACKING)
         }
-
-        else {
-            permissionsManager = PermissionsManager(this)
-            ActivityCompat.requestPermissions(this, permissions, permsRequestCode)
-        }
     }
 
-    override fun onExplanationNeeded(permissionsToExplain: MutableList<String>?) {
-        Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPermissionResult(granted: Boolean) {
-        if (granted) {
-            Toast.makeText(this, "hola", Toast.LENGTH_SHORT).show()
-            enableLocationComponent(mapboxMap!!.style)
+    private fun requestMapPermissions() {
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[0])
+            || ActivityCompat.shouldShowRequestPermissionRationale(this,permissions[1])
+            || ActivityCompat.shouldShowRequestPermissionRationale(this,permissions[2])){
+            Toast.makeText(this, "Permisos rechazados", Toast.LENGTH_SHORT).show()
         }
-        else {
-            Toast.makeText(this, R.string.user_location_permission_not_granted, Toast.LENGTH_SHORT).show()
-            finish()
+        else{
+            ActivityCompat.requestPermissions(this,permissions,permsRequestCode)
         }
     }
-
+    
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        permissionsManager!!.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode == permsRequestCode){
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                && grantResults[1] == PackageManager.PERMISSION_GRANTED &&
+                grantResults[2] == PackageManager.PERMISSION_GRANTED){
+                    enableLocationComponent(mapboxMap!!.style)
+            }
+            else{
+                Toast.makeText(this, "Permisos rechazados por primera vez", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onStart() {
