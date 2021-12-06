@@ -49,13 +49,14 @@
 
                     <TextView
                         android:id="@+id/textPhone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="68dp"
+                        android:layout_height="24dp"
                         android:layout_marginStart="10dp"
                         android:text="671616985"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView4"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textColor="@color/colorHintDark"/>
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -104,7 +105,8 @@
                         android:text="01/01/2000"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView5"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textColor="@color/colorHintDark"/>
 
                     <ImageView
                         android:id="@+id/imageView5"
@@ -134,22 +136,21 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/TagsList"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
+                app:barrierMargin="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardPhone"
-                tools:listitem="@layout/tag_item" />
+                app:layout_marginBaseline="0dp" />
 
             <TextView
                 android:id="@+id/DescriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="30dp"
                 android:text="Descripcion"
                 android:textColor="@color/white"

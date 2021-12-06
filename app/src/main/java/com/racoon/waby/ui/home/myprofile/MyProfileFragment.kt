@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.auth.User
 import com.racoon.waby.R
+import com.racoon.waby.data.model.Tag
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentProfileBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
@@ -18,6 +21,7 @@ import com.racoon.waby.ui.auth.login.LoginVMFactory
 import com.racoon.waby.ui.auth.login.LoginViewModel
 import com.racoon.waby.ui.auth.login.MyProfileVMFactory
 import com.racoon.waby.ui.auth.signup.SignUpVMFactory
+import kotlinx.android.synthetic.main.fragment_profile.*
 import java.time.format.DateTimeFormatter
 import java.util.*
 
@@ -34,6 +38,11 @@ class MyProfileFragment : Fragment() {
     }
     private var user : com.racoon.waby.data.model.User = com.racoon.waby.data.model.User()
 
+    var tags : List<Tag> = listOf(
+        Tag("01", "Futbol"),
+        Tag("02", "Musica"),
+        Tag("03", "Pintar")
+    )
 
 
     override fun onCreateView(
@@ -49,6 +58,8 @@ class MyProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setCurrentUser()
+        initRecycler()
+
         binding.nameText.setText(user.name+ " " + user.surname)
         binding.DescriptionText.setText(user.description)
         binding.emailText.setText(user.email)
@@ -70,5 +81,12 @@ class MyProfileFragment : Fragment() {
 
     private fun gotoSettings() {
         findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
+    }
+
+    private fun initRecycler(){
+        TagsList.layoutManager = LinearLayoutManager(context)
+        //TagsList.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+        val adapter = TagAdapter(tags)
+        TagsList.adapter = adapter
     }
 }
