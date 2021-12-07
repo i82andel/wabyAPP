@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -94,7 +95,11 @@ class PhoneNumberVerifyFragment : Fragment() {
                                     "Welcome...",
                                     Toast.LENGTH_SHORT)
                                     .show()
-                               findNavController().navigate(R.id.action_phoneNumberVerifyFragment_to_registerUserFragment)
+                                val bundle = bundleOf(
+                                    "phonenumber" to PHONENUMBER
+                                )
+                               findNavController().navigate(R.id.action_phoneNumberVerifyFragment_to_registerUserFragment,
+                               bundle)
                             } else {
                                 binding.progressBarVerify.visibility = View.GONE
                                 binding.btnVerify.visibility = View.VISIBLE
@@ -151,4 +156,7 @@ class PhoneNumberVerifyFragment : Fragment() {
             override fun afterTextChanged(s: Editable) {}
         })
     }
+
+
+
 }

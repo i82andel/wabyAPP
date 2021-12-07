@@ -12,12 +12,14 @@ import androidx.navigation.fragment.findNavController
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentRegisterUserBinding
 import kotlinx.android.synthetic.main.fragment_register_user.*
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 class RegisterUserFragment : Fragment() {
 
     private var NAME = "name"
     private var SURNAME = "surname"
     private var USERNAME = "username"
+    private var PHONENUMBER = "phonenumber"
 
     private val viewModel by viewModels<RegisterUserViewModel>()
 
@@ -27,6 +29,13 @@ class RegisterUserFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val phonenumber = arguments?.getString("phonenumber")
+
+        PHONENUMBER = phonenumber!!
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,6 +85,7 @@ class RegisterUserFragment : Fragment() {
 
     private fun goNext() {
         val bundle = bundleOf(
+            "phonenomber" to PHONENUMBER,
             "name" to NAME,
             "surname" to SURNAME,
             "username" to USERNAME

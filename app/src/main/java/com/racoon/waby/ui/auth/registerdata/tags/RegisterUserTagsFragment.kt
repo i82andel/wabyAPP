@@ -17,6 +17,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentRegisterUserTagsBinding
+import kotlinx.android.synthetic.main.fragment_settings.*
 import java.sql.Time
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -34,6 +35,7 @@ class RegisterUserTagsFragment : Fragment() {
     private var MONTH = 0
     private var YEAR = 0
     private var TAGS = ArrayList<String>()
+    private var PHONENUMBER = "phonenumber"
 
 
     private val viewModel by viewModels<RegisterUserTagsViewModel>()
@@ -55,7 +57,9 @@ class RegisterUserTagsFragment : Fragment() {
         val day = arguments?.getInt("day")
         val month = arguments?.getInt("month")
         val year = arguments?.getInt("year")
+        val phonenumber = arguments?.getString("phonenumber")
 
+        PHONENUMBER = phonenumber!!
         NAME = name!!
         SURNAME = surname!!
         USERNAME = username!!
@@ -72,6 +76,7 @@ class RegisterUserTagsFragment : Fragment() {
         println(day)
         println(month)
         println(year)
+        println(phonenumber)
 
     }
 
@@ -132,7 +137,8 @@ class RegisterUserTagsFragment : Fragment() {
             "birthdate" to Timestamp(birthdate.timeInMillis/1000,0),
             "email" to email,
             "username" to USERNAME,
-            "tags" to TAGS
+            "tags" to TAGS,
+            "phonenumber" to PHONENUMBER
         )
         val db = Firebase.firestore
         db.collection("User")

@@ -85,7 +85,7 @@ class LoginFragment : Fragment() {
 
 
 
-    private fun uploadDataFirestore() {
+    /*private fun uploadDataFirestore() {
         val birthdate = Calendar.getInstance()
 
         birthdate.clear()
@@ -122,7 +122,7 @@ class LoginFragment : Fragment() {
                     .show()
 
             }
-    }
+    }*/
 
     private fun setUpGoogle() {
         val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -178,7 +178,7 @@ class LoginFragment : Fragment() {
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null && !document.exists()) {
-                    uploadDataFirestore()
+                    findNavController().navigate(R.id.action_loginFragment_to_phoneNumberFragment)
                 }
             }
             .addOnFailureListener {
