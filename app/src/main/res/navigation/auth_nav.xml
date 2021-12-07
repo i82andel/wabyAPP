@@ -25,9 +25,6 @@
         <action
             android:id="@+id/action_signUpFragment_to_verifyEmailFragment"
             app:destination="@id/verifyEmailFragment" />
-        <action
-            android:id="@+id/action_signUpFragment_to_registerUserFragment"
-            app:destination="@id/registerUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -94,7 +91,25 @@
         android:label="fragment_verify_email"
         tools:layout="@layout/fragment_verify_email" >
         <action
-            android:id="@+id/action_verifyEmailFragment_to_registerUserFragment"
+            android:id="@+id/action_verifyEmailFragment_to_phoneNumberFragment"
+            app:destination="@id/phoneNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneNumberFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.phonenumber.PhoneNumberFragment"
+        android:label="fragment_phone_number"
+        tools:layout="@layout/fragment_phone_number" >
+        <action
+            android:id="@+id/action_phoneNumberFragment_to_phoneNumberVerifyFragment"
+            app:destination="@id/phoneNumberVerifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneNumberVerifyFragment"
+        android:name="com.racoon.waby.ui.auth.registerdata.phonenumber.PhoneNumberVerifyFragment"
+        android:label="fragment_phone_number_verify"
+        tools:layout="@layout/fragment_phone_number_verify" >
+        <action
+            android:id="@+id/action_phoneNumberVerifyFragment_to_registerUserFragment"
             app:destination="@id/registerUserFragment" />
     </fragment>
 </navigation>

@@ -88,7 +88,7 @@ class VerifyEmailFragment : Fragment() {
     }
 
     private fun goToRegisterData() {
-        findNavController().navigate(R.id.action_verifyEmailFragment_to_registerUserFragment)
+        findNavController().navigate(R.id.action_verifyEmailFragment_to_phoneNumberFragment)
     }
 
 
