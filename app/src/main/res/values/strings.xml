@@ -75,4 +75,7 @@
     <string name="success_nfc">Acerque el telefono movil al tag NFC</string>
     <string name="nfc_disabled">Debe activar NFC en su telefono movil</string>
 
+    <!-- chat -->
+    <string name="api_key">2tnurnb52yub</string>
+
 </resources>
