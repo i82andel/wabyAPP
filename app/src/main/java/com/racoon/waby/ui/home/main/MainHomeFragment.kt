@@ -30,6 +30,7 @@ import kotlin.experimental.and
 import android.app.Activity
 import android.app.AlertDialog
 import com.google.zxing.integration.android.IntentIntegrator
+import com.racoon.waby.ui.spot.chat.ChatActivity
 
 
 class MainHomeFragment : Fragment() {
@@ -72,7 +73,7 @@ class MainHomeFragment : Fragment() {
             startActivity(Intent(context, MapActivity::class.java))
         }
         binding.ola.setOnClickListener {
-
+            startActivity(Intent(context, ChatActivity::class.java))
         }
         binding.buttonRandom.setOnClickListener{
             startActivity(Intent(context, SpotActivity::class.java))

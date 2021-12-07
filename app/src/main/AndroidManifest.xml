@@ -21,6 +21,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.spot.chat.ChannelActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.spot.chat.ChatActivity"
             android:exported="false" />
         <activity
