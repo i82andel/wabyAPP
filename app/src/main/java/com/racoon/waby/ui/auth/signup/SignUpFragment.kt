@@ -55,8 +55,10 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.registerButton.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             setUp()
             setUpViewModel()
+            binding.progressBar.visibility = View.GONE
 
         }
         /*binding.googleButton.setOnClickListener {

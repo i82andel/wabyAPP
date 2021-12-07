@@ -82,6 +82,7 @@ class LoginFragment : Fragment() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
 
             try {
+                println("try")
                 val account = task.getResult(ApiException::class.java)
 
                 if (account != null) {
@@ -100,6 +101,7 @@ class LoginFragment : Fragment() {
                 }
             }catch (e: ApiException) {
                 println("Google exception")
+                Toast.makeText(context, R.string.google_login_error, Toast.LENGTH_SHORT).show()
             }
 
         }
