@@ -61,51 +61,10 @@ class SignUpFragment : Fragment() {
             binding.progressBar.visibility = View.GONE
 
         }
-        /*binding.googleButton.setOnClickListener {
-            setUpGoogle()
-        }*/
+
     }
 
-    /*private fun setUpGoogle() {
-        val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.google_token))
-            .requestEmail()
-            .build()
 
-        val googleClient = GoogleSignIn.getClient(requireActivity(),googleConf)
-        googleClient.signOut()
-
-        startActivityForResult(googleClient.signInIntent,GOOGLE_SIGN_IN)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == GOOGLE_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-
-            try {
-                val account = task.getResult(ApiException::class.java)
-
-                if (account != null) {
-
-                    val credential = GoogleAuthProvider.getCredential(account.idToken,null)
-                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
-
-                        if (it.isSuccessful) {
-                            Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_signUpFragment_to_registerUserFragment)
-                        }else {
-                            Toast.makeText(context, R.string.login_error, Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            }catch (e: ApiException) {
-                println("Google exception")
-            }
-
-        }
-    }*/
 
     private fun setUp() {
         val email = binding.emailEditText.text.toString()

@@ -186,20 +186,9 @@ class RegisterUserImagesFragment : Fragment() {
     private fun goNext() {
         fileUpload()
 
-        val bundle = bundleOf(
-            "name" to NAME,
-            "surname" to SURNAME,
-            "username" to USERNAME,
-            "gender" to GENDER,
-            "day" to DAY,
-            "month" to MONTH,
-            "year" to YEAR,
-            "tags" to TAGS,
 
-            )
         findNavController().navigate(
-            R.id.action_registerUserImagesFragment_to_registerUserDescriptionFragment,
-            bundle)
+            R.id.action_registerUserImagesFragment_to_registerUserDescriptionFragment)
 
 
     }

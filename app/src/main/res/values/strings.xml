@@ -79,5 +79,6 @@
 
     <!-- chat -->
     <string name="api_key">2tnurnb52yub</string>
+    <string name="default_user"><![CDATA[https://secure.gravatar.com/avatar/3c3fe674164a4dba4b7ba5cfcab02d4b?s=512&d=mm&r=g]]></string>
 
 </resources>

@@ -1,29 +1,49 @@
 package com.racoon.waby.ui.auth.login
 
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentLoginBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
+import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
+import com.google.firebase.firestore.QuerySnapshot
+
+
+
 
 class LoginFragment : Fragment() {
 
     private val GOOGLE_SIGN_IN = 10
+    private val YEAR = 1
+    private val MONTH = 1
+    private val DAY = 1
+    private val TAGS = arrayListOf<String>()
 
     //private val viewModel by viewModels<LoginViewModel>()
     private val viewModel by viewModels<LoginViewModel> {
@@ -60,12 +80,48 @@ class LoginFragment : Fragment() {
 
         binding.googleButton.setOnClickListener {
             setUpGoogle()
-            setDefaultData()
         }
     }
 
-    private fun setDefaultData() {
 
+
+    private fun uploadDataFirestore() {
+        val birthdate = Calendar.getInstance()
+
+        birthdate.clear()
+        birthdate.set(Calendar.YEAR,YEAR)
+        birthdate.set(Calendar.MONTH,MONTH)
+        birthdate.set(Calendar.DAY_OF_MONTH,DAY)
+
+        val userId = Firebase.auth.currentUser?.uid.toString()
+        val url = "gs://racoonapps-cd246.appspot.com/profiles/placeholder.png"
+        val db = Firebase.firestore
+        val email = Firebase.auth.currentUser?.email.toString()
+
+        val data = hashMapOf(
+            "name" to "NAME",
+            "surname" to "SURNAME",
+            "gender" to "GENDER",
+            "birthdate" to Timestamp(birthdate.timeInMillis/1000,0),
+            "email" to email,
+            "username" to "USERNAME",
+            "tags" to TAGS,
+            "images" to url
+        )
+
+        db.collection("User")
+            .document(userId)
+            .set(data)
+            .addOnSuccessListener {
+                Toast.makeText(context, R.string.firestore_upload_success, Toast.LENGTH_SHORT)
+                    .show()
+
+            }.addOnFailureListener {
+
+                Toast.makeText(context, R.string.firestore_upload_failure, Toast.LENGTH_SHORT)
+                    .show()
+
+            }
     }
 
     private fun setUpGoogle() {
@@ -96,7 +152,9 @@ class LoginFragment : Fragment() {
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
 
                         if (it.isSuccessful) {
-                            Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT)
+                                .show()
+                            firstTimeGoogleSignUp()
                             viewModel.gotoHome(requireView())
                         }else {
                             Toast.makeText(context, R.string.login_error, Toast.LENGTH_SHORT).show()
@@ -110,6 +168,21 @@ class LoginFragment : Fragment() {
             }
 
         }
+    }
+
+    private fun firstTimeGoogleSignUp() {
+        val userId = Firebase.auth.currentUser?.uid.toString()
+        val db = Firebase.firestore
+        val docRef = db.collection("User").document(userId)
+
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null && !document.exists()) {
+                    uploadDataFirestore()
+                }
+            }
+            .addOnFailureListener {
+            }
     }
 
 
