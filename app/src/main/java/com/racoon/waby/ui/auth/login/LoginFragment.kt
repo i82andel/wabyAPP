@@ -60,7 +60,12 @@ class LoginFragment : Fragment() {
 
         binding.googleButton.setOnClickListener {
             setUpGoogle()
+            setDefaultData()
         }
+    }
+
+    private fun setDefaultData() {
+
     }
 
     private fun setUpGoogle() {

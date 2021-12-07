@@ -44,7 +44,7 @@
     <string name="login_notregistered_error">Aún no ha terminado de registrarse</string>
     <string name="google_token">378264786934-iqmrnrmh8eviu0dah9aolgcn4dm3b24a.apps.googleusercontent.com</string>
     <string name="google_login_error">Ha ocurrido un error</string>
-    
+
     <!-- GENDERS -->
     <string-array name="genderType">
         <item>Hombre</item>

@@ -25,7 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Género"
-            android:inputType="none"/>
+            android:inputType="none"
+            android:minHeight="48dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
