@@ -38,7 +38,7 @@ class RegisterUserGenderFragment : Fragment(), AdapterView.OnItemClickListener {
         val username = arguments?.getString("username")
         val phonenumber = arguments?.getString("phonenumber")
 
-        PHONENUMBER = phonenumber!!
+        //PHONENUMBER = phonenumber!!
         NAME = name!!
         SURNAME = surname!!
         USERNAME = username!!
@@ -73,7 +73,7 @@ class RegisterUserGenderFragment : Fragment(), AdapterView.OnItemClickListener {
         val adapter = context?.let {
             ArrayAdapter(
                 it,
-                R.layout.instruction_list_layout,
+                R.layout.list_item,
                 genders
             )
         }
