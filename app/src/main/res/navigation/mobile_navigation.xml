@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.racoon.waby.ui.spot.notifications.NotificationsFragment"
+        android:name="com.racoon.waby.ui.spot.chat.ChannelFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_channel" />
     <fragment
         android:id="@+id/navigation_swipe"
         android:name="com.racoon.waby.ui.spot.swipe.SwipeFragment"
