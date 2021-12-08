@@ -45,7 +45,7 @@ class SpotHomeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = MySpotAdapter(context)
+        adapter = MySpotAdapter(requireContext())
         binding.spotList.layoutManager = LinearLayoutManager(context)
         binding.spotList.adapter = adapter
         observeData()

@@ -10,7 +10,7 @@ data class Spot (val idSpot: String,
                  val location: Location? = null,
                  var rating: ArrayList<Int>? = null,
                  val website: String? = null,
-                 val spotType: SpotType? = null,
+                 val spotType: String? = null,
                  val badges: ArrayList<String>? = null,
                  val images: ArrayList<String>? = null,
                  val description: String? = null

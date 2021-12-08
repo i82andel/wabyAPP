@@ -61,21 +61,22 @@ class SpotRepository{
 
     fun documentToSpot(document : DocumentSnapshot) : Spot{
 
-
         val adminUser = document.getString("adminUser")
-       // val badges = document.getString("badges") to ArrayList<String>()
+        val badges = document.data?.get("badges")
         val capacity = document.getLong("capacity")?.toInt()
         val description = document.get("description").toString()
-        val image = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.sojoribera.com%2F&psig=AOvVaw300KUGc-fAABBRnU86Mh3j&ust=1638471612060000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPCln8Wkw_QCFQAAAAAdAAAAABAD"
-        //val location = document.getString("location")
+        val images = document.data?.get("images")
+        //val location = document.getLong("location")
         val name = document.get("name").toString()
         val phoneNumber = document.get("phoneNumber").toString()
         val spotType = document.getString("spotType")
         val website = document.getString("website")
-        //val ratings = document.get("ratings") to ArrayList<Int>()
+        val ratings = document.data?.get("ratings")
 
-        val images = ArrayList<String>()
-        images.add(image)
+        println(ratings)
+        println(badges)
+
+
 
         val spot = Spot(
             "idSpot",
@@ -84,11 +85,11 @@ class SpotRepository{
             phoneNumber,
             capacity,
             null,
-            rating = null,
+            ratings as ArrayList<Int>?,
             website,
-            null,
-            null,
-            images,
+            spotType,
+            badges as ArrayList<String>?,
+            images as ArrayList<String>?,
             description
         )
 

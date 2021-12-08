@@ -11,7 +11,7 @@ import com.racoon.waby.R
 import com.racoon.waby.data.model.Spot
 import kotlinx.android.synthetic.main.spot_item.view.*
 
-class MySpotAdapter(private val context: Context?): RecyclerView.Adapter<MySpotAdapter.MyViewHolder>() {
+class MySpotAdapter(private val context: Context): RecyclerView.Adapter<MySpotAdapter.MyViewHolder>() {
 
     private var spotMutableList = mutableListOf<Spot>()
 
@@ -36,7 +36,7 @@ class MySpotAdapter(private val context: Context?): RecyclerView.Adapter<MySpotA
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         fun bindView(spot: Spot){
-            Glide.with(context!!).load(spot.images?.get(0)).into(itemView.circleImageView)
+            Glide.with(context).load(spot.images?.get(0)).into(itemView.circleImageView)
             itemView.tvSpotName.text = spot.name
             itemView.tvSpotDescription.text = spot.description
             itemView.tvSpotWebSite.text = spot.website
