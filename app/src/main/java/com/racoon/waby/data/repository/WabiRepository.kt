@@ -17,7 +17,7 @@ class WabiRepository {
     private val fireste = Firebase.firestore
     private val EventList = fireste.collection("Event")
 
-    fun getAllUsers(spot : String): LiveData<MutableList<User>> {
+    fun getAllUsers(): LiveData<MutableList<User>> {
         val mutableList = MutableLiveData<MutableList<User>>()
         EventList.get().addOnSuccessListener {
             val DataList = mutableListOf<User>()
