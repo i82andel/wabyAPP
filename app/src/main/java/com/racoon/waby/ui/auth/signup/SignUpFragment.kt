@@ -1,5 +1,6 @@
 package com.racoon.waby.ui.auth.signup
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,9 +10,19 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
+import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentSignUpBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
+import com.racoon.waby.ui.auth.login.LoginVMFactory
+import com.racoon.waby.ui.auth.login.LoginViewModel
 
 class SignUpFragment : Fragment() {
 

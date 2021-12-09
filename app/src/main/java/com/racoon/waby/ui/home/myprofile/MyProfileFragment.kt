@@ -1,19 +1,28 @@
 package com.racoon.waby.ui.home.myprofile
 
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.auth.User
 import com.racoon.waby.R
 import com.racoon.waby.data.model.Tag
+import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentProfileBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
+import com.racoon.waby.ui.auth.login.LoginVMFactory
+import com.racoon.waby.ui.auth.login.LoginViewModel
 import com.racoon.waby.ui.auth.login.MyProfileVMFactory
+import com.racoon.waby.ui.auth.signup.SignUpVMFactory
 import kotlinx.android.synthetic.main.fragment_profile.*
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MyProfileFragment : Fragment() {

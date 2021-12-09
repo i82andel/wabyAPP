@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.racoon.waby.R
+import com.racoon.waby.data.repository.UserRepositoryImp
+import com.racoon.waby.databinding.FragmentRegisterUserGenderBinding
 import com.racoon.waby.databinding.FragmentVerifyEmailBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
 import com.racoon.waby.ui.auth.login.LoginVMFactory
