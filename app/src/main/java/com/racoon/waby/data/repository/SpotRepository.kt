@@ -9,6 +9,7 @@ import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.racoon.waby.data.model.Badge
 import com.racoon.waby.data.model.Spot
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,14 +21,8 @@ class SpotRepository{
 
     private val fireste = Firebase.firestore
     private val spotList = fireste.collection("Spot")
-    fun addNewSpot(spot: Spot) {
-        try {
-            spotList.document(spot.idSpot).set(spot)
-        } catch (e: Exception) {
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+
+
 
     fun getAllSpots():LiveData<MutableList<Spot>>{
         val mutableList = MutableLiveData<MutableList<Spot>>()
@@ -59,7 +54,7 @@ class SpotRepository{
         return spot
     }
 
-    fun documentToSpot(document : DocumentSnapshot) : Spot{
+    private fun documentToSpot(document : DocumentSnapshot) : Spot{
 
         val adminUser = document.getString("adminUser")
         val badges = document.data?.get("badges")
@@ -72,11 +67,6 @@ class SpotRepository{
         val spotType = document.getString("spotType")
         val website = document.getString("website")
         val ratings = document.data?.get("ratings")
-
-        println(ratings)
-        println(badges)
-
-
 
         val spot = Spot(
             "idSpot",
@@ -94,6 +84,20 @@ class SpotRepository{
         )
 
         return spot
+    }
+
+    fun getSimilarSpots(badge: String):LiveData<MutableList<Spot>> {
+        val mutableList = MutableLiveData<MutableList<Spot>>()
+        spotList.whereArrayContains("badges", badge).get().addOnSuccessListener {
+            val spotDataList = mutableListOf<Spot>()
+            for (document in it) {
+                val spot = documentToSpot(document)
+                spotDataList.add(spot)
+            }
+            mutableList.value = spotDataList
+        }
+        Log.d("creation", "$mutableList")
+        return mutableList
     }
 
 }
