@@ -17,7 +17,7 @@ class WabiRepository {
     private val fireste = Firebase.firestore
     private val EventList = fireste.collection("Event")
 
-    fun getAllEventsBySpot(spot : String): LiveData<MutableList<User>> {
+    fun getAllUsers(spot : String): LiveData<MutableList<User>> {
         val mutableList = MutableLiveData<MutableList<User>>()
         EventList.get().addOnSuccessListener {
             val DataList = mutableListOf<User>()
@@ -31,7 +31,7 @@ class WabiRepository {
         return mutableList
     }
 
-    fun getSingleSpot(idSpot: String): User {
+    fun getSingleUser(idSpot: String): User {
 
         lateinit var user: User
         val docRef = EventList.document(idSpot)
@@ -78,18 +78,10 @@ class WabiRepository {
         return user
     }
 
-    fun getSpotByDate(date: Date): LiveData<MutableList<User>> {
-        val mutableList = MutableLiveData<MutableList<User>>()
-        EventList.whereArrayContains("fechaEvento", date).get().addOnSuccessListener {
-            val spotDataList = mutableListOf<User>()
-            for (document in it) {
-                val user = documentToUser(document)
-                spotDataList.add(user)
-            }
-            mutableList.value = spotDataList
-        }
-        Log.d("creation", "$mutableList")
-        return mutableList
+    fun getWabisFromUser(user: User){
+
+
+
     }
 
 }
