@@ -11,7 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.auth.User
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
 import com.racoon.waby.data.model.Tag
 import com.racoon.waby.data.repository.UserRepositoryImp
@@ -39,9 +42,9 @@ class MyProfileFragment : Fragment() {
     private var user : com.racoon.waby.data.model.User = com.racoon.waby.data.model.User()
 
     var tags : List<Tag> = listOf(
-        Tag("01", "Futbol"),
-        Tag("02", "Musica"),
-        Tag("03", "Pintar")
+        //Tag("01", "Futbol"),
+        //Tag("02", "Musica"),
+        //Tag("03", "Pintar")
     )
 
 
@@ -51,21 +54,16 @@ class MyProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater,container,false)
-
+        setCurrentUser()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setCurrentUser()
+
         initRecycler()
 
-        binding.nameText.setText(user.name+ " " + user.surname)
-        binding.DescriptionText.setText(user.description)
-        binding.emailText.setText(user.email)
-        binding.usernameText.setText(user.userName)
-        binding.textBD.setText("01/01/2000")
-        binding.textPhone.setText(user.phoneNumber)
+
 
         binding.settingsButton.setOnClickListener {
             gotoSettings()
@@ -74,9 +72,29 @@ class MyProfileFragment : Fragment() {
     }
 
     private fun setCurrentUser(){
+        //user = viewModel.getCurrentUser()
+        val uid = "7dscT5MXidZQjtL51MPQRi5ZdK62"
+        val db = Firebase.firestore
+        val userList = db.collection("User")
 
-        user = viewModel.getCurrentUser()
 
+        userList.document(uid).get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                binding.nameText.setText(document.get("name") as String?)
+                binding.DescriptionText.setText(document.get("description") as String?)
+                binding.emailText.setText(document.get("email") as String?)
+                binding.usernameText.setText(document.get("username") as String?)
+                binding.textBD.setText(dateToString(document.get("birthdate") as Timestamp))
+                binding.textPhone.setText(document.get("phoneNumber") as String?)
+                tags = document.get("tags") as List<Tag>
+            }
+        }
+    }
+
+    private fun dateToString(date : Timestamp) : String{
+        var Sdate = "01/02/2000"
+
+        return Sdate
     }
 
     private fun gotoSettings() {

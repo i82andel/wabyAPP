@@ -29,7 +29,12 @@ import java.nio.charset.Charset
 import kotlin.experimental.and
 import android.app.Activity
 import android.app.AlertDialog
+import androidx.core.os.bundleOf
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.zxing.integration.android.IntentIntegrator
+import com.racoon.waby.data.model.User
 import com.racoon.waby.ui.spot.chat.ChatActivity
 
 
@@ -48,6 +53,8 @@ class MainHomeFragment : Fragment() {
     private var pendingIntent:PendingIntent? = null
 
     private var myTag:Tag? = null
+
+
 
 
     //viewModel
@@ -83,6 +90,8 @@ class MainHomeFragment : Fragment() {
             showDefaultDialog()
         }
     }
+
+
 
     private fun gotoMyProfile() {
         findNavController().navigate(R.id.action_mainHomeFragment_to_profileFragment)
