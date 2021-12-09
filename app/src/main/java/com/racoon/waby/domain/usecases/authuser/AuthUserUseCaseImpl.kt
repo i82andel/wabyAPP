@@ -1,11 +1,7 @@
 package com.racoon.waby.domain.usecases.authuser
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.auth.User
 import com.racoon.waby.common.Resource
-import com.racoon.waby.common.SingleLiveEvent
-import com.racoon.waby.data.repository.UserRepository
 
 class AuthUserUseCaseImpl(private val userRepository: UserRepository) : AuthUserUseCase{
 
