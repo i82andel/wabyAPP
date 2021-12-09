@@ -88,7 +88,8 @@ class RegisterUserFragment : Fragment() {
             //"phoneNumber" to PHONENUMBER,
             "name" to NAME,
             "surname" to SURNAME,
-            "username" to USERNAME
+            "username" to USERNAME,
+
         )
         findNavController().navigate(
             R.id.action_registerUserFragment_to_registerUserGenderFragment,
