@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.racoon.waby.R
 
-class arrayAdapter(context: Context?, resourceId: Int, items: List<cards?>?) : ArrayAdapter<cards?>(context!!, resourceId, items!!) {
+class arrayAdapter(context: Context?, resourceId: Int, items: List<Card?>?) : ArrayAdapter<Card?>(context!!, resourceId, items!!) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
