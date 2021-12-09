@@ -18,6 +18,16 @@
             android:layout_height="match_parent"
             android:clipChildren="false">
 
+            <com.lorentzos.flingswipe.SwipeFlingAdapterView
+                android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/button_container"
+                android:layout_marginBottom="2dp"
+                android:background="@android:color/white"
+                app:rotation_degrees="15.5"
+                tools:context=".ui.spot.SpotActivity" />
+
             <RelativeLayout
                 android:id="@+id/button_container"
                 android:layout_width="match_parent"
