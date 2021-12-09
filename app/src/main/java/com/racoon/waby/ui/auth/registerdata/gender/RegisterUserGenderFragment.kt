@@ -22,7 +22,7 @@ class RegisterUserGenderFragment : Fragment(), AdapterView.OnItemClickListener {
     private var SURNAME = "surname"
     private var USERNAME = "username"
     private var GENDER = "gender"
-    private var PHONENUMBER = "phonenumber"
+    //private var PHONENUMBER = "phonenumber"
 
     //ViewBiding
     private  var _binding: FragmentRegisterUserGenderBinding? = null
@@ -36,9 +36,9 @@ class RegisterUserGenderFragment : Fragment(), AdapterView.OnItemClickListener {
         val name = arguments?.getString("name")
         val surname = arguments?.getString("surname")
         val username = arguments?.getString("username")
-        val phonenumber = arguments?.getString("phonenumber")
+        //val phoneNumber = arguments?.getString("phoneNumber")
 
-        //PHONENUMBER = phonenumber!!
+        //PHONENUMBER = phoneNumber!!
         NAME = name!!
         SURNAME = surname!!
         USERNAME = username!!
@@ -95,7 +95,7 @@ class RegisterUserGenderFragment : Fragment(), AdapterView.OnItemClickListener {
     private fun goNext() {
 
         val bundle = bundleOf(
-            "phonenumber" to PHONENUMBER,
+            //"phoneNumber" to PHONENUMBER,
             "name" to NAME,
             "surname" to SURNAME,
             "username" to USERNAME,

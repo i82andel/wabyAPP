@@ -41,6 +41,7 @@
             android:name=".ui.home.map.MapActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"
             android:name=".ui.auth.AuthActivity"
             android:exported="true">
             <intent-filter>

@@ -20,7 +20,13 @@ class EventRepository {
     private val fireste = Firebase.firestore
     private val EventList = fireste.collection("Event")
 
+<<<<<<< Updated upstream
     fun getAllEventsBySpot(spot : String): LiveData<MutableList<Event>> {
+=======
+
+
+    /*fun getAllEventsBySpot(spot : String): LiveData<MutableList<Event>> {
+>>>>>>> Stashed changes
         val mutableList = MutableLiveData<MutableList<Event>>()
         EventList.get().addOnSuccessListener {
             val DataList = mutableListOf<Event>()
@@ -32,9 +38,9 @@ class EventRepository {
         }
         Log.d("creation", "$mutableList")
         return mutableList
-    }
+    }*/
 
-    fun getSingleSpot(idSpot: String): Event {
+    /*fun getSingleSpot(idSpot: String): Event {
 
         lateinit var event: Event
         val docRef = EventList.document(idSpot)
@@ -45,6 +51,7 @@ class EventRepository {
                     event = documentToEvent(document)
                 }
             }
+<<<<<<< Updated upstream
         return event
     }
 
@@ -54,6 +61,12 @@ class EventRepository {
         val eventLog = document.data?.get("eventLog")
         val fechaEvento = document.get("fechaEvento")
         val idSpot = document.getString("idSpot")
+=======
+        return spot
+    }*/
+
+    /*private fun documentToEvent(document : DocumentSnapshot) : Event {
+>>>>>>> Stashed changes
 
         val event  = Event("found",
                     assistants as ArrayList<String>,
@@ -65,9 +78,13 @@ class EventRepository {
         return event
 
 
-    }
+    }*/
 
+<<<<<<< Updated upstream
     fun getSpotByDate(date: Date): LiveData<MutableList<Event>> {
+=======
+   /* fun getSimilarSpots(badge: String): LiveData<MutableList<Event>> {
+>>>>>>> Stashed changes
         val mutableList = MutableLiveData<MutableList<Event>>()
         EventList.whereArrayContains("fechaEvento", date).get().addOnSuccessListener {
             val spotDataList = mutableListOf<Event>()
@@ -79,6 +96,10 @@ class EventRepository {
         }
         Log.d("creation", "$mutableList")
         return mutableList
+<<<<<<< Updated upstream
     }
 
+=======
+    }*/
+>>>>>>> Stashed changes
 }

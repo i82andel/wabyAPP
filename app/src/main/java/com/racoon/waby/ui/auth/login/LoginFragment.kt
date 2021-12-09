@@ -141,7 +141,7 @@ class LoginFragment : Fragment() {
                             Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT)
                                 .show()
                             firstTimeGoogleSignUp()
-                            viewModel.gotoHome(requireView())
+
                         }else {
                             Toast.makeText(context, R.string.login_error, Toast.LENGTH_SHORT).show()
                         }
@@ -163,8 +163,10 @@ class LoginFragment : Fragment() {
 
         docRef.get()
             .addOnSuccessListener { document ->
-                if (document != null && !document.exists()) {
-                    findNavController().navigate(R.id.action_loginFragment_to_phoneNumberFragment)
+                if (!document.exists()) {
+                    findNavController().navigate(R.id.action_loginFragment_to_registerUserFragment2)
+                }else{
+                    viewModel.gotoHome(requireView())
                 }
             }
             .addOnFailureListener {

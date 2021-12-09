@@ -35,10 +35,10 @@ class PhoneNumberVerifyFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
 
-        val phonenumber = arguments?.getString("phone")
+        val phoneNumber = arguments?.getString("phone")
         val verificationId = arguments?.getString("verificationId")
 
-        PHONENUMBER = phonenumber!!
+        PHONENUMBER = phoneNumber!!
         VERIFICATIONID = verificationId!!
     }
 
@@ -96,7 +96,7 @@ class PhoneNumberVerifyFragment : Fragment() {
                                     Toast.LENGTH_SHORT)
                                     .show()
                                 val bundle = bundleOf(
-                                    "phonenumber" to PHONENUMBER
+                                    "phoneNumber" to PHONENUMBER
                                 )
                                findNavController().navigate(R.id.action_phoneNumberVerifyFragment_to_registerUserFragment,
                                bundle)

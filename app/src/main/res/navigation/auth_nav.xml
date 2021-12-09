@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_loginFragment_to_phoneNumberFragment"
             app:destination="@id/phoneNumberFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerUserFragment2"
+            app:destination="@id/registerUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerUserFragment"
@@ -96,6 +99,9 @@
         <action
             android:id="@+id/action_verifyEmailFragment_to_phoneNumberFragment"
             app:destination="@id/phoneNumberFragment" />
+        <action
+            android:id="@+id/action_verifyEmailFragment_to_registerUserFragment"
+            app:destination="@id/registerUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/phoneNumberFragment"
