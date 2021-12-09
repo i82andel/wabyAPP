@@ -55,9 +55,9 @@ class MyProfileViewModel(private val authUserUseCase: AuthUserUseCase) : ViewMod
             birthdate,
             email,
             "",
-            Gender.MEN,
+            null,
             phoneNumber,
-            description)
+            null)
 
         return user
     }
