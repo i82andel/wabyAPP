@@ -35,7 +35,7 @@ class RegisterUserTagsFragment : Fragment() {
     private var MONTH = 0
     private var YEAR = 0
     private var TAGS = ArrayList<String>()
-    private var PHONENUMBER = "phonenumber"
+    //private var PHONENUMBER = "phonenumber"
 
 
     private val viewModel by viewModels<RegisterUserTagsViewModel>()
@@ -57,9 +57,9 @@ class RegisterUserTagsFragment : Fragment() {
         val day = arguments?.getInt("day")
         val month = arguments?.getInt("month")
         val year = arguments?.getInt("year")
-        val phonenumber = arguments?.getString("phonenumber")
+        //val phoneNumber = arguments?.getString("phoneNumber")
 
-        PHONENUMBER = phonenumber!!
+        //PHONENUMBER = phoneNumber!!
         NAME = name!!
         SURNAME = surname!!
         USERNAME = username!!
@@ -76,7 +76,7 @@ class RegisterUserTagsFragment : Fragment() {
         println(day)
         println(month)
         println(year)
-        println(phonenumber)
+        //println(phoneNumber)
 
     }
 
@@ -138,7 +138,7 @@ class RegisterUserTagsFragment : Fragment() {
             "email" to email,
             "username" to USERNAME,
             "tags" to TAGS,
-            "phonenumber" to PHONENUMBER
+            //"phonenumber" to PHONENUMBER
         )
         val db = Firebase.firestore
         db.collection("User")

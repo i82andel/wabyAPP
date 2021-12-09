@@ -19,7 +19,7 @@ class RegisterUserFragment : Fragment() {
     private var NAME = "name"
     private var SURNAME = "surname"
     private var USERNAME = "username"
-    private var PHONENUMBER = "phonenumber"
+    //private var PHONENUMBER = "phonenumber"
 
     private val viewModel by viewModels<RegisterUserViewModel>()
 
@@ -32,9 +32,9 @@ class RegisterUserFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val phonenumber = arguments?.getString("phonenumber")
+        //val phoneNumber = arguments?.getString("phoneNumber")
 
-        PHONENUMBER = phonenumber!!
+        //PHONENUMBER = phoneNumber!!
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,7 +85,7 @@ class RegisterUserFragment : Fragment() {
 
     private fun goNext() {
         val bundle = bundleOf(
-            "phonenumber" to PHONENUMBER,
+            //"phoneNumber" to PHONENUMBER,
             "name" to NAME,
             "surname" to SURNAME,
             "username" to USERNAME

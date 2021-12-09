@@ -22,7 +22,7 @@ class RegisterUserBirthdateFragment : Fragment() {
     private var DAY = 0
     private var MONTH = 0
     private var YEAR = 0
-    private var PHONENUMBER = "phonenumber"
+    //private var PHONENUMBER = "phonenumber"
 
     //ViewBiding
     private  var _binding: FragmentRegisterUserBirthdateBinding? = null
@@ -37,9 +37,9 @@ class RegisterUserBirthdateFragment : Fragment() {
         val surname = arguments?.getString("surname")
         val username = arguments?.getString("username")
         val gender = arguments?.getString("gender")
-        val phonenumber = arguments?.getString("phonenumber")
+        //val phoneNumber = arguments?.getString("phoneNumber")
 
-        PHONENUMBER = phonenumber!!
+        //PHONENUMBER = phoneNumber!!
         NAME = name!!
         SURNAME = surname!!
         USERNAME = username!!
@@ -88,7 +88,7 @@ class RegisterUserBirthdateFragment : Fragment() {
 
     private fun goNext() {
         val bundle = bundleOf(
-            "phonenumber" to PHONENUMBER,
+            //"phoneNumber" to PHONENUMBER,
             "name" to NAME,
             "surname" to SURNAME,
             "username" to USERNAME,
