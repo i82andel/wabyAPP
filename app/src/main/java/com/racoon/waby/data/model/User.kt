@@ -9,13 +9,12 @@ data class User (val idUser: String? = null,
                  val userName: String? = null,
                  val birthdate: Date? = null,
                  val email:String? = null,
-                 val passwd: String? = null,
-                 val gender: Gender? = null,
+                 val gender: String? = null,
                  val phoneNumber: String? = null,
                  val description: String? = null,
-                 val tags: ArrayList<Tag>? = null,
-                 val groupList: ArrayList<Group>? = null,
-                 val images: ArrayList<Image>? = null
+                 val tags: ArrayList<String>? = null,
+                 val images: ArrayList<String>? = null,
+                 val wabis: ArrayList<String>? = null
 )
 
 enum class Gender {

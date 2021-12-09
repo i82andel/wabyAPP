@@ -22,8 +22,6 @@ class SpotRepository{
     private val fireste = Firebase.firestore
     private val spotList = fireste.collection("Spot")
 
-
-
     fun getAllSpots():LiveData<MutableList<Spot>>{
         val mutableList = MutableLiveData<MutableList<Spot>>()
         spotList.get().addOnSuccessListener {
