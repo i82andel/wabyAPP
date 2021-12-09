@@ -31,10 +31,10 @@ class WabiRepository {
         return mutableList
     }
 
-    fun getSingleUser(idSpot: String): User {
+    fun getSingleUser(idUser: String): User {
 
         lateinit var user: User
-        val docRef = EventList.document(idSpot)
+        val docRef = EventList.document(idUser)
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
