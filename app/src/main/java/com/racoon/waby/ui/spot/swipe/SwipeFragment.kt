@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.racoon.waby.databinding.FragmentNotificationsBinding
+import com.racoon.waby.databinding.FragmentSwipeBinding
 import com.racoon.waby.ui.spot.notifications.NotificationsViewModel
 
 class SwipeFragment : Fragment(){
 
     private lateinit var swipeViewModel: SwipeViewModel
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentSwipeBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -27,7 +27,7 @@ class SwipeFragment : Fragment(){
         swipeViewModel =
             ViewModelProvider(this).get(SwipeViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentSwipeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root
