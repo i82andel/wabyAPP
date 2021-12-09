@@ -5,10 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.local.ReferenceSet
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.data.model.Event
+import com.racoon.waby.data.model.Spot
+import java.util.*
 
 import javax.inject.Singleton
+import kotlin.collections.ArrayList
 
 
 @Singleton
@@ -16,17 +20,15 @@ class EventRepository {
     private val fireste = Firebase.firestore
     private val EventList = fireste.collection("Event")
 
-
-
     fun getAllEventsBySpot(spot : String): LiveData<MutableList<Event>> {
         val mutableList = MutableLiveData<MutableList<Event>>()
         EventList.get().addOnSuccessListener {
-            val spotDataList = mutableListOf<Event>()
+            val DataList = mutableListOf<Event>()
             for (document in it){
-                val spot = documentToEvent(document)
-                spotDataList.add(spot)
+                val event = documentToEvent(document)
+                DataList.add(event)
             }
-            mutableList.value = spotDataList
+            mutableList.value = DataList
         }
         Log.d("creation", "$mutableList")
         return mutableList
@@ -34,29 +36,40 @@ class EventRepository {
 
     fun getSingleSpot(idSpot: String): Event {
 
-        var spot= Event("not_found")
-        EventList
+        lateinit var event: Event
         val docRef = EventList.document(idSpot)
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
 
-                    val spot = documentToEvent(document)
-
+                    event = documentToEvent(document)
                 }
             }
-        return spot
+        return event
     }
 
     private fun documentToEvent(document : DocumentSnapshot) : Event {
+        val assistants = document.data?.get("asistentes")
+        val attendances = document.data?.get("attendance")
+        val eventLog = document.data?.get("eventLog")
+        val fechaEvento = document.get("fechaEvento")
+        val idSpot = document.getString("idSpot")
 
+        val event  = Event("found",
+                    assistants as ArrayList<String>,
+                    attendances as ArrayList<String>,
+                    eventLog as ReferenceSet,
+                    fechaEvento as Date,
+                    idSpot!!)
+
+        return event
 
 
     }
 
-    fun getSimilarSpots(badge: String): LiveData<MutableList<Event>> {
+    fun getSpotByDate(date: Date): LiveData<MutableList<Event>> {
         val mutableList = MutableLiveData<MutableList<Event>>()
-        EventList.whereArrayContains("badges", badge).get().addOnSuccessListener {
+        EventList.whereArrayContains("fechaEvento", date).get().addOnSuccessListener {
             val spotDataList = mutableListOf<Event>()
             for (document in it) {
                 val spot = documentToEvent(document)
@@ -67,4 +80,5 @@ class EventRepository {
         Log.d("creation", "$mutableList")
         return mutableList
     }
+
 }

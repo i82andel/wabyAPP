@@ -3,8 +3,6 @@ package com.racoon.waby.domain.usecases.spotAdmin
 import android.location.Location
 import com.racoon.waby.data.model.*
 import com.racoon.waby.data.repository.SpotRepository
-import com.racoon.waby.data.repository.UserRepository
-import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
