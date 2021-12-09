@@ -92,12 +92,11 @@ class UserRepositoryImp : UserRepository {
             Date(1,1, 2000),
             "paquito@gmail.com",
             "",
-            Gender.MEN,
+            null,
             "600123456",
-            "Hola me llamo Paco",
             null,
             null,
-            images)
+            null)
 
 
         return user
@@ -123,9 +122,9 @@ class UserRepositoryImp : UserRepository {
             birthdate,
             email,
             "",
-            Gender.MEN,
+            null,
             phoneNumber,
-            description)
+            null)
 
         return user
     }
