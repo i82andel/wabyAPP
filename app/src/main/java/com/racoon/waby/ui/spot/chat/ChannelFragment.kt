@@ -74,9 +74,33 @@ class ChannelFragment : Fragment() {
         binding.channelsView.setChannelItemClickListener { channel ->
             startActivity(ChannelActivity.newIntent(requireContext(), channel))
         }
+
+        binding.channelListHeaderView.setOnActionButtonClickListener{
+
+        }
+
+        binding.channelsView.setChannelDeleteClickListener { channel ->
+            deleteChannel(channel)
+        }
     }
 
+    private fun deleteChannel(channel: Channel) {
+        ChatDomain.instance().deleteChannel(channel.cid).enqueue { result ->
+            if (result.isSuccess) {
+                showToast("Channel: ${channel.name} removed!")
+            } else {
+                Log.e("ChannelFragment", result.error().message.toString())
+            }
+        }
+    }
 
+    private fun showToast(message: String) {
+        Toast.makeText(
+            requireContext(),
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
