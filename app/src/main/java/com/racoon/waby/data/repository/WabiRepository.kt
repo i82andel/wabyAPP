@@ -78,10 +78,15 @@ class WabiRepository {
         return user
     }
 
-    fun getWabisFromUser(user: User){
-
-
-
+    fun getWabisFromUser(user: User) : LiveData<MutableList<User>>{
+        val mutableList = MutableLiveData<MutableList<User>>()
+        val DataList = mutableListOf<User>()
+        for(user in user.wabis!!){
+            val wabi = getSingleUser(user)
+            DataList.add(wabi)
+        }
+        mutableList.value = DataList
+        return mutableList
     }
 
 }
