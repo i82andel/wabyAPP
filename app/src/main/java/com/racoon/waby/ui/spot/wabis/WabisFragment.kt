@@ -15,6 +15,10 @@ import com.racoon.waby.databinding.FragmentSpotHomeBinding
 import com.racoon.waby.databinding.FragmentWabisBinding
 import com.racoon.waby.ui.spot.spothome.MySpotAdapter
 import com.racoon.waby.ui.spot.spothome.SpotHomeViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlin.system.measureTimeMillis
 
 class WabisFragment : Fragment() {
 
@@ -33,7 +37,9 @@ class WabisFragment : Fragment() {
     ): View? {
 
         _binding = FragmentWabisBinding.inflate(inflater, container, false)
-
+        GlobalScope.launch (Dispatchers.Main){
+            observeData()
+        }
         return binding.root
     }
 
@@ -45,13 +51,12 @@ class WabisFragment : Fragment() {
         adapter = WabisAdapter(requireContext())
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
-        observeData()
 
     }
 
 
-    fun observeData(){
-        WabisViewModel().getAllUsers().observe(viewLifecycleOwner, Observer {
+    suspend fun observeData(){
+        WabisViewModel().getWabisList().observe(viewLifecycleOwner, Observer {
             adapter.setWabiList(it)
             adapter.notifyDataSetChanged()
         })

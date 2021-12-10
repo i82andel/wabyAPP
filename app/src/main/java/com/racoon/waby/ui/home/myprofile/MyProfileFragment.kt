@@ -117,10 +117,6 @@ class MyProfileFragment : Fragment() {
                 Log.d("creation", "$media")
                 binding.textBD.setText(document.data?.get("birthdate").toString())
 
-                val media = document.get("images") as String?
-                Log.d("creation", "$media")
-                Glide.with(this).load(media).into(binding.ProfileImage)
-
                 binding.textBD.setText("01/01/2000")
                 binding.textPhone.setText(document.get("phoneNumber") as String?)
                 tags = document.get("tags") as List<Tag>

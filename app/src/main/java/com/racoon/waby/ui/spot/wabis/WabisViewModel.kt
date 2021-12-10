@@ -17,10 +17,6 @@ class WabisViewModel : ViewModel() {
     private val _state: MutableState<UserListState> = mutableStateOf(UserListState())
 
 
-    init {
-        getAllUsers()
-    }
-
     fun getAllUsers(): LiveData<MutableList<User>>{
         val mutableData = MutableLiveData<MutableList<User>>()
         wabiRepository.getAllUsers().observeForever{ wabiList ->
@@ -29,7 +25,7 @@ class WabisViewModel : ViewModel() {
         return mutableData
 
     }
-    fun getWabisList():LiveData<MutableList<User>> {
+    suspend fun getWabisList():LiveData<MutableList<User>> {
         val mutableData = MutableLiveData<MutableList<User>>()
         wabiRepository.getWabisFromUser(getUser()).observeForever{ wabiList ->
             mutableData.value = wabiList
@@ -37,7 +33,7 @@ class WabisViewModel : ViewModel() {
         return mutableData
     }
 
-    fun getUser(): User{
+    suspend fun getUser(): User{
         return wabiRepository.getSingleUser("1q8YgG2CAPTajk0218aeeC8X3Hj2")
     }
 }

@@ -24,7 +24,7 @@ class SwipeFragment : Fragment() {
     private lateinit var swipeViewModel: SwipeViewModel
     private var _binding: FragmentSwipeBinding? = null
     private var arrayAdapter: arrayAdapter? = null
-    private var rowItems: MutableList<Card>? = null
+    private var rowItems = mutableListOf<Card>()
     private var usersList: ArrayList<String>? = null
 
     // This property is only valid between onCreateView and
@@ -42,27 +42,16 @@ class SwipeFragment : Fragment() {
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        getCurrentUsers()
+        usersList?.let { getDataUsers(it) }
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getCurrentUsers()
 
 
-        //getDataUsers(usersList)
-
-
-        /*var card_1 = Card("crid",
-            "manuel",
-            "https://i.pinimg.com/474x/d3/65/50/d36550ea1b17394f63c2dff243fe636d.jpg")
-        var card_2 = Card("au",
-            "adios",
-            "https://i.pinimg.com/474x/d3/65/50/d36550ea1b17394f63c2dff243fe636d.jpg")
-
-        rowItems = arrayListOf(card_1, card_2)
-*/
         arrayAdapter = arrayAdapter(context, R.layout.item, rowItems)
         binding.frame.adapter = arrayAdapter
 
@@ -110,24 +99,12 @@ class SwipeFragment : Fragment() {
                 usersList = document.data?.get("assistants") as ArrayList<String>
                 println(usersList)
             }
-        /*.addOnSuccessListener { document ->
-            println("nose la vd xd")
-            if (document.exists()) {
-                val user = document.data?.get("assistants") as ArrayList<String>
-                println(user)
-                mutableList.value = user
-                println("exsite por los muerttos")
-            } else {
-                println("no existe broi")
-            }
-        }.addOnFailureListener {
-            println("failure")
-        }*/
+
         println("holaaaaaaaaaa")
 
     }
 
-    fun getDataUsers(userIds: MutableList<String>) {
+    fun getDataUsers(userIds: ArrayList<String>) {
         val db = Firebase.firestore
 
         for (i in userIds.indices) {

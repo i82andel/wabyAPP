@@ -7,6 +7,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.data.model.*
+import kotlinx.coroutines.tasks.await
 import java.util.*
 import javax.inject.Singleton
 import kotlin.collections.ArrayList
@@ -31,16 +32,17 @@ class WabiRepository {
         return mutableList
     }
 
-    fun getSingleUser(idUser: String): User {
+    suspend fun getSingleUser(idUser: String): User {
 
         var user = User()
-        val docRef = userList.document(idUser)
+        val job1 = userList.document(idUser)
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     user = documentToUser(document)
                 }
             }
+        job1.await()
         println(user.name)
         println("usuario nulo")
         return user
@@ -83,7 +85,7 @@ class WabiRepository {
         return user
     }
 
-    fun getWabisFromUser(user: User) : LiveData<MutableList<User>>{
+    suspend fun getWabisFromUser(user: User) : LiveData<MutableList<User>>{
         val mutableList = MutableLiveData<MutableList<User>>()
         val DataList = mutableListOf<User>()
         println("probadno wabis")
