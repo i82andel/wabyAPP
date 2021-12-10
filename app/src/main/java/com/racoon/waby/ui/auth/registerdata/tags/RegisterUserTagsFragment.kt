@@ -86,6 +86,7 @@ class RegisterUserTagsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentRegisterUserTagsBinding.inflate(inflater, container, false)
+        // create ContextThemeWrapper from the original Activity Context with the custom theme
         return binding.root
     }
 

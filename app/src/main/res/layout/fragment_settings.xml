@@ -78,7 +78,7 @@
                 android:id="@+id/textView27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 android:text="Desconectarse"
                 android:textColor="@color/white"
                 android:textSize="12sp"
@@ -89,8 +89,8 @@
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_logout"
