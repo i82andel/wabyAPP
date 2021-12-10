@@ -159,13 +159,14 @@ class RegisterUserImagesFragment : Fragment() {
 
 
         val url = pathImage.downloadUrl.toString()
-        uploadDataFirestore(url)
+        uploadDataFirestore(currentDate)
 
     }
 
-    private fun uploadDataFirestore(url: String) {
+    private fun uploadDataFirestore(currentDate: String ) {
         val userId = Firebase.auth.currentUser?.uid.toString()
-
+        val ola = "gs://racoonapps-cd246.appspot.com/profiles/3sD45jdH8zVcugo04umnOvNUqw63/10/12/2021_06:29:39.png"
+        val url = "gs://racoonapps-cd246.appspot.com/profiles/$userId/$currentDate.png"
         val db = Firebase.firestore
         db.collection("User")
             .document(userId)
