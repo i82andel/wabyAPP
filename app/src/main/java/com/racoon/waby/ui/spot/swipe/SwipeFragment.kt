@@ -16,8 +16,12 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import com.racoon.waby.R
+import com.racoon.waby.databinding.FragmentChannelBinding
 import com.racoon.waby.databinding.FragmentSwipeBinding
 import com.racoon.waby.ui.spot.spothome.MySpotAdapter
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SwipeFragment : Fragment() {
 
@@ -26,6 +30,8 @@ class SwipeFragment : Fragment() {
     private var arrayAdapter: arrayAdapter? = null
     private var rowItems: MutableList<Card>? = null
     private var usersList: ArrayList<String>? = null
+    private var auxiliar: MutableList<String>? = null
+    private var dataList = mutableListOf<Card>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,36 +42,33 @@ class SwipeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        swipeViewModel =
-            ViewModelProvider(this).get(SwipeViewModel::class.java)
 
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getCurrentUsers()
+        GlobalScope.launch {
+            getCurrentUsers()
+            delay(3_000L)
+            getDataUsers(usersList!!)
+            delay(3_000L)
+            println(dataList[0].name)
+            var card_1 = Card("crid",
+                "manuel",
+                "https://i.pinimg.com/474x/d3/65/50/d36550ea1b17394f63c2dff243fe636d.jpg")
+            var card_2 = Card("au",
+                "adios",
+                "https://i.pinimg.com/474x/d3/65/50/d36550ea1b17394f63c2dff243fe636d.jpg")
 
-
-        //getDataUsers(usersList)
-
-
-        /*var card_1 = Card("crid",
-            "manuel",
-            "https://i.pinimg.com/474x/d3/65/50/d36550ea1b17394f63c2dff243fe636d.jpg")
-        var card_2 = Card("au",
-            "adios",
-            "https://i.pinimg.com/474x/d3/65/50/d36550ea1b17394f63c2dff243fe636d.jpg")
-
-        rowItems = arrayListOf(card_1, card_2)
-*/
-        arrayAdapter = arrayAdapter(context, R.layout.item, rowItems)
+            rowItems = arrayListOf(card_1, card_2)
+            arrayAdapter = arrayAdapter(context, R.layout.item, rowItems)
+        }
         binding.frame.adapter = arrayAdapter
-
         binding.frame.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
             override fun removeFirstObjectInAdapter() {
                 Log.d("LIST", "removed object!")
@@ -91,20 +94,18 @@ class SwipeFragment : Fragment() {
             override fun onAdapterAboutToEmpty(itemsInAdapter: Int) {}
             override fun onScroll(scrollProgressPercent: Float) {}
         })
-
         binding.likeButton.setOnClickListener {
             rowItems?.removeAt(0)
             arrayAdapter!!.notifyDataSetChanged()
         }
-
     }
 
     private fun getCurrentUsers() {
 
         val mutableList = MutableLiveData<MutableList<String>>()
 
-        val db = FirebaseFirestore.getInstance()
-        val docRef = db.collection("xd").document("zdzillZYB1nVzTpak2Lz")
+        val db = Firebase.firestore
+        val docRef = db.collection("Spot").document("zdzillZYB1nVzTpak2Lz")
         docRef.get()
             .addOnSuccessListener { document ->
                 usersList = document.data?.get("assistants") as ArrayList<String>
@@ -123,11 +124,10 @@ class SwipeFragment : Fragment() {
         }.addOnFailureListener {
             println("failure")
         }*/
-        println("holaaaaaaaaaa")
 
     }
 
-    fun getDataUsers(userIds: MutableList<String>) {
+    fun getDataUsers(userIds: ArrayList<String>) {
         val db = Firebase.firestore
 
         for (i in userIds.indices) {
@@ -138,9 +138,8 @@ class SwipeFragment : Fragment() {
                         val description = document.data?.get("description").toString()
                         val image = document.data?.get("images").toString()
                         val tags = document.data?.get("tags") as ArrayList<String>
-
                         val card = Card(userIds[i], name, image, tags, description)
-                        rowItems?.add(card)
+                        dataList.add(card)
                     }
                 }
         }
