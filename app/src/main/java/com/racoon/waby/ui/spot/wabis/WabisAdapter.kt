@@ -17,6 +17,10 @@ class WabisAdapter (private val context: Context): RecyclerView.Adapter<WabisAda
 
     private var wabiMutableList = mutableListOf<User>()
 
+    fun setWabiList(data: MutableList<User>){
+        wabiMutableList = data
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyWabiViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.wabi_item, parent, false)
         return MyWabiViewHolder(itemView)

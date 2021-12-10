@@ -17,7 +17,7 @@ import com.racoon.waby.ui.spot.spothome.SpotHomeViewModel
 
 class WabisFragment : Fragment() {
 
-    private lateinit var wabisViewModel: WabisViewModel
+    private val wabisViewModel by viewModels<WabisViewModel>()
     private var _binding: FragmentWabisBinding? = null
     private lateinit var adapter: WabisAdapter
 
@@ -30,29 +30,29 @@ class WabisFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        wabisViewModel =
-            ViewModelProvider(this).get(WabisViewModel::class.java)
 
         _binding = FragmentWabisBinding.inflate(inflater, container, false)
-        val root = binding.root
+        /*val root: View = binding.root
 
-        return root
+               return root*/
+        return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        println("hola")
         adapter = WabisAdapter(requireContext())
-        binding.userList.layoutManager = LinearLayoutManager(context)
-        binding.spotList.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = adapter
         observeData()
 
     }
 
     fun observeData(){
-        WabisViewModel.getWabisList().observe(viewLifecycleOwner, Observer {
-            adapter.setSpotList(it)
+        WabisViewModel().getWabisList().observe(viewLifecycleOwner, Observer {
+            adapter.setWabiList(it)
             adapter.notifyDataSetChanged()
         })
     }

@@ -33,7 +33,7 @@ class WabiRepository {
 
     fun getSingleUser(idUser: String): User {
 
-        lateinit var user: User
+        var user = User ()
         val docRef = EventList.document(idUser)
             .get()
             .addOnSuccessListener { document ->
@@ -81,9 +81,13 @@ class WabiRepository {
     fun getWabisFromUser(user: User) : LiveData<MutableList<User>>{
         val mutableList = MutableLiveData<MutableList<User>>()
         val DataList = mutableListOf<User>()
-        for(user in user.wabis!!){
-            val wabi = getSingleUser(user)
-            DataList.add(wabi)
+        println(user.wabis)
+
+        if (user.wabis != null) {
+            for (user in user.wabis!!) {
+                val wabi = getSingleUser(user)
+                DataList.add(wabi)
+            }
         }
         mutableList.value = DataList
         return mutableList
