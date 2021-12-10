@@ -4,22 +4,27 @@
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_chat"
-        android:title="Chat" />
+        android:title="Chat"
+        android:iconTint="@color/white"/>
     <item
         android:id="@+id/navigation_swipe"
         android:icon="@drawable/ic_swipe"
-        android:title="Swipe"/>
+        android:title="Swipe"
+        android:iconTint="@color/colorSecondary"/>
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Home"
+        android:iconTint="@color/white"/>
     <item
         android:id="@+id/navigation_wabis"
         android:icon="@drawable/ic_wabis"
-        android:title="Wabis" />
+        android:title="Wabis"
+        android:iconTint="@color/colorSecondary"/>
     <item
         android:id="@+id/navigation_extras"
         android:icon="@drawable/ic_extras"
-        android:title="Extras"/>
+        android:title="Extras"
+        android:iconTint="@color/colorSecondary"/>
 
 </menu>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
+    app:cardBackgroundColor="@color/colorHintDark"
     app:cardCornerRadius="20dp"
     app:cardElevation="8dp">
 
@@ -17,9 +18,9 @@
             android:id="@+id/circleImageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            app:civ_border_width="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -33,42 +34,29 @@
             android:id="@+id/tvSpotWebSite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginBottom="20dp"
             android:text="sojo.com"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toBottomOf="@+id/textView26"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSpotDescription"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/textView26"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvSpotName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:text="Web"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/circleImageView"
-            app:layout_constraintTop_toBottomOf="@+id/tvSpotDescription" />
-
-        <TextView
-            android:id="@+id/tvSpotName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
             android:text="Sojo"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/circleImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +70,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:text="Sitio de copas para pasar un rato"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -94,13 +82,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="Descripción"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/circleImageView"
             app:layout_constraintTop_toBottomOf="@+id/tvSpotName" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
