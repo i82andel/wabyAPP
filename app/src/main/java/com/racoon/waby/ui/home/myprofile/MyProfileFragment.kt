@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.icu.text.SimpleDateFormat
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -33,6 +34,7 @@ import com.racoon.waby.ui.auth.login.MyProfileVMFactory
 import com.racoon.waby.ui.auth.signup.SignUpVMFactory
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.item.view.*
 import kotlinx.android.synthetic.main.spot_item.view.*
 import kotlinx.android.synthetic.main.wabi_item.view.*
@@ -68,6 +70,7 @@ class MyProfileFragment : Fragment() {
     private var DESCRIPTION = ""
     private var PHONENUMBER = ""
     private var EMAIL = ""
+    private var IMAGE = ""
 
 
 
@@ -104,6 +107,7 @@ class MyProfileFragment : Fragment() {
                 binding.DescriptionText.setText(document.get("description") as String?)
                 binding.emailText.setText(document.get("email") as String?)
                 binding.usernameText.setText(document.get("username") as String?)
+
                 val media = document.getString("images")
                 val storageReference = FirebaseStorage.getInstance()
                 val gsReference = storageReference.getReferenceFromUrl(media!!)
@@ -112,6 +116,12 @@ class MyProfileFragment : Fragment() {
                 }
                 Log.d("creation", "$media")
                 binding.textBD.setText(document.data?.get("birthdate").toString())
+
+                val media = document.get("images") as String?
+                Log.d("creation", "$media")
+                Glide.with(this).load(media).into(binding.ProfileImage)
+
+                binding.textBD.setText("01/01/2000")
                 binding.textPhone.setText(document.get("phoneNumber") as String?)
                 tags = document.get("tags") as List<Tag>
 
@@ -121,8 +131,13 @@ class MyProfileFragment : Fragment() {
                 PHONENUMBER = binding.textPhone.text as String
                 DESCRIPTION = binding.DescriptionText.text as String
                 EMAIL = binding.emailText.text as String
+                Log.d("creation", "$IMAGE")
             }
         }
+    }
+
+    private fun gotoEdit(){
+
     }
 
 
@@ -134,7 +149,8 @@ class MyProfileFragment : Fragment() {
             "surname" to SURNAME,
             "username" to USERNAME,
             "description" to DESCRIPTION,
-            "email" to EMAIL
+            "email" to EMAIL,
+            "image" to IMAGE
         )
         findNavController().navigate(R.id.action_profileFragment_to_settingsFragment, bundle)
     }
