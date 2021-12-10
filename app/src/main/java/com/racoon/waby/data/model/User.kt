@@ -17,14 +17,14 @@ class User (val idUser: String? = null,
                  val phoneNumber: String? = null,
                  val description: String? = null,
                  val tags: ArrayList<String>? = null,
-                 val images: ArrayList<String>? = null,
+                 val images: String = "gs://racoonapps-cd246.appspot.com/profiles/placeholder.png",
                  val wabis: ArrayList<String>? = null
 ){
 
 
     fun getAge() : String{
 
-        return "12"
+        return "19"
 
     }
 }

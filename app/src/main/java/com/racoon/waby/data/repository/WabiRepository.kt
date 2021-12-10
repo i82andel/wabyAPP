@@ -15,11 +15,11 @@ import kotlin.collections.ArrayList
 class WabiRepository {
 
     private val fireste = Firebase.firestore
-    private val EventList = fireste.collection("Event")
+    private val userList = fireste.collection("User")
 
     fun getAllUsers(): LiveData<MutableList<User>> {
         val mutableList = MutableLiveData<MutableList<User>>()
-        EventList.get().addOnSuccessListener {
+        userList.get().addOnSuccessListener {
             val DataList = mutableListOf<User>()
             for (document in it){
                 val user = documentToUser(document)
@@ -33,46 +33,51 @@ class WabiRepository {
 
     fun getSingleUser(idUser: String): User {
 
-        var user = User ()
-        val docRef = EventList.document(idUser)
+        var user = User()
+        val docRef = userList.document(idUser)
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-
                     user = documentToUser(document)
                 }
             }
+        println(user.name)
+        println("usuario nulo")
         return user
     }
 
     private fun documentToUser(document: DocumentSnapshot): User {
 
+        var images = "gs://racoonapps-cd246.appspot.com/profiles/placeholder.png"
         val idUser = document.id
         val name = document.getString("name")
         val surname = document.getString("surname")
-        val userName = document.getString("userName")
+        val userName = document.getString("username")
         val birthdate = document.data?.get("birthdate")
         val email = document.getString("email")
         val gender = document.getString("gender")
         val phoneNumber = document.getString("phoneNumber")
         val description = document.getString("description")
         val tags = document.data?.get("tags")
-        val images = document.data?.get("images")
+        if (document.getString("images")!=null) {
+            images = document.getString("images")!!
+        }
         val wabis = document.data?.get("wabis")
+        println(wabis)
 
         val user = User(
             idUser,
             name,
             surname,
             userName,
-            birthdate as Date?,
+            null,
             email,
             gender,
             phoneNumber,
             description,
             tags as ArrayList<String>?,
-            images as ArrayList<String>?,
-            wabis as ArrayList<String>
+            images,
+            wabis as ArrayList<String>?
         )
 
         return user
@@ -81,7 +86,7 @@ class WabiRepository {
     fun getWabisFromUser(user: User) : LiveData<MutableList<User>>{
         val mutableList = MutableLiveData<MutableList<User>>()
         val DataList = mutableListOf<User>()
-        println(user.wabis)
+        println("probadno wabis")
 
         if (user.wabis != null) {
             for (user in user.wabis!!) {

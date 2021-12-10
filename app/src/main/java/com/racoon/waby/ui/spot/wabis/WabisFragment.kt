@@ -1,5 +1,6 @@
 package com.racoon.waby.ui.spot.wabis
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +33,7 @@ class WabisFragment : Fragment() {
     ): View? {
 
         _binding = FragmentWabisBinding.inflate(inflater, container, false)
-        /*val root: View = binding.root
 
-               return root*/
         return binding.root
     }
 
@@ -50,8 +49,9 @@ class WabisFragment : Fragment() {
 
     }
 
+
     fun observeData(){
-        WabisViewModel().getWabisList().observe(viewLifecycleOwner, Observer {
+        WabisViewModel().getAllUsers().observe(viewLifecycleOwner, Observer {
             adapter.setWabiList(it)
             adapter.notifyDataSetChanged()
         })

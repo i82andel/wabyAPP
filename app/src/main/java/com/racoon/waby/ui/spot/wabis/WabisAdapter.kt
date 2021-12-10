@@ -4,8 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import com.racoon.waby.R
 import com.racoon.waby.data.model.Spot
 import com.racoon.waby.data.model.User
@@ -28,7 +33,7 @@ class WabisAdapter (private val context: Context): RecyclerView.Adapter<WabisAda
 
     override fun onBindViewHolder(holder: MyWabiViewHolder, position: Int) {
         val currentItem = wabiMutableList[position]
-        holder.bindView(currentItem)
+        holder.bindView(currentItem,)
     }
 
     override fun getItemCount(): Int {
@@ -38,7 +43,13 @@ class WabisAdapter (private val context: Context): RecyclerView.Adapter<WabisAda
     inner class MyWabiViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         fun bindView(user: User){
-            Glide.with(context).load(user.images?.get(0)).into(itemView.MatchImage)
+            println(user.images)
+            val storageReference = FirebaseStorage.getInstance()
+            val gsReference = storageReference.getReferenceFromUrl(user.images)
+            gsReference.downloadUrl.addOnSuccessListener {
+                Glide.with(context).load(it).into(itemView.MatchImage)
+            }
+
             itemView.MatchName.text = user.userName
             itemView.Matchid.text = user.getAge()
         }

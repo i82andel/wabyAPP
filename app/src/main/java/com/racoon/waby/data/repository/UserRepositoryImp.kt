@@ -95,7 +95,7 @@ class UserRepositoryImp : UserRepository {
             null,
             "600123456",
             null,
-            null,
+            "gs://racoonapps-cd246.appspot.com/profiles/placeholder.png",
             null)
 
 

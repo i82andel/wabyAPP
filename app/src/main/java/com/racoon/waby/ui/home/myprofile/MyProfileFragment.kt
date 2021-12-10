@@ -21,6 +21,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.racoon.waby.R
 import com.racoon.waby.data.model.Tag
 import com.racoon.waby.data.repository.UserRepositoryImp
@@ -34,6 +35,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.item.view.*
 import kotlinx.android.synthetic.main.spot_item.view.*
+import kotlinx.android.synthetic.main.wabi_item.view.*
 import java.net.URL
 import java.time.Instant
 import java.time.ZoneId
@@ -102,10 +104,14 @@ class MyProfileFragment : Fragment() {
                 binding.DescriptionText.setText(document.get("description") as String?)
                 binding.emailText.setText(document.get("email") as String?)
                 binding.usernameText.setText(document.get("username") as String?)
-                val media = document.get("images") as String?
-                Picasso.get().load(media).into(binding.ProfileImage)
+                val media = document.getString("images")
+                val storageReference = FirebaseStorage.getInstance()
+                val gsReference = storageReference.getReferenceFromUrl(media!!)
+                gsReference.downloadUrl.addOnSuccessListener {
+                    Glide.with(requireContext()).load(it).into(binding.ProfileImage)
+                }
                 Log.d("creation", "$media")
-                binding.textBD.setText("01/01/2000")
+                binding.textBD.setText(document.data?.get("birthdate").toString())
                 binding.textPhone.setText(document.get("phoneNumber") as String?)
                 tags = document.get("tags") as List<Tag>
 
