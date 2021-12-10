@@ -58,16 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/myProfileButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/ic_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
@@ -135,6 +125,26 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ImageProfile"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/myProfileButton"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

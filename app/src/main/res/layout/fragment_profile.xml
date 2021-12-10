@@ -31,46 +31,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardPhone"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="50dp"
-                android:minHeight="40dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="50dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:minHeight="40dp">
-
-                    <TextView
-                        android:id="@+id/textPhone"
-                        android:layout_width="68dp"
-                        android:layout_height="24dp"
-                        android:layout_marginStart="10dp"
-                        android:text="671616985"
-                        android:textColor="@color/colorHintDark"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView4"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:src="@drawable/ic_phone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ProfileImage"
                 android:layout_width="150dp"
@@ -86,11 +46,11 @@
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:layout_marginEnd="30dp"
                 android:minHeight="40dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -136,14 +96,13 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/TagsList"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 app:barrierMargin="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardPhone"
+                app:layout_constraintTop_toBottomOf="@+id/BDCard"
                 app:layout_marginBaseline="0dp" />
 
             <TextView

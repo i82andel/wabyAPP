@@ -108,7 +108,7 @@ class MyProfileFragment : Fragment() {
                 binding.emailText.setText(document.get("email") as String?)
                 binding.usernameText.setText(document.get("username") as String?)
 
-                val media = document.getString("images")
+                val media = arguments?.get("image") as String
                 val storageReference = FirebaseStorage.getInstance()
                 val gsReference = storageReference.getReferenceFromUrl(media!!)
                 gsReference.downloadUrl.addOnSuccessListener {
@@ -117,20 +117,18 @@ class MyProfileFragment : Fragment() {
                 Log.d("creation", "$media")
                 binding.textBD.setText(document.data?.get("birthdate").toString())
 
-                val media = document.get("images") as String?
                 Log.d("creation", "$media")
-                Glide.with(this).load(media).into(binding.ProfileImage)
+                //Glide.with(this).load(media).into(binding.ProfileImage)
 
                 binding.textBD.setText("01/01/2000")
-                binding.textPhone.setText(document.get("phoneNumber") as String?)
                 tags = document.get("tags") as List<Tag>
 
                 //Asigna valores al bundle
                 NAME = binding.nameText.text as String
                 USERNAME = binding.usernameText.text as String
-                PHONENUMBER = binding.textPhone.text as String
                 DESCRIPTION = binding.DescriptionText.text as String
                 EMAIL = binding.emailText.text as String
+                IMAGE = media
                 Log.d("creation", "$IMAGE")
             }
         }

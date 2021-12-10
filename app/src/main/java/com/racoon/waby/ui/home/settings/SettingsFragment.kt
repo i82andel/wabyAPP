@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
 import com.racoon.waby.data.model.User
 import com.racoon.waby.databinding.FragmentSettingsBinding
 
@@ -36,12 +38,23 @@ class SettingsFragment : Fragment() {
         //Recupera variables del bundle
         val name = arguments?.getString("name")
         val username = arguments?.getString("username")
+        loadImage()
+
 
 
         binding.name.setText(name)
         binding.username.setText(username)
         binding.logOutButton.setOnClickListener {
             gotoAuth(view)
+        }
+    }
+
+    private fun loadImage(){
+        val media = arguments?.getString("image")
+        val storageReference = FirebaseStorage.getInstance()
+        val gsReference = storageReference.getReferenceFromUrl(media!!)
+        gsReference.downloadUrl.addOnSuccessListener {
+            Glide.with(requireContext()).load(it).into(binding.profileImage)
         }
     }
 
