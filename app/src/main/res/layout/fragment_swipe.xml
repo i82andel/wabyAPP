@@ -26,7 +26,7 @@
                 android:layout_marginBottom="2dp"
                 android:background="@android:color/white"
                 app:rotation_degrees="15.5"
-                tools:context=".ui.spot.SpotActivity" />
+                tools:context=".ui.spot.swipe.SwipeFragment" />
 
             <RelativeLayout
                 android:id="@+id/button_container"

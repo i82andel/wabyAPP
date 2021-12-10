@@ -30,9 +30,12 @@ import kotlin.experimental.and
 import android.app.Activity
 import android.app.AlertDialog
 import androidx.core.os.bundleOf
+import com.bumptech.glide.Glide
 import com.google.firebase.Timestamp
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.integration.android.IntentIntegrator
 import com.racoon.waby.data.model.User
 import com.racoon.waby.ui.spot.chat.ChatActivity
@@ -53,6 +56,7 @@ class MainHomeFragment : Fragment() {
     private var pendingIntent:PendingIntent? = null
 
     private var myTag:Tag? = null
+    var IMAGE = ""
 
 
 
@@ -66,6 +70,7 @@ class MainHomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentMainHomeBinding.inflate(inflater,container,false)
+        loadImage()
         return binding.root
     }
 
@@ -94,7 +99,10 @@ class MainHomeFragment : Fragment() {
 
 
     private fun gotoMyProfile() {
-        findNavController().navigate(R.id.action_mainHomeFragment_to_profileFragment)
+        val bundle = bundleOf(
+            "image" to IMAGE
+        )
+        findNavController().navigate(R.id.action_mainHomeFragment_to_profileFragment, bundle)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -199,6 +207,29 @@ class MainHomeFragment : Fragment() {
                 }
             }
         }.create().show()
+    }
+
+
+    private fun loadImage(){
+        val db = Firebase.firestore
+        val uid = Firebase.auth.currentUser?.uid as String
+        val userList = db.collection("User")
+
+        userList.document(uid).get().addOnSuccessListener { document ->
+            if (document.exists()) {
+
+
+                val media = document.getString("images")
+                val storageReference = FirebaseStorage.getInstance()
+                val gsReference = storageReference.getReferenceFromUrl(media!!)
+                gsReference.downloadUrl.addOnSuccessListener {
+                    Glide.with(requireContext()).load(it).into(binding.ImageProfile)
+                }
+
+                IMAGE = media
+
+            }
+        }
     }
 
 }

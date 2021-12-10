@@ -16,8 +16,12 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import com.racoon.waby.R
+import com.racoon.waby.databinding.FragmentChannelBinding
 import com.racoon.waby.databinding.FragmentSwipeBinding
 import com.racoon.waby.ui.spot.spothome.MySpotAdapter
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SwipeFragment : Fragment() {
 
@@ -26,6 +30,8 @@ class SwipeFragment : Fragment() {
     private var arrayAdapter: arrayAdapter? = null
     private var rowItems = mutableListOf<Card>()
     private var usersList: ArrayList<String>? = null
+    private var auxiliar: MutableList<String>? = null
+    private var dataList = mutableListOf<Card>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,11 +42,8 @@ class SwipeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        swipeViewModel =
-            ViewModelProvider(this).get(SwipeViewModel::class.java)
 
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
         getCurrentUsers()
         usersList?.let { getDataUsers(it) }
@@ -54,7 +57,6 @@ class SwipeFragment : Fragment() {
 
         arrayAdapter = arrayAdapter(context, R.layout.item, rowItems)
         binding.frame.adapter = arrayAdapter
-
         binding.frame.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
             override fun removeFirstObjectInAdapter() {
                 Log.d("LIST", "removed object!")
@@ -80,20 +82,18 @@ class SwipeFragment : Fragment() {
             override fun onAdapterAboutToEmpty(itemsInAdapter: Int) {}
             override fun onScroll(scrollProgressPercent: Float) {}
         })
-
         binding.likeButton.setOnClickListener {
             rowItems?.removeAt(0)
             arrayAdapter!!.notifyDataSetChanged()
         }
-
     }
 
     private fun getCurrentUsers() {
 
         val mutableList = MutableLiveData<MutableList<String>>()
 
-        val db = FirebaseFirestore.getInstance()
-        val docRef = db.collection("xd").document("zdzillZYB1nVzTpak2Lz")
+        val db = Firebase.firestore
+        val docRef = db.collection("Spot").document("zdzillZYB1nVzTpak2Lz")
         docRef.get()
             .addOnSuccessListener { document ->
                 usersList = document.data?.get("assistants") as ArrayList<String>
@@ -115,9 +115,8 @@ class SwipeFragment : Fragment() {
                         val description = document.data?.get("description").toString()
                         val image = document.data?.get("images").toString()
                         val tags = document.data?.get("tags") as ArrayList<String>
-
                         val card = Card(userIds[i], name, image, tags, description)
-                        rowItems?.add(card)
+                        dataList.add(card)
                     }
                 }
         }
