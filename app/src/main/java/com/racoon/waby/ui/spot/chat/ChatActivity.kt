@@ -67,18 +67,7 @@ class ChatActivity : AppCompatActivity() {
 
             //creo el channel pa probar
 
-            val micompa = "dNTvHHKTKZPZUeU2bmkbNImz7Rs2"
 
-            client.createChannel(
-                channelType = "messaging",
-                members = listOf(idUser,micompa)
-            ).enqueue { result ->
-                if (result.isSuccess) {
-                    val channel = result.data()
-                } else {
-                    // Handle result.error()
-                }
-            }
 
 
 

@@ -39,37 +39,46 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.integration.android.IntentIntegrator
 import com.racoon.waby.data.model.User
 import com.racoon.waby.ui.spot.chat.ChatActivity
+import com.racoon.waby.ui.spot.wabis.WabisViewModel
+import io.getstream.chat.android.client.ChatClient
+import io.getstream.chat.android.client.models.image
+import io.getstream.chat.android.client.models.name
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class MainHomeFragment : Fragment() {
 
     //ViewBiding
-    private  var _binding: FragmentMainHomeBinding? = null
+    private var _binding: FragmentMainHomeBinding? = null
+
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
+    private val client = ChatClient.instance()
+
 
     //nfc
     private val nfcAdapter: NfcAdapter? by lazy {
         NfcAdapter.getDefaultAdapter(context)
     }
 
-    private var pendingIntent:PendingIntent? = null
+    private var pendingIntent: PendingIntent? = null
 
-    private var myTag:Tag? = null
+    private var myTag: Tag? = null
     var IMAGE = ""
-
-
 
 
     //viewModel
     private val viewModel by viewModels<MainHomeViewModel>()
+    private val wabisViewModel by viewModels<WabisViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentMainHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentMainHomeBinding.inflate(inflater, container, false)
         loadImage()
         return binding.root
     }
@@ -77,25 +86,54 @@ class MainHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        GlobalScope.launch(Dispatchers.Main) {
+            val firebaseUser = wabisViewModel.getUser()
+            createUserGetStream(firebaseUser)
+        }
+
+
         binding.myProfileButton.setOnClickListener {
             gotoMyProfile()
         }
 
-        binding.mapButton.setOnClickListener{
+        binding.mapButton.setOnClickListener {
             startActivity(Intent(context, MapActivity::class.java))
         }
         binding.ola.setOnClickListener {
             startActivity(Intent(context, ChatActivity::class.java))
         }
-        binding.buttonRandom.setOnClickListener{
+        binding.buttonRandom.setOnClickListener {
             startActivity(Intent(context, SpotActivity::class.java))
         }
 
-        binding.nfcButton.setOnClickListener{
+        binding.nfcButton.setOnClickListener {
             showDefaultDialog()
         }
     }
 
+    private fun createUserGetStream(firebaseUser: User) {
+
+
+        println(firebaseUser.name)
+        val user = io.getstream.chat.android.client.models.User(id = firebaseUser.name!!).apply {
+            name = firebaseUser.name
+            image = firebaseUser.images
+        }
+        val token = client.devToken(user.id)
+        println("id = ${firebaseUser.name}\n token = $token")
+
+        client.connectUser(
+            user = user,
+            token = token
+        ).enqueue() { result ->
+            if (result.isSuccess) {
+                val user: io.getstream.chat.android.client.models.User = result.data().user
+                val connectionId: String = result.data().connectionId
+            } else {
+                println("NO bro")
+            }
+        }
+    }
 
 
     private fun gotoMyProfile() {
@@ -110,7 +148,7 @@ class MainHomeFragment : Fragment() {
 
         readFromIntent(requireActivity().intent)
         pendingIntent = PendingIntent.getActivity(
-            context,0,Intent(context, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),0
+            context, 0, Intent(context, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0
         )
 
         val tagDetected = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED)
@@ -119,16 +157,17 @@ class MainHomeFragment : Fragment() {
 
     }
 
-    private fun readFromIntent(intent: Intent){
-        var action:String? = intent.action
+    private fun readFromIntent(intent: Intent) {
+        var action: String? = intent.action
         if (NfcAdapter.ACTION_TAG_DISCOVERED == action
             || NfcAdapter.ACTION_TECH_DISCOVERED == action
             || NfcAdapter.ACTION_NDEF_DISCOVERED == action
-        ){
-            var rawMsgs:Array<Parcelable>? = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
+        ) {
+            var rawMsgs: Array<Parcelable>? =
+                intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
             var msgs: Array<NdefMessage?>? = null
 
-            if (rawMsgs != null){
+            if (rawMsgs != null) {
 
                 msgs = arrayOfNulls(rawMsgs.size)
 
@@ -160,7 +199,7 @@ class MainHomeFragment : Fragment() {
         binding.textView6.setText("Contenido NFC:" + text)
     }
 
-    private fun initScanner(){
+    private fun initScanner() {
         val integrator = IntentIntegrator.forSupportFragment(this)
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
         integrator.setPrompt("Escanea el código QR")
@@ -174,43 +213,43 @@ class MainHomeFragment : Fragment() {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         println(result)
 
-        if (result != null){
-            if(result.contents == null){
+        if (result != null) {
+            if (result.contents == null) {
                 Toast.makeText(context, "Cancelado", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(context, "El valor escaneado es ${result.contents.toString()}", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context,
+                    "El valor escaneado es ${result.contents.toString()}",
+                    Toast.LENGTH_SHORT).show()
             }
-        }
-        else{
+        } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
     }
 
-    private fun showDefaultDialog(){
+    private fun showDefaultDialog() {
         var alertDialog = AlertDialog.Builder(context)
 
         alertDialog.apply {
             setTitle("Unirse al spot")
             setMessage("Seleccione el método con el que se quiere unir al spot en el que se encuentra")
-            setPositiveButton("QR"){_, _ ->
+            setPositiveButton("QR") { _, _ ->
                 initScanner()
             }
-            setNegativeButton("NFC"){_, _ ->
-                if (nfcAdapter == null){
-                    Toast.makeText(context,R.string.not_nfc_supported,Toast.LENGTH_SHORT).show()
-                }else if (!nfcAdapter!!.isEnabled){
-                    Toast.makeText(context,R.string.nfc_disabled,Toast.LENGTH_SHORT).show()
+            setNegativeButton("NFC") { _, _ ->
+                if (nfcAdapter == null) {
+                    Toast.makeText(context, R.string.not_nfc_supported, Toast.LENGTH_SHORT).show()
+                } else if (!nfcAdapter!!.isEnabled) {
+                    Toast.makeText(context, R.string.nfc_disabled, Toast.LENGTH_SHORT).show()
                     startActivity(Intent(Settings.ACTION_NFC_SETTINGS))
-                }
-                else{
-                    Toast.makeText(context,R.string.success_nfc,Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, R.string.success_nfc, Toast.LENGTH_SHORT).show()
                 }
             }
         }.create().show()
     }
 
 
-    private fun loadImage(){
+    private fun loadImage() {
         val db = Firebase.firestore
         val uid = Firebase.auth.currentUser?.uid as String
         val userList = db.collection("User")

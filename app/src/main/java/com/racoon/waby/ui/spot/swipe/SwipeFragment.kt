@@ -13,6 +13,7 @@ import com.racoon.waby.R
 import com.racoon.waby.data.model.User
 import com.racoon.waby.databinding.FragmentSwipeBinding
 import com.racoon.waby.ui.spot.wabis.WabisViewModel
+import io.getstream.chat.android.client.ChatClient
 import kotlinx.coroutines.*
 
 class SwipeFragment : Fragment() {
@@ -23,6 +24,8 @@ class SwipeFragment : Fragment() {
     private lateinit var user : User
     private var auxiliar: MutableList<String>? = null
     private var dataList = mutableListOf<com.racoon.waby.data.model.User>()
+    private val client = ChatClient.instance()
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -71,6 +74,7 @@ class SwipeFragment : Fragment() {
                     GlobalScope.launch (Dispatchers.Main){
                        val wabiMatch =  swipeViewModel.makeWabi(user.idUser, obj.idUser)
                         if(wabiMatch == true) {
+                            createChat(user.name!!,obj.name!!)
                             Toast.makeText(requireContext(), "Nuevo Match!!", Toast.LENGTH_SHORT)
                                 .show()
                         }
@@ -91,42 +95,18 @@ class SwipeFragment : Fragment() {
 
     }
 
-    /*
-    private fun getCurrentUsers() {
-
-        val mutableList = MutableLiveData<MutableList<String>>()
-
-        val db = Firebase.firestore
-        val docRef = db.collection("Spot").document("zdzillZYB1nVzTpak2Lz")
-        docRef.get()
-            .addOnSuccessListener { document ->
-                usersList = document.data?.get("assistants") as ArrayList<String>
-                println(usersList)
+    fun createChat(currentUserId: String, myFriendId: String) {
+        client.createChannel(
+            channelType = "messaging",
+            members = listOf(currentUserId,myFriendId)
+        ).enqueue { result ->
+            if (result.isSuccess) {
+                val channel = result.data()
+            } else {
+                // Handle result.error()
             }
-
-        println("holaaaaaaaaaa")
-
-    }*/
-    /*
-    fun getDataUsers(userIds: ArrayList<String>) {
-        val db = Firebase.firestore
-
-        for (i in userIds.indices) {
-            val docRef = db.collection("User").document(userIds[i])
-                .get().addOnSuccessListener { document ->
-                    if (document.exists()) {
-                        val name = document.data?.get("name").toString()
-                        val description = document.data?.get("description").toString()
-                        val image = document.data?.get("images").toString()
-                        val tags = document.data?.get("tags") as ArrayList<String>
-                        val card = Card(userIds[i], name, image, tags, description)
-                        dataList.add(card)
-                    }
-                }
         }
-
-
-    }*/
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

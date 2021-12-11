@@ -45,6 +45,7 @@ class ChannelFragment : Fragment() {
     val idUser = Firebase.auth.currentUser?.uid.toString()
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,7 +60,7 @@ class ChannelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val aa = viewLifecycleOwner
-        println("holaaaaaaaaaaaa")
+
         GlobalScope.launch(Dispatchers.Main) {
             val firebaseUser = viewModel.getUser()
             println(firebaseUser.name)
@@ -70,7 +71,7 @@ class ChannelFragment : Fragment() {
             val token = client.devToken(user.id)
             println("id = ${firebaseUser.name}\n token = $token")
 
-            client.connectUser(
+           /* client.connectUser(
                 user = user,
                 token = token
             ).enqueue() { result ->
@@ -80,7 +81,21 @@ class ChannelFragment : Fragment() {
                 } else {
                     println("NO bro")
                 }
-            }
+            }*/
+
+            /*val micompa = "A"
+            val me = firebaseUser.name
+
+            client.createChannel(
+                channelType = "messaging",
+                members = listOf("Bueno","Cristian")
+            ).enqueue { result ->
+                if (result.isSuccess) {
+                    val channel = result.data()
+                } else {
+                    // Handle result.error()
+                }
+            }*/
 
             val filter = Filters.and(
                 Filters.eq("type", "messaging"),
