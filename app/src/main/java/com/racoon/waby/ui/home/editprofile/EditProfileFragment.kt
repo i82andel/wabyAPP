@@ -6,8 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.racoon.waby.R
 import com.racoon.waby.data.repository.UserRepositoryImp
@@ -57,6 +62,11 @@ class EditProfileFragment : Fragment() {
         TAGS = arguments?.getStringArrayList("tags")!!
         loadUser()
 
+        binding.buttonSave.setOnClickListener {
+            editProfile()
+            findNavController().navigate(R.id.action_editProfileFragment_to_mainHomeFragment2)
+        }
+
     }
 
     private fun loadImage(){
@@ -89,6 +99,51 @@ class EditProfileFragment : Fragment() {
             if (item == binding.chip7.text){ binding.chip7.isChecked = true}
             if (item == binding.chip8.text){ binding.chip8.isChecked = true}
         }
+    }
+
+    private fun editProfile(){
+
+        val userId = Firebase.auth.currentUser?.uid.toString()
+
+        val db = Firebase.firestore
+        db.collection("User")
+            .document(userId)
+            .update(
+                hashMapOf(
+                    "name" to binding.textName.text.toString(),
+                    "surname" to binding.textSurname.text.toString(),
+                    "username" to binding.textUsername.text.toString(),
+                    "description" to binding.textDescription.text.toString(),
+                    "tags" to (getTags()) as ArrayList<String>)
+
+                        as Map<String, Any>
+            )
+            .addOnSuccessListener {
+                Toast.makeText(context, "Datos actualizados", Toast.LENGTH_SHORT)
+                    .show()
+
+            }.addOnFailureListener {
+
+                Toast.makeText(context, R.string.firestore_upload_failure, Toast.LENGTH_SHORT)
+                    .show()
+
+            }
+    }
+
+    private fun getTags() : List<String>{
+        var tags = listOf<String>()
+
+        if ( binding.chip1.isChecked == true){ tags += binding.chip1.text.toString()}
+        if ( binding.chip2.isChecked == true){ tags += binding.chip2.text.toString()}
+        if ( binding.chip3.isChecked == true){ tags += binding.chip3.text.toString()}
+        if ( binding.chip4.isChecked == true){ tags += binding.chip4.text.toString()}
+        if ( binding.chip5.isChecked == true){ tags += binding.chip5.text.toString()}
+        if ( binding.chip6.isChecked == true){ tags += binding.chip6.text.toString()}
+        if ( binding.chip7.isChecked == true){ tags += binding.chip7.text.toString()}
+        if ( binding.chip8.isChecked == true){ tags += binding.chip8.text.toString()}
+
+
+        return tags
     }
 
 }
