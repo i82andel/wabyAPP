@@ -1,4 +1,4 @@
-package com.racoon.waby.ui.spot.chat
+package com.racoon.waby.common
 
 import android.app.Application
 import com.racoon.waby.R
@@ -6,8 +6,7 @@ import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.logger.ChatLogLevel
 import io.getstream.chat.android.livedata.ChatDomain
 
-class Global : Application() {
-
+class MyApplication : Application(){
     override fun onCreate() {
         super.onCreate()
         val client =

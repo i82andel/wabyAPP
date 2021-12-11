@@ -12,7 +12,9 @@ import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel.Mode.Norma
 import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel.Mode.Thread
 import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel.State.NavigateUp
 import com.racoon.waby.databinding.ActivityChannelBinding
+import com.racoon.waby.ui.spot.wabis.WabisViewModel
 import io.getstream.chat.android.client.models.Channel
+import io.getstream.chat.android.core.internal.InternalStreamChatApi
 import io.getstream.chat.android.ui.message.input.viewmodel.bindView
 import io.getstream.chat.android.ui.message.list.header.viewmodel.MessageListHeaderViewModel
 import io.getstream.chat.android.ui.message.list.header.viewmodel.bindView
@@ -23,6 +25,8 @@ class ChannelActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChannelBinding
 
+
+    @OptIn(InternalStreamChatApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
