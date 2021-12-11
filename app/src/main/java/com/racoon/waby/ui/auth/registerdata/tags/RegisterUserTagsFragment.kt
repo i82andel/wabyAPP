@@ -35,6 +35,9 @@ class RegisterUserTagsFragment : Fragment() {
     private var MONTH = 0
     private var YEAR = 0
     private var TAGS = ArrayList<String>()
+    private var WABIS = arrayListOf(
+        "oKz0MGA3YpMnOpJnzSp4bXRrDlE3"
+    )
     //private var PHONENUMBER = "phonenumber"
 
 
@@ -139,6 +142,7 @@ class RegisterUserTagsFragment : Fragment() {
             "email" to email,
             "username" to USERNAME,
             "tags" to TAGS,
+            "wabis" to WABIS
             //"phonenumber" to PHONENUMBER
         )
         val db = Firebase.firestore
