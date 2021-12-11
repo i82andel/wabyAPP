@@ -34,6 +34,6 @@ class WabisViewModel : ViewModel() {
     }
 
     suspend fun getUser(): User{
-        return wabiRepository.getSingleUser("1q8YgG2CAPTajk0218aeeC8X3Hj2")
+        return wabiRepository.getSingleUser("zdzillZYB1nVzTpak2Lz")
     }
 }

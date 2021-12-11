@@ -11,6 +11,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.racoon.waby.data.model.Badge
 import com.racoon.waby.data.model.Spot
+import com.racoon.waby.data.model.User
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -36,19 +38,18 @@ class SpotRepository{
         return mutableList
     }
 
-    fun getSingleSpot(idSpot: String): Spot {
+    suspend fun getSingleSpot(idSpot: String): Spot {
 
-        var spot= Spot("not_found")
-        spotList
-        val docRef = spotList.document(idSpot)
+        var spot = Spot("not_found")
+        val job1 = spotList.document(idSpot)
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-
-                    val spot = documentToSpot(document)
-
+                    println("entra")
+                    spot = documentToSpot(document)
                 }
             }
+        job1.await()
         return spot
     }
 
@@ -65,6 +66,7 @@ class SpotRepository{
         val spotType = document.getString("spotType")
         val website = document.getString("website")
         val ratings = document.data?.get("ratings")
+        val assistants = document.data?.get("assistants")
 
         val spot = Spot(
             "idSpot",
@@ -78,7 +80,8 @@ class SpotRepository{
             spotType,
             badges as ArrayList<String>?,
             images as ArrayList<String>?,
-            description
+            description,
+            assistants as ArrayList<String>?
         )
 
         return spot

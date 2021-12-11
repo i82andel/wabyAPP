@@ -13,7 +13,8 @@ data class Spot (val idSpot: String,
                  val spotType: String? = null,
                  val badges: ArrayList<String>? = null,
                  val images: ArrayList<String>? = null,
-                 val description: String? = null
+                 val description: String? = null,
+                 val assistants : ArrayList<String>? = null
 )
 
 enum class SpotType {

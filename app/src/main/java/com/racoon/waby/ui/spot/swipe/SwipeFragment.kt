@@ -7,35 +7,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import com.racoon.waby.R
-import com.racoon.waby.databinding.FragmentChannelBinding
 import com.racoon.waby.databinding.FragmentSwipeBinding
-import com.racoon.waby.ui.spot.spothome.MySpotAdapter
+import com.racoon.waby.ui.spot.wabis.WabisViewModel
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SwipeFragment : Fragment() {
 
-    private lateinit var swipeViewModel: SwipeViewModel
+    private val swipeViewModel by viewModels<SwipeViewModel>()
     private var _binding: FragmentSwipeBinding? = null
     private var arrayAdapter: arrayAdapter? = null
-    private var rowItems = mutableListOf<Card>()
-    private var usersList: ArrayList<String>? = null
+
+    //private var rowItems = mutableListOf<Card>()
+    //private var usersList: ArrayList<String>? = null
     private var auxiliar: MutableList<String>? = null
-    private var dataList = mutableListOf<Card>()
+    private var dataList = mutableListOf<com.racoon.waby.data.model.User>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,22 +44,22 @@ class SwipeFragment : Fragment() {
 
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
 
-        getCurrentUsers()
-        usersList?.let { getDataUsers(it) }
-        return root
+        GlobalScope.launch(Dispatchers.Main) {
+            observeData()
+
+        }
+
+        println("datalist en fragment: ${dataList}")
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-        arrayAdapter = arrayAdapter(context, R.layout.item, rowItems)
         binding.frame.adapter = arrayAdapter
         binding.frame.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
             override fun removeFirstObjectInAdapter() {
                 Log.d("LIST", "removed object!")
-                rowItems?.removeAt(0)
+                dataList?.removeAt(0)
                 arrayAdapter!!.notifyDataSetChanged()
             }
 
@@ -83,11 +82,12 @@ class SwipeFragment : Fragment() {
             override fun onScroll(scrollProgressPercent: Float) {}
         })
         binding.likeButton.setOnClickListener {
-            rowItems?.removeAt(0)
+            dataList?.removeAt(0)
             arrayAdapter!!.notifyDataSetChanged()
         }
     }
 
+    /*
     private fun getCurrentUsers() {
 
         val mutableList = MutableLiveData<MutableList<String>>()
@@ -102,8 +102,8 @@ class SwipeFragment : Fragment() {
 
         println("holaaaaaaaaaa")
 
-    }
-
+    }*/
+    /*
     fun getDataUsers(userIds: ArrayList<String>) {
         val db = Firebase.firestore
 
@@ -122,8 +122,14 @@ class SwipeFragment : Fragment() {
         }
 
 
-    }
+    }*/
 
+    suspend fun observeData() {
+        swipeViewModel.getUsersFromSpot().observe(viewLifecycleOwner, Observer {
+            dataList = it
+            arrayAdapter = arrayAdapter(context, R.layout.item, dataList)
+        })
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
