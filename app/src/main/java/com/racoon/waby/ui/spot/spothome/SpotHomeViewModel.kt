@@ -11,20 +11,27 @@ import com.racoon.waby.common.Result
 import com.racoon.waby.data.model.Spot
 import com.racoon.waby.data.repository.SpotRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class SpotHomeViewModel : ViewModel() {
 
     private val spotRepository = SpotRepository()
-
+    private var thisSpot = Spot("spot")
     private val _state: MutableState<SpotListState> = mutableStateOf(SpotListState())
 
 
     init {
-        getSpotList()
+        GlobalScope.launch (Dispatchers.Main){
+            thisSpot = spotRepository.getSingleSpot("zdzillZYB1nVzTpak2Lz")
+            getSpotList()
+        }
+
     }
 
     fun getSpotList():LiveData<MutableList<Spot>> {
@@ -35,4 +42,13 @@ class SpotHomeViewModel : ViewModel() {
         return mutableData
     }
 
+    suspend fun addRatingToSpot(rating: Float) {
+        thisSpot.rating?.add(rating.toInt())
+        spotRepository.addRatingToSpot(thisSpot)
+
+    }
+
+    suspend fun getThisSpot() :Spot{
+        return spotRepository.getSingleSpot("zdzillZYB1nVzTpak2Lz")
+    }
 }

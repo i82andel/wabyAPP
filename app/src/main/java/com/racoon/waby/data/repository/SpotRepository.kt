@@ -69,7 +69,7 @@ class SpotRepository{
         val assistants = document.data?.get("assistants")
 
         val spot = Spot(
-            "idSpot",
+            document.id,
             name,
             adminUser,
             phoneNumber,
@@ -99,6 +99,12 @@ class SpotRepository{
         }
         Log.d("creation", "$mutableList")
         return mutableList
+    }
+
+    suspend fun addRatingToSpot(spot: Spot){
+        var newArray = spot.rating
+        spotList.document(spot.idSpot).update("ratings", newArray)
+
     }
 
 }
