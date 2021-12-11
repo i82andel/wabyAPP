@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.data.model.User
@@ -31,6 +32,20 @@ class SwipeViewModel : ViewModel() {
         val spot = spotRepository.getSingleSpot("zdzillZYB1nVzTpak2Lz")
         println("asistentes ${spot.assistants}")
         return spot.assistants
+    }
 
+    suspend fun makeWabi(idUser: String?, idWabi : String?) : Boolean{
+        var newWabiBoolean = false
+        if (wabiRepository.getWabisList(idWabi!!).contains(idUser)){
+            newWabiBoolean = true
+        }
+        wabiRepository.addWabi(idUser!!,idWabi)
+
+        return newWabiBoolean
+    }
+
+    suspend fun getUser(): User{
+        val uid = Firebase.auth.currentUser?.uid as String
+        return wabiRepository.getSingleUser(uid)
     }
 }

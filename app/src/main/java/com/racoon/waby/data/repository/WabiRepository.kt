@@ -111,4 +111,24 @@ class WabiRepository {
         }
         return DataList
     }
+
+    suspend fun getWabisList(idUser: String) : ArrayList<String>{
+        var listWabis = arrayListOf<String>()
+        val job1 = userList.document(idUser).get().addOnSuccessListener {
+            listWabis = (it.data?.get("wabis") as ArrayList<String>)
+        }
+
+        job1.await()
+        return listWabis
+    }
+
+    suspend fun addWabi(idUser: String, idWabi: String){
+        var newArray = getWabisList(idUser)
+
+        if (!newArray.contains(idWabi)) {
+            newArray.add(idWabi)
+        }
+        userList.document(idUser).update("wabis", newArray)
+    }
+
 }
