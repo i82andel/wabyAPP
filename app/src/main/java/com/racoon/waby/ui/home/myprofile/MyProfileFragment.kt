@@ -38,6 +38,9 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.item.view.*
 import kotlinx.android.synthetic.main.spot_item.view.*
 import kotlinx.android.synthetic.main.wabi_item.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.net.URL
 import java.time.Instant
 import java.time.ZoneId
@@ -57,10 +60,8 @@ class MyProfileFragment : Fragment() {
     }
 
     //Tags de prueba
-    var tags : List<Tag> = listOf(
-        //Tag("01", "Futbol"),
-        //Tag("02", "Musica"),
-        //Tag("03", "Pintar")
+    var tags : List<String> = listOf(
+        ""
     )
 
     //Variables del bundle
@@ -80,59 +81,63 @@ class MyProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater,container,false)
-        setCurrentUser()
+        GlobalScope.launch (Dispatchers.Main){
+            setCurrentUser()
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+        binding.EditButton.setOnClickListener{
+            gotoEdit()
+        }
 
-        initRecycler()
         binding.settingsButton.setOnClickListener {
             gotoSettings()
         }
     }
 
-    //Obtiene info sobre el usuario actual
-    private fun setCurrentUser(){
-        //user = viewModel.getCurrentUser()
-            //USUARIO DE PRUEBA
-        val db = Firebase.firestore
-        val uid = Firebase.auth.currentUser?.uid as String
-        val userList = db.collection("User")
+    //Obtiene los datos del usuario actual
+    suspend fun setCurrentUser(){
+        val user = MyProfileViewModel().getCurrentUser()
 
-        userList.document(uid).get().addOnSuccessListener { document ->
-            if (document.exists()) {
-                binding.nameText.setText(document.get("name") as String? + " " + document.get("surname") as String?)
-                binding.DescriptionText.setText(document.get("description") as String?)
-                binding.emailText.setText(document.get("email") as String?)
-                binding.usernameText.setText(document.get("username") as String?)
+        binding.nameText.setText(user.name + " " + user.surname)
+        binding.DescriptionText.setText(user.description)
+        binding.emailText.setText(user.email)
+        binding.usernameText.setText(user.userName)
 
-                val media = arguments?.get("image") as String
-                val storageReference = FirebaseStorage.getInstance()
-                val gsReference = storageReference.getReferenceFromUrl(media!!)
-                gsReference.downloadUrl.addOnSuccessListener {
-                    Glide.with(requireContext()).load(it).into(binding.ProfileImage)
-                }
-                Log.d("creation", "$media")
-                binding.textBD.setText(document.data?.get("birthdate").toString())
-
-                binding.textBD.setText("01/01/2000")
-                tags = document.get("tags") as List<Tag>
-
-                //Asigna valores al bundle
-                NAME = binding.nameText.text as String
-                USERNAME = binding.usernameText.text as String
-                DESCRIPTION = binding.DescriptionText.text as String
-                EMAIL = binding.emailText.text as String
-                IMAGE = media
-                Log.d("creation", "$IMAGE")
-            }
+        val media = arguments?.get("image") as String
+        val storageReference = FirebaseStorage.getInstance()
+        val gsReference = storageReference.getReferenceFromUrl(media!!)
+        gsReference.downloadUrl.addOnSuccessListener {
+            Glide.with(requireContext()).load(it).into(binding.ProfileImage)
         }
+
+        val tagsS = user.tags
+
+        tags = user.tags!!
+        initRecycler()
+        //Asigna valores al bundle
+        NAME = binding.nameText.text as String
+        USERNAME = binding.usernameText.text as String
+        DESCRIPTION = binding.DescriptionText.text as String
+        EMAIL = binding.emailText.text as String
+        IMAGE = media
+
     }
 
-    private fun gotoEdit(){
 
+    private fun gotoEdit(){
+        val bundle = bundleOf(
+            "name" to NAME,
+            "surname" to SURNAME,
+            "username" to USERNAME,
+            "description" to DESCRIPTION,
+            "image" to IMAGE,
+        )
+        findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment, bundle)
     }
 
 

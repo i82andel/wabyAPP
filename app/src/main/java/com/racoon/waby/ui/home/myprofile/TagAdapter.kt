@@ -8,7 +8,7 @@ import com.racoon.waby.R
 import com.racoon.waby.data.model.Tag
 import kotlinx.android.synthetic.main.tag_item.view.*
 
-class TagAdapter(val tags : List<Tag>):RecyclerView.Adapter<TagAdapter.TagHolder>() {
+class TagAdapter(val tags : List<String>):RecyclerView.Adapter<TagAdapter.TagHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagHolder {
@@ -25,8 +25,8 @@ class TagAdapter(val tags : List<Tag>):RecyclerView.Adapter<TagAdapter.TagHolder
     }
 
     class TagHolder(val view: View):RecyclerView.ViewHolder(view){
-        fun render(tag: Tag){
-            view.tag_text.text = tag.name
+        fun render(tag: String){
+            view.tag_text.text = tag
         }
     }
 }
