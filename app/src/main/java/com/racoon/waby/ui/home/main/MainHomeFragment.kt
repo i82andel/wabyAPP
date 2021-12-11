@@ -217,8 +217,6 @@ class MainHomeFragment : Fragment() {
 
         userList.document(uid).get().addOnSuccessListener { document ->
             if (document.exists()) {
-
-
                 val media = document.getString("images")
                 val storageReference = FirebaseStorage.getInstance()
                 val gsReference = storageReference.getReferenceFromUrl(media!!)

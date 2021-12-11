@@ -7,7 +7,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.data.model.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
 import java.util.*
 import javax.inject.Singleton
@@ -99,19 +98,17 @@ class WabiRepository {
         return mutableList
     }
 
-    suspend fun getUsersFromList(users : ArrayList<String>?): LiveData<MutableList<User>> {
-        val mutableList = MutableLiveData<MutableList<User>>()
+    suspend fun getUsersFromList(users : ArrayList<String>?): MutableList<User> {
+
         val DataList = mutableListOf<User>()
         println("probadno wabis")
-
         if (users != null) {
             for (user in users) {
                 val wabi = getSingleUser(user)
                 DataList.add(wabi)
                 println(wabi.name)
             }
-            mutableList.postValue(DataList)
         }
-        return mutableList
+        return DataList
     }
 }

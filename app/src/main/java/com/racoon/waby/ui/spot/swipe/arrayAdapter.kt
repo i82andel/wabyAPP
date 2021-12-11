@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.wabi_item.view.*
 
 class arrayAdapter(context: Context?, resourceId: Int, items: List<User?>?) : ArrayAdapter<User?>(context!!, resourceId, items!!) {
 
+    private var userList = items
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView

@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.racoon.waby.data.model.Spot
 import com.racoon.waby.data.model.User
 import com.racoon.waby.data.repository.WabiRepository
@@ -34,6 +36,7 @@ class WabisViewModel : ViewModel() {
     }
 
     suspend fun getUser(): User{
-        return wabiRepository.getSingleUser("zdzillZYB1nVzTpak2Lz")
+        val uid = Firebase.auth.currentUser?.uid as String
+        return wabiRepository.getSingleUser(uid)
     }
 }

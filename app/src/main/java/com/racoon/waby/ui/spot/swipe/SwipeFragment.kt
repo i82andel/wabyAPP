@@ -8,24 +8,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentSwipeBinding
 import com.racoon.waby.ui.spot.wabis.WabisViewModel
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class SwipeFragment : Fragment() {
 
     private val swipeViewModel by viewModels<SwipeViewModel>()
     private var _binding: FragmentSwipeBinding? = null
     private var arrayAdapter: arrayAdapter? = null
-
     //private var rowItems = mutableListOf<Card>()
     //private var usersList: ArrayList<String>? = null
     private var auxiliar: MutableList<String>? = null
@@ -44,47 +37,51 @@ class SwipeFragment : Fragment() {
 
         _binding = FragmentSwipeBinding.inflate(inflater, container, false)
 
-        GlobalScope.launch(Dispatchers.Main) {
-            observeData()
 
-        }
-
-        println("datalist en fragment: ${dataList}")
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.frame.adapter = arrayAdapter
-        binding.frame.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
-            override fun removeFirstObjectInAdapter() {
-                Log.d("LIST", "removed object!")
+
+        GlobalScope.launch(Dispatchers.Main) {
+            dataList = swipeViewModel.getUsersFromSpot()
+            println("datalist en fragment: ${dataList}")
+
+            arrayAdapter = arrayAdapter(context, R.layout.item, dataList)
+            binding.frame.adapter = arrayAdapter
+            binding.frame.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
+                override fun removeFirstObjectInAdapter() {
+                    Log.d("LIST", "removed object!")
+                    dataList?.removeAt(0)
+                    arrayAdapter!!.notifyDataSetChanged()
+                }
+
+                override fun onLeftCardExit(dataObject: Any) {
+                    val obj = dataObject as Card
+                    val userId = obj.userId
+                    //usersDb?.child(userId)?.child("connections")?.child("nope")?.child(currentUId)?.setValue(true)
+                    Toast.makeText(requireContext(), "Left", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onRightCardExit(dataObject: Any) {
+                    val obj = dataObject as Card
+                    val userId = obj.userId
+                    //usersDb?.child(userId)?.child("connections")?.child("yeps")?.child(currentUId)?.setValue(true)
+                    //isConnectionMatch(userId)
+                    Toast.makeText(requireContext(), "Right", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onAdapterAboutToEmpty(itemsInAdapter: Int) {}
+                override fun onScroll(scrollProgressPercent: Float) {}
+            })
+            binding.likeButton.setOnClickListener {
                 dataList?.removeAt(0)
                 arrayAdapter!!.notifyDataSetChanged()
             }
 
-            override fun onLeftCardExit(dataObject: Any) {
-                val obj = dataObject as Card
-                val userId = obj.userId
-                //usersDb?.child(userId)?.child("connections")?.child("nope")?.child(currentUId)?.setValue(true)
-                Toast.makeText(requireContext(), "Left", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onRightCardExit(dataObject: Any) {
-                val obj = dataObject as Card
-                val userId = obj.userId
-                //usersDb?.child(userId)?.child("connections")?.child("yeps")?.child(currentUId)?.setValue(true)
-                //isConnectionMatch(userId)
-                Toast.makeText(requireContext(), "Right", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onAdapterAboutToEmpty(itemsInAdapter: Int) {}
-            override fun onScroll(scrollProgressPercent: Float) {}
-        })
-        binding.likeButton.setOnClickListener {
-            dataList?.removeAt(0)
-            arrayAdapter!!.notifyDataSetChanged()
         }
+
     }
 
     /*
@@ -123,13 +120,6 @@ class SwipeFragment : Fragment() {
 
 
     }*/
-
-    suspend fun observeData() {
-        swipeViewModel.getUsersFromSpot().observe(viewLifecycleOwner, Observer {
-            dataList = it
-            arrayAdapter = arrayAdapter(context, R.layout.item, dataList)
-        })
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
