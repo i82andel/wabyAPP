@@ -69,9 +69,13 @@ class SwipeFragment : Fragment() {
                 override fun onRightCardExit(dataObject: Any) {
                     val obj = dataObject as User
                     GlobalScope.launch (Dispatchers.Main){
-                        swipeViewModel.makeWabi(user.idUser, obj.idUser)
+                       val wabiMatch =  swipeViewModel.makeWabi(user.idUser, obj.idUser)
+                        if(wabiMatch == true) {
+                            Toast.makeText(requireContext(), "Nuevo Match!!", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     }
-                    Toast.makeText(requireContext(), "", Toast.LENGTH_SHORT).show()
+
                 }
 
                 override fun onAdapterAboutToEmpty(itemsInAdapter: Int) {}
