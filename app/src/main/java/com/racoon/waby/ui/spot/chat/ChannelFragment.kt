@@ -15,8 +15,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentChannelBinding
+import com.racoon.waby.ui.spot.wabis.WabisViewModel
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.logger.ChatLogLevel
 import io.getstream.chat.android.client.models.*
@@ -27,11 +30,21 @@ import io.getstream.chat.android.ui.channel.list.header.viewmodel.bindView
 import io.getstream.chat.android.ui.channel.list.viewmodel.ChannelListViewModel
 import io.getstream.chat.android.ui.channel.list.viewmodel.bindView
 import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListViewModelFactory
+import kotlinx.android.synthetic.main.fragment_login_admin_user.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ChannelFragment : Fragment() {
 
     private var _binding: FragmentChannelBinding? = null
     private val binding get() = _binding!!
+
+    private val client = ChatClient.instance()
+    private val viewModel by viewModels<WabisViewModel>()
+    val idUser = Firebase.auth.currentUser?.uid.toString()
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,42 +59,69 @@ class ChannelFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val client = ChatClient.Builder("b67pax5b2wdq", requireContext())
-            .logLevel(ChatLogLevel.ALL) // Set to NOTHING in prod
-            .build()
-        ChatDomain.Builder(client, requireContext()).build()
+        val aa = viewLifecycleOwner
 
-        val user = User(id = "tutorial-droid").apply {
-            name = "Tutorial Droid"
-            image = "https://bit.ly/2TIt8NR"
+        GlobalScope.launch(Dispatchers.Main) {
+            val firebaseUser = viewModel.getUser()
+            println(firebaseUser.name)
+            val user = User(id = firebaseUser.name!!).apply {
+                name = firebaseUser.name
+                image = firebaseUser.images
+            }
+            val token = client.devToken(user.id)
+            println("id = ${firebaseUser.name}\n token = $token")
+
+           /* client.connectUser(
+                user = user,
+                token = token
+            ).enqueue() { result ->
+                if (result.isSuccess) {
+                    val user: User = result.data().user
+                    val connectionId: String = result.data().connectionId
+                } else {
+                    println("NO bro")
+                }
+            }*/
+
+            /*val micompa = "A"
+            val me = firebaseUser.name
+
+            client.createChannel(
+                channelType = "messaging",
+                members = listOf("Bueno","Cristian")
+            ).enqueue { result ->
+                if (result.isSuccess) {
+                    val channel = result.data()
+                } else {
+                    // Handle result.error()
+                }
+            }*/
+
+            val filter = Filters.and(
+                Filters.eq("type", "messaging"),
+                Filters.`in`("members", listOf(user.id))
+            )
+            val viewModelFactory = ChannelListViewModelFactory(filter, ChannelListViewModel.DEFAULT_SORT)
+            val viewModel: ChannelListViewModel by viewModels { viewModelFactory }
+            val listHeaderViewModel: ChannelListHeaderViewModel by viewModels()
+
+            listHeaderViewModel.bindView(binding.channelListHeaderView, aa)
+            viewModel.bindView(binding.channelsView, aa)
+            binding.channelsView.setChannelItemClickListener { channel ->
+                startActivity(ChannelActivity.newIntent(requireContext(), channel))
+            }
+
+            binding.channelListHeaderView.setOnActionButtonClickListener{
+
+            }
+
+            binding.channelsView.setChannelDeleteClickListener { channel ->
+                deleteChannel(channel)
+            }
         }
 
-        client.connectUser(
-            user = user,
-            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidHV0b3JpYWwtZHJvaWQifQ.NhEr0hP9W9nwqV7ZkdShxvi02C5PR7SJE7Cs4y7kyqg"
-        ).enqueue()
 
-        val filter = Filters.and(
-            Filters.eq("type", "messaging"),
-            Filters.`in`("members", listOf(user.id))
-        )
-        val viewModelFactory = ChannelListViewModelFactory(filter, ChannelListViewModel.DEFAULT_SORT)
-        val viewModel: ChannelListViewModel by viewModels { viewModelFactory }
-        val listHeaderViewModel: ChannelListHeaderViewModel by viewModels()
 
-        listHeaderViewModel.bindView(binding.channelListHeaderView, this)
-        viewModel.bindView(binding.channelsView, this)
-        binding.channelsView.setChannelItemClickListener { channel ->
-            startActivity(ChannelActivity.newIntent(requireContext(), channel))
-        }
-
-        binding.channelListHeaderView.setOnActionButtonClickListener{
-
-        }
-
-        binding.channelsView.setChannelDeleteClickListener { channel ->
-            deleteChannel(channel)
-        }
     }
 
     private fun deleteChannel(channel: Channel) {
