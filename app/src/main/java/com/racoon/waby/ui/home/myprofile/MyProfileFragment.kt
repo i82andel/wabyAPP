@@ -72,6 +72,7 @@ class MyProfileFragment : Fragment() {
     private var PHONENUMBER = ""
     private var EMAIL = ""
     private var IMAGE = ""
+    private var TAGS = listOf("")
 
 
 
@@ -89,7 +90,7 @@ class MyProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         binding.EditButton.setOnClickListener{
             gotoEdit()
         }
@@ -114,17 +115,20 @@ class MyProfileFragment : Fragment() {
         gsReference.downloadUrl.addOnSuccessListener {
             Glide.with(requireContext()).load(it).into(binding.ProfileImage)
         }
+        val dateString = user.birthdate!!.date.toString() + "/" + (user.birthdate!!.month.toInt()+1) + "/" + user.birthdate!!.year
 
-        val tagsS = user.tags
+        binding.textBD.setText(dateString)
 
         tags = user.tags!!
         initRecycler()
         //Asigna valores al bundle
-        NAME = binding.nameText.text as String
-        USERNAME = binding.usernameText.text as String
-        DESCRIPTION = binding.DescriptionText.text as String
-        EMAIL = binding.emailText.text as String
+        NAME = user.name.toString()
+        SURNAME = user.surname.toString()
+        USERNAME = user.userName.toString()
+        DESCRIPTION = user.description.toString()
+        EMAIL = user.email.toString()
         IMAGE = media
+        TAGS = tags
 
     }
 
@@ -136,6 +140,7 @@ class MyProfileFragment : Fragment() {
             "username" to USERNAME,
             "description" to DESCRIPTION,
             "image" to IMAGE,
+            "tags" to TAGS
         )
         findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment, bundle)
     }
@@ -150,7 +155,8 @@ class MyProfileFragment : Fragment() {
             "username" to USERNAME,
             "description" to DESCRIPTION,
             "email" to EMAIL,
-            "image" to IMAGE
+            "image" to IMAGE,
+            "tags" to TAGS
         )
         findNavController().navigate(R.id.action_profileFragment_to_settingsFragment, bundle)
     }

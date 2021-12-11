@@ -8,6 +8,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.data.model.*
 import kotlinx.coroutines.tasks.await
+import java.sql.Timestamp
 import java.util.*
 import javax.inject.Singleton
 import kotlin.collections.ArrayList
@@ -53,7 +54,8 @@ class WabiRepository {
         val name = document.getString("name")
         val surname = document.getString("surname")
         val userName = document.getString("username")
-        val birthdate = document.data?.get("birthdate")
+        val birthdate= document.data?.get("birthdate") as com.google.firebase.Timestamp
+        val date = birthdate.toDate()
         val email = document.getString("email")
         val gender = document.getString("gender")
         val phoneNumber = document.getString("phoneNumber")
@@ -70,7 +72,7 @@ class WabiRepository {
             name,
             surname,
             userName,
-            null,
+            date,
             email,
             gender,
             phoneNumber,

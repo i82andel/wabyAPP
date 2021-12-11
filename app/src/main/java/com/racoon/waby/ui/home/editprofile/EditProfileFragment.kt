@@ -29,7 +29,9 @@ class EditProfileFragment : Fragment() {
     private var SURNAME = ""
     private var IMAGE = ""
     private var USERNAME = ""
-    private var TAGS = ""
+    private var TAGS = listOf<String>("")
+    private var DESCRIPTION = ""
+
 
     //ViewModel
     private val viewModel by viewModels<EditProfileViewModel> {
@@ -51,7 +53,9 @@ class EditProfileFragment : Fragment() {
         SURNAME = arguments?.get("surname") as String
         IMAGE = arguments?.get("image") as String
         USERNAME = arguments?.get("username") as String
-        loadImage()
+        DESCRIPTION = arguments?.get("description") as String
+        TAGS = arguments?.getStringArrayList("tags")!!
+        loadUser()
 
     }
 
@@ -61,6 +65,29 @@ class EditProfileFragment : Fragment() {
         val gsReference = storageReference.getReferenceFromUrl(media!!)
         gsReference.downloadUrl.addOnSuccessListener {
             Glide.with(requireContext()).load(it).into(binding.imageProfile)
+        }
+    }
+
+    private fun loadUser(){
+        binding.textName.setText(NAME)
+        binding.textSurname.setText(SURNAME)
+        binding.textDescription.setText(DESCRIPTION)
+        binding.textUsername.setText(USERNAME)
+        loadTags()
+        loadImage()
+    }
+
+    private fun loadTags(){
+
+        for(item in TAGS){
+            if (item == binding.chip1.text){ binding.chip1.isChecked = true}
+            if (item == binding.chip2.text){ binding.chip2.isChecked = true}
+            if (item == binding.chip3.text){ binding.chip3.isChecked = true}
+            if (item == binding.chip4.text){ binding.chip4.isChecked = true}
+            if (item == binding.chip5.text){ binding.chip5.isChecked = true}
+            if (item == binding.chip6.text){ binding.chip6.isChecked = true}
+            if (item == binding.chip7.text){ binding.chip7.isChecked = true}
+            if (item == binding.chip8.text){ binding.chip8.isChecked = true}
         }
     }
 
