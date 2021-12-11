@@ -38,8 +38,6 @@ class MySpotAdapter(private val context: Context): RecyclerView.Adapter<MySpotAd
         fun bindView(spot: Spot){
             Glide.with(context).load(spot.images?.get(0)).into(itemView.circleImageView)
             itemView.tvSpotName.text = spot.name
-            itemView.tvSpotDescription.text = spot.description
-            itemView.tvSpotWebSite.text = spot.website
         }
 
     }

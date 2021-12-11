@@ -1,10 +1,12 @@
 package com.racoon.waby.ui.spot.spothome
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.LinearLayout.HORIZONTAL
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -42,11 +44,12 @@ class SpotHomeFragment: Fragment() {
         return binding.root
     }
 
+    @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = MySpotAdapter(requireContext())
-        binding.spotList.layoutManager = LinearLayoutManager(context)
+        binding.spotList.layoutManager = LinearLayoutManager(context,HORIZONTAL,false)
         binding.spotList.adapter = adapter
         observeData()
 
