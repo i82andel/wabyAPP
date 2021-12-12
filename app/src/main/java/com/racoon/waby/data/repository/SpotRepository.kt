@@ -53,6 +53,19 @@ class SpotRepository{
         return spot
     }
 
+    suspend fun checkSpot(idSpot: String) : Boolean {
+        var exists = false
+        val job1 = spotList.document(idSpot)
+            .get()
+            .addOnSuccessListener { document ->
+                if(document.exists()) {
+                    exists = true
+                }
+            }
+        job1.await()
+        return exists
+    }
+
     private fun documentToSpot(document : DocumentSnapshot) : Spot{
 
         val adminUser = document.getString("adminUser")

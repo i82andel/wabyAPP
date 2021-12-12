@@ -7,4 +7,8 @@ class MainHomeViewModel : ViewModel() {
 
     private val spotRepository = SpotRepository()
 
+    suspend fun checkSpot(idSpot : String): Boolean {
+        return spotRepository.checkSpot(idSpot)
+    }
+
 }
