@@ -33,6 +33,8 @@ import com.racoon.waby.ui.spot.SpotActivity
 import com.racoon.waby.ui.spot.chat.ChatActivity
 import com.racoon.waby.ui.spot.wabis.WabisViewModel
 import io.getstream.chat.android.client.ChatClient
+import io.getstream.chat.android.client.models.image
+import io.getstream.chat.android.client.models.name
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -107,13 +109,13 @@ class MainHomeFragment : Fragment() {
     private fun createUserGetStream(firebaseUser: User) {
 
 
-        println(firebaseUser.name)
-        val user = io.getstream.chat.android.client.models.User(id = firebaseUser.name!!).apply {
-            name = firebaseUser.name
+        println("ola- > ${firebaseUser.userName}")
+        val user = io.getstream.chat.android.client.models.User(id = firebaseUser.userName!!).apply {
+            name = firebaseUser.userName
             image = firebaseUser.images
         }
         val token = client.devToken(user.id)
-        println("id = ${firebaseUser.name}\n token = $token")
+        println("id = ${firebaseUser.userName}\n token = $token")
 
         client.connectUser(
             user = user,
