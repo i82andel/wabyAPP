@@ -27,6 +27,9 @@ import kotlin.collections.ArrayList
 
 class RegisterUserTagsFragment : Fragment() {
 
+    private var userId = Firebase.auth.currentUser?.uid.toString()
+    private var wabyId = "oKz0MGA3YpMnOpJnzSp4bXRrDlE3"
+
     private var NAME = "name"
     private var SURNAME = "surname"
     private var USERNAME = "username"
@@ -36,7 +39,12 @@ class RegisterUserTagsFragment : Fragment() {
     private var YEAR = 0
     private var TAGS = ArrayList<String>()
     private var WABIS = arrayListOf(
-        "oKz0MGA3YpMnOpJnzSp4bXRrDlE3"
+        wabyId
+    )
+    private var SEENUSERS = arrayListOf(
+        userId,
+        wabyId
+
     )
     //private var PHONENUMBER = "phonenumber"
 
@@ -142,7 +150,8 @@ class RegisterUserTagsFragment : Fragment() {
             "email" to email,
             "username" to USERNAME,
             "tags" to TAGS,
-            "wabis" to WABIS
+            "wabis" to WABIS,
+            "seenusers" to SEENUSERS
             //"phonenumber" to PHONENUMBER
         )
         val db = Firebase.firestore
