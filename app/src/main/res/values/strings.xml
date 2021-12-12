@@ -78,7 +78,7 @@
     <string name="nfc_disabled">Debe activar NFC en su telefono movil</string>
 
     <!-- chat -->
-    <string name="api_key">sz7zrk7n6f33</string>
+    <string name="api_key">2tnurnb52yub</string>
     <string name="default_user"><![CDATA[https://secure.gravatar.com/avatar/3c3fe674164a4dba4b7ba5cfcab02d4b?s=512&d=mm&r=g]]></string>
     <string name="phonenumber_empty_error">"Debe introducir un número de teléfono "</string>
     <string name="phonenumber_invalid_error">El teléfono introducido no es válido</string>

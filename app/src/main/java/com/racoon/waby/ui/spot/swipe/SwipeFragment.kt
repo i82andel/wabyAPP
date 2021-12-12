@@ -74,7 +74,7 @@ class SwipeFragment : Fragment() {
                     GlobalScope.launch (Dispatchers.Main){
                        val wabiMatch =  swipeViewModel.makeWabi(user.idUser, obj.idUser)
                         if(wabiMatch == true) {
-                            createChat(user.userName!!,obj.userName!!)
+                            createChat(user.name!!,obj.name!!)
                             Toast.makeText(requireContext(), "Nuevo Match!!", Toast.LENGTH_SHORT)
                                 .show()
                         }
@@ -103,6 +103,7 @@ class SwipeFragment : Fragment() {
             if (result.isSuccess) {
                 val channel = result.data()
             } else {
+                println("NO HE PODIDO CREAR EL CHAT")
                 // Handle result.error()
             }
         }

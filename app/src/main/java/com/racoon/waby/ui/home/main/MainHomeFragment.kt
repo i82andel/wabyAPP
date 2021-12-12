@@ -110,12 +110,12 @@ class MainHomeFragment : Fragment() {
 
 
         println("ola- > ${firebaseUser.userName}")
-        val user = io.getstream.chat.android.client.models.User(id = firebaseUser.userName!!).apply {
-            name = firebaseUser.userName
+        val user = io.getstream.chat.android.client.models.User(id = firebaseUser.name!!).apply {
+            name = firebaseUser.name
             image = firebaseUser.images
         }
         val token = client.devToken(user.id)
-        println("id = ${firebaseUser.userName}\n token = $token")
+        println("id = ${firebaseUser.name}\n token = $token")
 
         client.connectUser(
             user = user,
