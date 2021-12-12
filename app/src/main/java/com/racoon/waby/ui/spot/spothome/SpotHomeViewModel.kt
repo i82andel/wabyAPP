@@ -34,6 +34,9 @@ class SpotHomeViewModel : ViewModel() {
 
     }
 
+    fun getSimilarSpotList(){
+        
+    }
     fun getSpotList():LiveData<MutableList<Spot>> {
         val mutableData = MutableLiveData<MutableList<Spot>>()
         spotRepository.getAllSpots().observeForever{ spotList ->
