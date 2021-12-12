@@ -64,8 +64,8 @@ class ChannelFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             val firebaseUser = viewModel.getUser()
             println(firebaseUser.name)
-            val user = User(id = firebaseUser.surname!!).apply {
-                name = firebaseUser.surname
+            val user = User(id = firebaseUser.userName!!).apply {
+                name = firebaseUser.userName
                 image = firebaseUser.images
             }
             val token = client.devToken(user.id)
