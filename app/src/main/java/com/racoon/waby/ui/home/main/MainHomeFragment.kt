@@ -63,7 +63,7 @@ class MainHomeFragment : Fragment() {
 
 
     //viewModel
-    private val mainHomeViewModel by viewModels<MainHomeViewModel>()
+    private val viewModel by viewModels<MainHomeViewModel>()
     private val wabisViewModel by viewModels<WabisViewModel>()
 
     override fun onCreateView(
@@ -214,11 +214,7 @@ class MainHomeFragment : Fragment() {
                     "El valor escaneado es ${result.contents.toString()}",
                     Toast.LENGTH_SHORT).show()
                     val idSpot = result.contents.toString()
-                    GlobalScope.launch (Dispatchers.Main) {
-                        if(mainHomeViewModel.checkSpot(idSpot)){
-                            startActivity(Intent(context, SpotActivity::class.java).putExtra("idSpot", idSpot))
-                        }
-                    }
+                startActivity(Intent(context, SpotActivity::class.java).putExtra("idSpot", idSpot))
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
