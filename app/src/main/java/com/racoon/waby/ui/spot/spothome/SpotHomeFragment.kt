@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
+import com.racoon.waby.common.MyApplication
 import com.racoon.waby.data.model.Spot
 import com.racoon.waby.data.repository.SpotRepository
 import com.racoon.waby.databinding.FragmentSpotHomeBinding

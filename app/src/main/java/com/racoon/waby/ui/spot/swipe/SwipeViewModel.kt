@@ -21,15 +21,15 @@ class SwipeViewModel : ViewModel() {
 
     private val _state: MutableState<UserListState> = mutableStateOf(UserListState())
 
-    suspend fun getUsersFromSpot(): MutableList<User> {
+    suspend fun getUsersFromSpot(idSpot :String): MutableList<User> {
         lateinit var mutableData : MutableList<User>
-        mutableData = wabiRepository.getUsersFromList(getSwipeList())
+        mutableData = wabiRepository.getUsersFromList(getSwipeList(idSpot))
         println("mutable data: ${mutableData}")
         return mutableData
     }
 
-    suspend fun getSwipeList(): ArrayList<String>? {
-        val spot = spotRepository.getSingleSpot("zdzillZYB1nVzTpak2Lz")
+    suspend fun getSwipeList(idSpot: String): ArrayList<String>? {
+        val spot = spotRepository.getSingleSpot(idSpot)
         println("asistentes ${spot.assistants}")
         return spot.assistants
     }

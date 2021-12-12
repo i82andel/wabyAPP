@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import com.racoon.waby.R
+import com.racoon.waby.common.MyApplication
 import com.racoon.waby.data.model.User
 import com.racoon.waby.databinding.FragmentSwipeBinding
 import com.racoon.waby.ui.spot.wabis.WabisViewModel
@@ -25,11 +26,18 @@ class SwipeFragment : Fragment() {
     private var auxiliar: MutableList<String>? = null
     private var dataList = mutableListOf<com.racoon.waby.data.model.User>()
     private val client = ChatClient.instance()
+    private lateinit var idSpot: String
 
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        idSpot = checkNotNull(activity?.intent?.getStringExtra("idSpot"))
+    }
 
 
     override fun onCreateView(
@@ -50,7 +58,7 @@ class SwipeFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
 
             user = swipeViewModel.getUser()
-            dataList = swipeViewModel.getUsersFromSpot()
+            dataList = swipeViewModel.getUsersFromSpot(idSpot)
             println("datalist en fragment: ${dataList}")
 
             arrayAdapter = arrayAdapter(context, R.layout.item, dataList)

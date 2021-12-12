@@ -1,6 +1,7 @@
 package com.racoon.waby.ui.home.main
 
 import android.app.AlertDialog
+import android.app.Application
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
@@ -26,6 +27,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.integration.android.IntentIntegrator
 import com.racoon.waby.R
+import com.racoon.waby.common.MyApplication
 import com.racoon.waby.data.model.User
 import com.racoon.waby.databinding.FragmentMainHomeBinding
 import com.racoon.waby.ui.home.map.MapActivity
@@ -51,7 +53,6 @@ class MainHomeFragment : Fragment() {
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
     private val client = ChatClient.instance()
-
 
     //nfc
     private val nfcAdapter: NfcAdapter? by lazy {
