@@ -64,38 +64,12 @@ class ChannelFragment : Fragment() {
         GlobalScope.launch(Dispatchers.Main) {
             val firebaseUser = viewModel.getUser()
             println(firebaseUser.name)
-            val user = User(id = firebaseUser.name!!).apply {
-                name = firebaseUser.name
+            val user = User(id = firebaseUser.surname!!).apply {
+                name = firebaseUser.surname
                 image = firebaseUser.images
             }
             val token = client.devToken(user.id)
             println("id = ${firebaseUser.name}\n token = $token")
-
-           /* client.connectUser(
-                user = user,
-                token = token
-            ).enqueue() { result ->
-                if (result.isSuccess) {
-                    val user: User = result.data().user
-                    val connectionId: String = result.data().connectionId
-                } else {
-                    println("NO bro")
-                }
-            }*/
-
-            /*val micompa = "A"
-            val me = firebaseUser.name
-
-            client.createChannel(
-                channelType = "messaging",
-                members = listOf("Bueno","Cristian")
-            ).enqueue { result ->
-                if (result.isSuccess) {
-                    val channel = result.data()
-                } else {
-                    // Handle result.error()
-                }
-            }*/
 
             val filter = Filters.and(
                 Filters.eq("type", "messaging"),
