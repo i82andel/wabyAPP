@@ -60,7 +60,7 @@ class SwipeFragment : Fragment() {
             user = swipeViewModel.getUser()
             dataList = swipeViewModel.getUsersFromSpot(idSpot)
             println("datalist en fragment: ${dataList}")
-
+            dataList = swipeViewModel.getNotSeenUsers(dataList, user.idUser!!)
             arrayAdapter = arrayAdapter(context, R.layout.item, dataList)
             binding.frame.adapter = arrayAdapter
             arrayAdapter!!.notifyDataSetChanged()
@@ -73,14 +73,17 @@ class SwipeFragment : Fragment() {
 
                 override fun onLeftCardExit(dataObject: Any) {
                     val obj = dataObject as User
-                    //usersDb?.child(userId)?.child("connections")?.child("nope")?.child(currentUId)?.setValue(true)
+                    GlobalScope.launch (Dispatchers.Main) {
+                        swipeViewModel.addSeenUser(user.idUser, obj.idUser)
+                    }
                     Toast.makeText(requireContext(), "Left", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onRightCardExit(dataObject: Any) {
                     val obj = dataObject as User
                     GlobalScope.launch (Dispatchers.Main){
-                       val wabiMatch =  swipeViewModel.makeWabi(user.idUser, obj.idUser)
+                        swipeViewModel.addSeenUser(user.idUser, obj.idUser)
+                        val wabiMatch =  swipeViewModel.makeWabi(user.idUser, obj.idUser)
                         if(wabiMatch == true) {
                             createChat(user.userName!!,obj.userName!!)
                             Toast.makeText(requireContext(), "Nuevo Match!!", Toast.LENGTH_SHORT)

@@ -12,6 +12,9 @@ import com.racoon.waby.data.model.User
 import com.racoon.waby.data.repository.SpotRepository
 import com.racoon.waby.data.repository.WabiRepository
 import com.racoon.waby.ui.spot.wabis.UserListState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class SwipeViewModel : ViewModel() {
 
@@ -48,4 +51,26 @@ class SwipeViewModel : ViewModel() {
         val uid = Firebase.auth.currentUser?.uid as String
         return wabiRepository.getSingleUser(uid)
     }
+
+    suspend fun addSeenUser(idUser: String?, idSeenUser: String?){
+        wabiRepository.addSeenUser(idUser!!, idSeenUser!!)
+    }
+
+    suspend fun getSeenUsers(idUser: String?) : ArrayList<String>{
+        return wabiRepository.getSeenUsers(idUser!!)
+    }
+
+    suspend fun getNotSeenUsers(arraySwipe: MutableList<User>, idUser: String) : ArrayList<User>{
+            var auxiliarList = arrayListOf<User>()
+            var arraySeenUsers = getSeenUsers(idUser)
+            for(i in arraySwipe.indices){
+                for(j in arraySeenUsers.indices){
+                    if(!arraySwipe[i].idUser.equals(arraySeenUsers[j])){
+                        auxiliarList.add(arraySwipe[i])
+                    }
+                }
+            }
+        return auxiliarList
+    }
+
 }
