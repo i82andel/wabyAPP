@@ -115,9 +115,9 @@ class MyProfileFragment : Fragment() {
         gsReference.downloadUrl.addOnSuccessListener {
             Glide.with(requireContext()).load(it).into(binding.ProfileImage)
         }
-        val dateString = user.birthdate!!.date.toString() + "/" + (user.birthdate!!.month.toInt()+1) + "/" + user.birthdate!!.year
+       val dateString = user.birthdate!!.date.toString() + "/" + (user.birthdate!!.month.toInt()+1) + "/" + user.birthdate!!.year
 
-        binding.textBD.setText(dateString)
+       binding.textBD.setText(dateString)
 
         tags = user.tags!!
         initRecycler()

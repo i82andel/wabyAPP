@@ -83,4 +83,11 @@
     <string name="phonenumber_empty_error">"Debe introducir un número de teléfono "</string>
     <string name="phonenumber_invalid_error">El teléfono introducido no es válido</string>
 
+    <!-- edit ptofile-->
+    <string name="edit_name">"El nombre no puede estar vacío"</string>
+    <string name="edit_surname">"Los apellidos no pueden estar vacíos"</string>
+    <string name="edit_username">"El nombre de usuario no puede estar vacío"</string>
+    <string name="edit_description">"La descripción no puede estar vacía"</string>
+    <string name="edit_tags">"Debes seleccionar al menos 3 tags"</string>
+
 </resources>

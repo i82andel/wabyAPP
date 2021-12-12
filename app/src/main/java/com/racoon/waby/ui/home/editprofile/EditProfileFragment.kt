@@ -1,5 +1,10 @@
 package com.racoon.waby.ui.home.editprofile
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,13 +19,19 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.racoon.waby.R
+import com.racoon.waby.common.SingleLiveEvent
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentEditProfileBinding
 import com.racoon.waby.databinding.FragmentProfileBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
 import com.racoon.waby.ui.auth.login.MyProfileVMFactory
 import com.racoon.waby.ui.home.myprofile.MyProfileViewModel
+import java.io.ByteArrayOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class EditProfileFragment : Fragment() {
 
@@ -28,7 +39,7 @@ class EditProfileFragment : Fragment() {
     private  var _binding: FragmentEditProfileBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
-
+    private val errorSLE = SingleLiveEvent<Int>()
     //variables del binding
     private var NAME = ""
     private var SURNAME = ""
@@ -36,6 +47,11 @@ class EditProfileFragment : Fragment() {
     private var USERNAME = ""
     private var TAGS = listOf<String>("")
     private var DESCRIPTION = ""
+
+    private val IMAGE_CHOOSE = 1000
+    private var imageUri: Uri? = null
+
+    private lateinit var storage: FirebaseStorage
 
 
     //ViewModel
@@ -48,6 +64,7 @@ class EditProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentEditProfileBinding.inflate(inflater,container,false)
+        storage = Firebase.storage
         return binding.root
     }
 
@@ -62,9 +79,40 @@ class EditProfileFragment : Fragment() {
         TAGS = arguments?.getStringArrayList("tags")!!
         loadUser()
 
+        binding.buttonGallery.setOnClickListener {
+            chooseImageGallery()
+
+        }
+
         binding.buttonSave.setOnClickListener {
-            editProfile()
-            findNavController().navigate(R.id.action_editProfileFragment_to_mainHomeFragment2)
+            if (binding.textName.text.isEmpty()) {
+                Toast.makeText(context, R.string.edit_name, Toast.LENGTH_SHORT)
+                    .show()
+
+            }
+            else if (binding.textSurname.text.isEmpty()) {
+                Toast.makeText(context, R.string.edit_surname, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            else if (binding.textUsername.text.isEmpty()) {
+                Toast.makeText(context, R.string.edit_username, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            else if (binding.textDescription.text.isEmpty()) {
+                Toast.makeText(context, R.string.edit_description, Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            else{
+                fileUpload()
+                editProfile()
+
+                findNavController().navigate(R.id.action_editProfileFragment_to_mainHomeFragment2)
+            }
+
+
         }
 
     }
@@ -144,6 +192,74 @@ class EditProfileFragment : Fragment() {
 
 
         return tags
+    }
+
+    private fun fileUpload() {
+
+        val storageRef = storage.reference
+        val name = Firebase.auth.currentUser?.uid.toString()
+        val sdf = SimpleDateFormat("dd/M/yyyy_hh:mm:ss")
+        val currentDate = sdf.format(Date()).toString()
+        val pathImage = storageRef.child("profiles/$name/$currentDate.png")
+
+        // Get the data from an ImageView as bytes
+        //binding.imageView1.isDrawingCacheEnabled = true
+        //binding.imageView1.buildDrawingCache()
+        val bitmap = (binding.imageProfile.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 20, baos)
+        val data = baos.toByteArray()
+
+        var uploadTask = pathImage.putBytes(data)
+        uploadTask.addOnFailureListener {
+            // Handle unsuccessful uploads
+            Toast.makeText(context, R.string.register_images_error, Toast.LENGTH_SHORT).show()
+        }.addOnSuccessListener { taskSnapshot ->
+            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            Toast.makeText(context, R.string.register_images_success, Toast.LENGTH_SHORT).show()
+        }
+
+
+        val url = pathImage.downloadUrl.toString()
+        uploadDataFirestore(currentDate)
+
+    }
+
+    private fun uploadDataFirestore(currentDate: String ) {
+        val userId = Firebase.auth.currentUser?.uid.toString()
+        val ola = "gs://racoonapps-cd246.appspot.com/profiles/3sD45jdH8zVcugo04umnOvNUqw63/10/12/2021_06:29:39.png"
+        val url = "gs://racoonapps-cd246.appspot.com/profiles/$userId/$currentDate.png"
+        val db = Firebase.firestore
+        db.collection("User")
+            .document(userId)
+            .update("images", url)
+            .addOnSuccessListener {
+                Toast.makeText(context, R.string.firestore_upload_success, Toast.LENGTH_SHORT)
+                    .show()
+
+            }.addOnFailureListener {
+
+                Toast.makeText(context, R.string.firestore_upload_failure, Toast.LENGTH_SHORT)
+                    .show()
+
+            }
+    }
+
+    private fun chooseImageGallery() {
+
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_CHOOSE)
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == IMAGE_CHOOSE && resultCode == Activity.RESULT_OK) {
+            imageUri = data?.data
+            binding.imageProfile.setImageURI(imageUri)
+        }
     }
 
 }
