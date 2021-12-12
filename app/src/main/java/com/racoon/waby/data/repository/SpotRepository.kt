@@ -53,6 +53,26 @@ class SpotRepository{
         return spot
     }
 
+    suspend fun getAssistantsList(idSpot: String) : ArrayList<String>{
+        var listAssistants = arrayListOf<String>()
+        val job1 = spotList.document(idSpot).get().addOnSuccessListener {
+            listAssistants = (it.data?.get("assistants") as ArrayList<String>)
+        }
+
+        job1.await()
+        return listAssistants
+    }
+
+    suspend fun addAsistant(idSpot: String, idUser: String){
+        var newArray = getAssistantsList(idSpot)
+
+        if (!newArray.contains(idUser)) {
+            newArray.add(idUser)
+        }
+        spotList.document(idSpot).update("assistants", newArray)
+    }
+
+
     private fun documentToSpot(document : DocumentSnapshot) : Spot{
 
         val adminUser = document.getString("adminUser")

@@ -22,10 +22,10 @@ import javax.inject.Inject
 class SpotHomeViewModel : ViewModel() {
 
     private val spotRepository = SpotRepository()
-    private var thisSpot = Spot("spot")
     private val _state: MutableState<SpotListState> = mutableStateOf(SpotListState())
 
 
+<<<<<<< Updated upstream
     init {
         GlobalScope.launch (Dispatchers.Main){
             thisSpot = spotRepository.getSingleSpot("zdzillZYB1nVzTpak2Lz")
@@ -37,6 +37,8 @@ class SpotHomeViewModel : ViewModel() {
     fun getSimilarSpotList(){
         
     }
+=======
+>>>>>>> Stashed changes
     fun getSpotList():LiveData<MutableList<Spot>> {
         val mutableData = MutableLiveData<MutableList<Spot>>()
         spotRepository.getAllSpots().observeForever{ spotList ->
@@ -45,13 +47,17 @@ class SpotHomeViewModel : ViewModel() {
         return mutableData
     }
 
-    suspend fun addRatingToSpot(rating: Float) {
+    suspend fun addRatingToSpot(rating: Float, idSpot: String) {
+        val thisSpot = spotRepository.getSingleSpot(idSpot)
         thisSpot.rating?.add(rating.toInt())
         spotRepository.addRatingToSpot(thisSpot)
-
     }
 
     suspend fun getThisSpot(idSpot: String) :Spot{
         return spotRepository.getSingleSpot(idSpot)
+    }
+
+    suspend fun addAssistant(idSpot: String, idUser: String) {
+        spotRepository.addAsistant(idSpot, idUser)
     }
 }

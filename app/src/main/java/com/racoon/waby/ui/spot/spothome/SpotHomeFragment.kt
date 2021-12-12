@@ -14,6 +14,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
 import com.racoon.waby.data.model.Spot
 import com.racoon.waby.data.repository.SpotRepository
@@ -33,6 +35,8 @@ class SpotHomeFragment: Fragment() {
     private val spotHomeViewModel by viewModels<SpotHomeViewModel>()
     private var _binding: FragmentSpotHomeBinding? = null
     private lateinit var adapter: MySpotAdapter
+    private val userId = Firebase.auth.currentUser?.uid.toString()
+    private lateinit var idSpot: String
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,7 +45,7 @@ class SpotHomeFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val idSpot = checkNotNull(activity?.intent?.getStringExtra("idSpot"))
+        idSpot = checkNotNull(activity?.intent?.getStringExtra("idSpot"))
         Toast.makeText(context,
             "Estoy en $idSpot",
             Toast.LENGTH_SHORT).show()
@@ -52,6 +56,7 @@ class SpotHomeFragment: Fragment() {
             println(spotFinal.name)
             binding.rateNumber.text = spotFinal.rating?.average()?.roundToInt().toString()
             binding.spotName.text = spotFinal.name
+            spotHomeViewModel.addAssistant(idSpot,userId)
         }
     }
 
@@ -118,7 +123,7 @@ class SpotHomeFragment: Fragment() {
 
         button.setOnClickListener {
             GlobalScope.launch (Dispatchers.Main){
-                spotHomeViewModel.addRatingToSpot(ratingBar.rating)
+                spotHomeViewModel.addRatingToSpot(ratingBar.rating,idSpot)
             }
         }
     }
