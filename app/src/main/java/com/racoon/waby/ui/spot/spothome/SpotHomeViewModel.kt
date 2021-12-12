@@ -24,21 +24,9 @@ class SpotHomeViewModel : ViewModel() {
     private val spotRepository = SpotRepository()
     private val _state: MutableState<SpotListState> = mutableStateOf(SpotListState())
 
-
-<<<<<<< Updated upstream
-    init {
-        GlobalScope.launch (Dispatchers.Main){
-            thisSpot = spotRepository.getSingleSpot("zdzillZYB1nVzTpak2Lz")
-            getSpotList()
-        }
-
-    }
-
     fun getSimilarSpotList(){
         
     }
-=======
->>>>>>> Stashed changes
     fun getSpotList():LiveData<MutableList<Spot>> {
         val mutableData = MutableLiveData<MutableList<Spot>>()
         spotRepository.getAllSpots().observeForever{ spotList ->
