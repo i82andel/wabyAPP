@@ -38,6 +38,23 @@ class SpotHomeFragment: Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val idSpot = checkNotNull(activity?.intent?.getStringExtra("idSpot"))
+        Toast.makeText(context,
+            "Estoy en $idSpot",
+            Toast.LENGTH_SHORT).show()
+
+        GlobalScope.launch (Dispatchers.Main){
+            var spotFinal = spotHomeViewModel.getThisSpot(idSpot)
+            println("ESTE ES EL NOMBRE DEL SPOT ACTUAL")
+            println(spotFinal.name)
+            binding.rateNumber.text = spotFinal.rating?.average()?.roundToInt().toString()
+            binding.spotName.text = spotFinal.name
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,13 +77,6 @@ class SpotHomeFragment: Fragment() {
         adapter = MySpotAdapter(requireContext())
         binding.spotList.layoutManager = LinearLayoutManager(context,HORIZONTAL,false)
         binding.spotList.adapter = adapter
-
-
-        GlobalScope.launch (Dispatchers.Main){
-            var spotFinal = spotHomeViewModel.getThisSpot()
-            binding.rateNumber.text = spotFinal.rating?.average()?.roundToInt().toString()
-            binding.spotName.text = spotFinal.name
-        }
 
         observeData()
         binding.Rate.setOnClickListener {

@@ -48,7 +48,7 @@ class SpotHomeViewModel : ViewModel() {
 
     }
 
-    suspend fun getThisSpot() :Spot{
-        return spotRepository.getSingleSpot("zdzillZYB1nVzTpak2Lz")
+    suspend fun getThisSpot(idSpot: String) :Spot{
+        return spotRepository.getSingleSpot(idSpot)
     }
 }

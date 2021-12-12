@@ -38,6 +38,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.integration.android.IntentIntegrator
 import com.racoon.waby.data.model.User
+import com.racoon.waby.ui.spot.chat.ChannelActivity
 import com.racoon.waby.ui.spot.chat.ChatActivity
 import com.racoon.waby.ui.spot.wabis.WabisViewModel
 import io.getstream.chat.android.client.ChatClient
@@ -220,6 +221,8 @@ class MainHomeFragment : Fragment() {
                 Toast.makeText(context,
                     "El valor escaneado es ${result.contents.toString()}",
                     Toast.LENGTH_SHORT).show()
+                    val idSpot = result.contents.toString()
+                startActivity(Intent(context, SpotActivity::class.java).putExtra("idSpot", idSpot))
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
