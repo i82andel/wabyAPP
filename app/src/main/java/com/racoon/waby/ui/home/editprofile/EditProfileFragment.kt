@@ -106,7 +106,6 @@ class EditProfileFragment : Fragment() {
             }
 
             else{
-                fileUpload()
                 editProfile()
 
                 findNavController().navigate(R.id.action_editProfileFragment_to_mainHomeFragment2)
@@ -176,6 +175,8 @@ class EditProfileFragment : Fragment() {
                     .show()
 
             }
+
+        fileUpload()
     }
 
     private fun getTags() : List<String>{

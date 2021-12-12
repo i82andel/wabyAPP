@@ -36,6 +36,7 @@ class MySpotAdapter(private val context: Context): RecyclerView.Adapter<MySpotAd
     inner class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
         fun bindView(spot: Spot){
+
             Glide.with(context).load(spot.images?.get(0)).into(itemView.circleImageView)
             itemView.tvSpotName.text = spot.name
         }

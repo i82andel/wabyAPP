@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.racoon.waby.R
@@ -55,8 +56,13 @@ class SpotHomeFragment: Fragment() {
             var spotFinal = spotHomeViewModel.getThisSpot(idSpot)
             println("ESTE ES EL NOMBRE DEL SPOT ACTUAL")
             println(spotFinal.name)
+
+            val media = spotFinal.images?.get(0) as String
+            Glide.with(requireContext()).load(media).into(binding.imageSpot)
             binding.rateNumber.text = spotFinal.rating?.average()?.roundToInt().toString()
             binding.spotName.text = spotFinal.name
+            binding.description.text = spotFinal.description
+
             spotHomeViewModel.addAssistant(idSpot,userId)
         }
     }
