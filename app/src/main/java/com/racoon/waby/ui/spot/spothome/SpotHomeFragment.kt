@@ -16,7 +16,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.racoon.waby.R
 import com.racoon.waby.common.MyApplication
 import com.racoon.waby.data.model.Spot
@@ -46,7 +48,7 @@ class SpotHomeFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        loadImage()
         idSpot = checkNotNull(activity?.intent?.getStringExtra("idSpot"))
         Toast.makeText(context,
             "Estoy en $idSpot",
@@ -159,6 +161,25 @@ class SpotHomeFragment: Fragment() {
         }
 
         return message
+    }
+
+
+    private fun loadImage() {
+        val db = Firebase.firestore
+        val uid = Firebase.auth.currentUser?.uid as String
+        val userList = db.collection("User")
+
+        userList.document(uid).get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                val media = document.getString("images")
+                val storageReference = FirebaseStorage.getInstance()
+                val gsReference = storageReference.getReferenceFromUrl(media!!)
+                gsReference.downloadUrl.addOnSuccessListener {
+                    Glide.with(requireContext()).load(it).into(binding.imagePr)
+                }
+
+            }
+        }
     }
 
 
