@@ -27,16 +27,19 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/toolbar.xml" value="0.3828125" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_auxiliar.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_auxiliar2.xml" value="0.28072916666666664" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_channel.xml" value="0.28072916666666664" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_channel.xml" value="0.22" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_chat.xml" value="0.28072916666666664" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_chat_home.xml" value="0.33" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_main.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_map.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_spot.xml" value="0.25" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/drawer_header.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/edit_profile_fragment.xml" value="0.28072916666666664" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_channel.xml" value="0.22" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_chat.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_edit_profile.xml" value="0.31302083333333336" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_extras2.xml" value="0.22447916666666667" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_login_admin_user.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_login_user.xml" value="0.2368659420289855" />
@@ -56,11 +59,14 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_splash.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_spot_home.xml" value="0.22" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_swipe.xml" value="0.26811594202898553" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_user.xml" value="0.22447916666666667" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_verify_email.xml" value="0.22447916666666667" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_wabis.xml" value="0.33" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/item.xml" value="0.36666666666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/spot_item.xml" value="0.22" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/star_dialog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/user_info_card.xml" value="0.22447916666666667" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/user_row_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/wabi_item.xml" value="0.75" />
         <entry key="..\:/Users/Jesús Bueno Ruiz/.gradle/caches/transforms-3/4ebbb3845df9370a798535fb40c438a7/transformed/jetified-mapbox-android-navigation-ui-0.42.6/res/layout/instruction_list_layout.xml" value="0.240625" />
