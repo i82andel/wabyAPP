@@ -24,6 +24,9 @@ import com.racoon.waby.common.MyApplication
 import com.racoon.waby.data.model.Spot
 import com.racoon.waby.data.repository.SpotRepository
 import com.racoon.waby.databinding.FragmentSpotHomeBinding
+import com.racoon.waby.ui.spot.wabis.WabisViewModel
+import io.getstream.chat.android.client.ChatClient
+import io.getstream.chat.android.client.models.Channel
 import kotlinx.android.synthetic.main.star_dialog.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -34,13 +37,16 @@ import javax.inject.Singleton
 import kotlin.math.roundToInt
 
 @Singleton
-class SpotHomeFragment: Fragment() {
+class SpotHomeFragment : Fragment() {
 
     private val spotHomeViewModel by viewModels<SpotHomeViewModel>()
+    private val wabisViewModel by viewModels<WabisViewModel>()
     private var _binding: FragmentSpotHomeBinding? = null
     private lateinit var adapter: MySpotAdapter
     private val userId = Firebase.auth.currentUser?.uid.toString()
     private lateinit var idSpot: String
+    private val client = ChatClient.instance()
+    private lateinit var spotFinal: Spot
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -54,8 +60,8 @@ class SpotHomeFragment: Fragment() {
             "Estoy en $idSpot",
             Toast.LENGTH_SHORT).show()
 
-        GlobalScope.launch (Dispatchers.Main){
-            var spotFinal = spotHomeViewModel.getThisSpot(idSpot)
+        GlobalScope.launch(Dispatchers.Main) {
+            spotFinal = spotHomeViewModel.getThisSpot(idSpot)
             println("ESTE ES EL NOMBRE DEL SPOT ACTUAL")
             println(spotFinal.name)
 
@@ -65,14 +71,32 @@ class SpotHomeFragment: Fragment() {
             binding.spotName.text = spotFinal.name
             binding.description.text = spotFinal.description
 
-            spotHomeViewModel.addAssistant(idSpot,userId)
+            spotHomeViewModel.addAssistant(idSpot, userId)
         }
+
+
+
+        GlobalScope.launch(Dispatchers.Main) {
+            val channelClient = client.channel("messaging", spotFinal.name!!)
+            val currentUser = wabisViewModel.getUser()
+
+            // Add members
+            channelClient.addMembers(currentUser.userName!!).enqueue { result ->
+                if (result.isSuccess) {
+                    val channel: Channel = result.data()
+                } else {
+                    // Handle result.error()
+                }
+            }
+        }
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
 
 
@@ -89,7 +113,7 @@ class SpotHomeFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = MySpotAdapter(requireContext())
-        binding.spotList.layoutManager = LinearLayoutManager(context,HORIZONTAL,false)
+        binding.spotList.layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
         binding.spotList.adapter = adapter
 
         observeData()
@@ -100,7 +124,7 @@ class SpotHomeFragment: Fragment() {
 
     }
 
-    fun observeData(){
+    fun observeData() {
         spotHomeViewModel.getSpotList().observe(viewLifecycleOwner, Observer {
             adapter.setSpotList(it)
             adapter.notifyDataSetChanged()
@@ -112,7 +136,7 @@ class SpotHomeFragment: Fragment() {
         _binding = null
     }
 
-    fun rateSpot(){
+    fun rateSpot() {
         val builder = AlertDialog.Builder(context)
         val view = layoutInflater.inflate(R.layout.star_dialog, null)
         builder.setView(view)
@@ -120,19 +144,20 @@ class SpotHomeFragment: Fragment() {
         dialog.show()
 
 
-        val average : Float
+        val average: Float
         val ratingBar = dialog.rBar
         val button = dialog.button
 
-        ratingBar.onRatingBarChangeListener = OnRatingBarChangeListener { ratingBar, rating, fromUser ->
-            Toast.makeText(context, ratingMessage(rating), Toast.LENGTH_LONG).show()
+        ratingBar.onRatingBarChangeListener =
+            OnRatingBarChangeListener { ratingBar, rating, fromUser ->
+                Toast.makeText(context, ratingMessage(rating), Toast.LENGTH_LONG).show()
 
 
-        }
+            }
 
         button.setOnClickListener {
-            GlobalScope.launch (Dispatchers.Main){
-                spotHomeViewModel.addRatingToSpot(ratingBar.rating,idSpot)
+            GlobalScope.launch(Dispatchers.Main) {
+                spotHomeViewModel.addRatingToSpot(ratingBar.rating, idSpot)
             }
         }
     }
