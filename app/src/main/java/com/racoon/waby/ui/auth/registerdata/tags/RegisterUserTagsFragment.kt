@@ -151,7 +151,7 @@ class RegisterUserTagsFragment : Fragment() {
             "username" to USERNAME,
             "tags" to TAGS,
             "wabis" to WABIS,
-            "seenusers" to SEENUSERS
+            "seenUsers" to SEENUSERS
             //"phonenumber" to PHONENUMBER
         )
         val db = Firebase.firestore
