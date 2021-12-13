@@ -49,7 +49,7 @@ class WabisAdapter(private val context: Context) :
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context,WabiProfileActivity::class.java).putExtra("idUser",currentItem.idUser)
-
+            
 
             context.startActivity(intent)
 
