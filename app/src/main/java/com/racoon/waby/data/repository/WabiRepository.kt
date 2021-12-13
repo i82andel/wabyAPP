@@ -163,11 +163,16 @@ class WabiRepository {
 
     suspend fun addMatch(idUser:String, idWabi: String){
         var newArray = getMatchesList(idUser)
+        var matchesWabi = getMatchesList(idWabi)
 
         if (!newArray.contains(idWabi)) {
             newArray.add(idWabi)
         }
+        if (!matchesWabi.contains(idUser)) {
+            newArray.add(idUser)
+        }
         userList.document(idUser).update("matches", newArray)
+        userList.document(idWabi).update("matches",matchesWabi)
     }
 
 }
