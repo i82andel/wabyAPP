@@ -18,7 +18,8 @@ class User (val idUser: String? = null,
                  val description: String? = null,
                  val tags: ArrayList<String>? = null,
                  val images: String = "gs://racoonapps-cd246.appspot.com/profiles/placeholder.png",
-                 val wabis: ArrayList<String>? = null
+                 val wabis: ArrayList<String>? = null,
+                 val matches: ArrayList<String>? = null
 ){
 
 

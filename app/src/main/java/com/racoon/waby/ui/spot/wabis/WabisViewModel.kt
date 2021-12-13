@@ -27,6 +27,14 @@ class WabisViewModel : ViewModel() {
         return mutableData
 
     }
+    suspend fun getMatchList():LiveData<MutableList<User>> {
+        val mutableData = MutableLiveData<MutableList<User>>()
+        wabiRepository.getMatchesFromUser(getUser()).observeForever{ wabiList ->
+            mutableData.value = wabiList
+        }
+        return mutableData
+    }
+
     suspend fun getWabisList():LiveData<MutableList<User>> {
         val mutableData = MutableLiveData<MutableList<User>>()
         wabiRepository.getWabisFromUser(getUser()).observeForever{ wabiList ->

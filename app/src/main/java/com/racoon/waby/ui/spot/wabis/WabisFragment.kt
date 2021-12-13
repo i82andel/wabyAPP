@@ -58,7 +58,7 @@ class WabisFragment : Fragment() {
 
 
     suspend fun observeData(){
-        WabisViewModel().getWabisList().observe(viewLifecycleOwner, Observer {
+        WabisViewModel().getMatchList().observe(viewLifecycleOwner, Observer {
             adapter.setWabiList(it)
             adapter.notifyDataSetChanged()
         })

@@ -66,6 +66,7 @@ class WabiRepository {
         }
         val wabis = document.data?.get("wabis")
         println(wabis)
+        val matches = document.data?.get("matches")
 
         val user = User(
             idUser,
@@ -79,7 +80,8 @@ class WabiRepository {
             description,
             tags as ArrayList<String>?,
             images,
-            wabis as ArrayList<String>?
+            wabis as ArrayList<String>?,
+            matches as ArrayList<String>?
         )
 
         return user
@@ -114,10 +116,11 @@ class WabiRepository {
         return DataList
     }
 
+
     suspend fun getWabisList(idUser: String) : ArrayList<String>{
         var listWabis = arrayListOf<String>()
         val job1 = userList.document(idUser).get().addOnSuccessListener {
-            listWabis = (it.data?.get("matches") as ArrayList<String>)
+            listWabis = (it.data?.get("wabis") as ArrayList<String>)
         }
 
         job1.await()
@@ -159,6 +162,21 @@ class WabiRepository {
 
         job1.await()
         return listMatches
+    }
+
+    suspend fun getMatchesFromUser(user: User) : LiveData<MutableList<User>>{
+        val mutableList = MutableLiveData<MutableList<User>>()
+        val DataList = mutableListOf<User>()
+        println("probadno wabis")
+
+        if (user.matches != null) {
+            for (user in user.matches!!) {
+                val wabi = getSingleUser(user)
+                DataList.add(wabi)
+            }
+        }
+        mutableList.value = DataList
+        return mutableList
     }
 
     suspend fun addMatch(idUser:String, idWabi: String){
