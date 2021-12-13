@@ -76,19 +76,6 @@ class SpotHomeFragment : Fragment() {
 
 
 
-        GlobalScope.launch(Dispatchers.Main) {
-            val channelClient = client.channel("messaging", spotFinal.name!!)
-            val currentUser = wabisViewModel.getUser()
-
-            // Add members
-            channelClient.addMembers(currentUser.userName!!).enqueue { result ->
-                if (result.isSuccess) {
-                    val channel: Channel = result.data()
-                } else {
-                    // Handle result.error()
-                }
-            }
-        }
 
 
     }
