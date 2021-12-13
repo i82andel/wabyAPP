@@ -80,14 +80,9 @@ class ChannelFragment : Fragment() {
             val viewModel: ChannelListViewModel by viewModels { viewModelFactory }
             val listHeaderViewModel: ChannelListHeaderViewModel by viewModels()
 
-            listHeaderViewModel.bindView(binding.channelListHeaderView, aa)
             viewModel.bindView(binding.channelsView, aa)
             binding.channelsView.setChannelItemClickListener { channel ->
                 startActivity(ChannelActivity.newIntent(requireContext(), channel))
-            }
-
-            binding.channelListHeaderView.setOnActionButtonClickListener{
-
             }
 
             binding.channelsView.setChannelDeleteClickListener { channel ->
