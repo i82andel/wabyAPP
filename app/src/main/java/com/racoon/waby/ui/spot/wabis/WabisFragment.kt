@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.racoon.waby.databinding.FragmentSpotHomeBinding
 import com.racoon.waby.databinding.FragmentWabisBinding
+import com.racoon.waby.ui.spot.chat.ChannelActivity
 import com.racoon.waby.ui.spot.spothome.MySpotAdapter
 import com.racoon.waby.ui.spot.spothome.SpotHomeViewModel
 import kotlinx.coroutines.Dispatchers
@@ -40,6 +41,7 @@ class WabisFragment : Fragment() {
         GlobalScope.launch (Dispatchers.Main){
             observeData()
         }
+
         return binding.root
     }
 

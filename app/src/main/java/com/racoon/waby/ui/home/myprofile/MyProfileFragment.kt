@@ -1,12 +1,7 @@
 package com.racoon.waby.ui.home.myprofile
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.icu.text.SimpleDateFormat
-import android.net.Uri
+
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,38 +9,18 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.google.firebase.Timestamp
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.auth.User
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.racoon.waby.R
-import com.racoon.waby.data.model.Tag
 import com.racoon.waby.data.repository.UserRepositoryImp
 import com.racoon.waby.databinding.FragmentProfileBinding
 import com.racoon.waby.domain.usecases.authuser.AuthUserUseCaseImpl
-import com.racoon.waby.ui.auth.login.LoginVMFactory
-import com.racoon.waby.ui.auth.login.LoginViewModel
 import com.racoon.waby.ui.auth.login.MyProfileVMFactory
-import com.racoon.waby.ui.auth.signup.SignUpVMFactory
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_settings.*
-import kotlinx.android.synthetic.main.item.view.*
-import kotlinx.android.synthetic.main.spot_item.view.*
-import kotlinx.android.synthetic.main.wabi_item.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.net.URL
-import java.time.Instant
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class MyProfileFragment : Fragment() {
 
