@@ -200,7 +200,7 @@ class MainHomeFragment : Fragment() {
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
         integrator.setPrompt("Escanea el código QR")
         integrator.setCameraId(0)
-        integrator.setBeepEnabled(true)
+        integrator.setBeepEnabled(false)
         integrator.setBarcodeImageEnabled(false)
         integrator.initiateScan()
     }
