@@ -41,8 +41,8 @@ class SwipeViewModel : ViewModel() {
         var newWabiBoolean = false
         if (wabiRepository.getWabisList(idWabi!!).contains(idUser)){
             newWabiBoolean = true
+            wabiRepository.addWabi(idUser!!,idWabi)
         }
-        wabiRepository.addWabi(idUser!!,idWabi)
 
         return newWabiBoolean
     }
