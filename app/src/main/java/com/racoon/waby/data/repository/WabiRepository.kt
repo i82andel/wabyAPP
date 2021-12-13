@@ -151,4 +151,23 @@ class WabiRepository {
         userList.document(idUser).update("seenUsers", newArray)
     }
 
+    suspend fun getMatchesList(idUser: String) : ArrayList<String>{
+        var listMatches = arrayListOf<String>()
+        val job1 = userList.document(idUser).get().addOnSuccessListener {
+            listMatches = (it.data?.get("matches") as ArrayList<String>)
+        }
+
+        job1.await()
+        return listMatches
+    }
+
+    suspend fun addMatch(idUser:String, idWabi: String){
+        var newArray = getMatchesList(idUser)
+
+        if (!newArray.contains(idWabi)) {
+            newArray.add(idWabi)
+        }
+        userList.document(idUser).update("matches", newArray)
+    }
+
 }
