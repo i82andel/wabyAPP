@@ -11,10 +11,14 @@
         android:id="@+id/animationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:lottie_rawRes="@raw/pulse"
+        app:layout_constraintBottom_toBottomOf="@+id/nfcButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        tools:ignore="MissingConstraints" />
+        app:lottie_rawRes="@raw/wifi" />
+
 
     <ImageButton
         android:id="@+id/nfcButton"
@@ -24,7 +28,7 @@
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:src="@drawable/ic_wifi"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
