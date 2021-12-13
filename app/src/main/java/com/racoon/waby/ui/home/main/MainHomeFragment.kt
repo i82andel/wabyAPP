@@ -105,6 +105,10 @@ class MainHomeFragment : Fragment() {
         binding.nfcButton.setOnClickListener {
             showDefaultDialog()
         }
+
+        binding.imageButton4.setOnClickListener{
+            goToWabis()
+        }
     }
 
     private fun createUserGetStream(firebaseUser: User) {
@@ -137,6 +141,10 @@ class MainHomeFragment : Fragment() {
             "image" to IMAGE
         )
         findNavController().navigate(R.id.action_mainHomeFragment_to_profileFragment, bundle)
+    }
+
+    private fun goToWabis(){
+        findNavController().navigate(R.id.action_mainHomeFragment_to_channelHomeFragment)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

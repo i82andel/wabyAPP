@@ -24,7 +24,6 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_swipe.xml" value="0.3645833333333333" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_wabis.xml" value="0.3645833333333333" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/inputs.xml" value="0.2935185185185185" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/nav_menu_selector.xml" value="0.3828125" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/toolbar.xml" value="0.3828125" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_auxiliar.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_auxiliar2.xml" value="0.28072916666666664" />
@@ -62,7 +61,6 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/spot_item.xml" value="0.22" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/star_dialog.xml" value="0.36666666666666664" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/tag_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/user_row_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/wabi_item.xml" value="0.75" />
         <entry key="..\:/Users/Jesús Bueno Ruiz/.gradle/caches/transforms-3/4ebbb3845df9370a798535fb40c438a7/transformed/jetified-mapbox-android-navigation-ui-0.42.6/res/layout/instruction_list_layout.xml" value="0.240625" />
@@ -117,6 +115,7 @@
         <entry key="..\:/Users/crist/AndroidStudioProjects/Waby/app/src/main/res/layout/fragment_register_user_gender.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_channel.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_chat.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_chat_home.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_map.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/activity_spot.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/drawer_header.xml" value="0.1793478260869565" />
@@ -126,6 +125,7 @@
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_main_home.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_spot_home.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_user.xml" value="0.152" />
+        <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/fragment_wabis_home.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/layout/user_row_layout.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/wabyAPP/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/youne/.gradle/caches/transforms-3/66ac5cb29e218542356c3c0a73e85d06/transformed/jetified-mapbox-android-navigation-ui-0.6.1/res/layout/navigation_view_layout.xml" value="0.2125" />

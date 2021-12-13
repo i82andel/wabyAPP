@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_mainHomeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainHomeFragment_to_channelHomeFragment"
+            app:destination="@id/channelHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -40,4 +43,9 @@
             android:id="@+id/action_editProfileFragment_to_mainHomeFragment2"
             app:destination="@id/mainHomeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/channelHomeFragment"
+        android:name="com.racoon.waby.ui.home.wabisHome.ChannelFragment"
+        android:label="fragment_wabis_home"
+        tools:layout="@layout/fragment_wabis_home" />
 </navigation>
