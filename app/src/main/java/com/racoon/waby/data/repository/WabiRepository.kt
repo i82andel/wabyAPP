@@ -187,10 +187,16 @@ class WabiRepository {
             newArray.add(idWabi)
         }
         if (!matchesWabi.contains(idUser)) {
-            newArray.add(idUser)
+            matchesWabi.add(idUser)
         }
-        userList.document(idUser).update("matches", newArray)
-        userList.document(idWabi).update("matches",matchesWabi)
+        println(idUser)
+        println(idWabi)
+        userList.document(idUser).update("matches", newArray).addOnSuccessListener {
+            println("HE HECHO BIEN EL PRIMERO")
+        }
+        userList.document(idWabi).update("matches",matchesWabi).addOnSuccessListener {
+            println("HE HECHO BIEN EL SEGUNDO")
+        }
     }
 
 }

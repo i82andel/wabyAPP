@@ -87,9 +87,9 @@ class SwipeFragment : Fragment() {
                         val wabiMatch =  swipeViewModel.makeWabi(user.idUser, obj.idUser)
                         if(wabiMatch == true) {
                             createChat(user.userName!!,obj.userName!!)
-                            swipeViewModel.addMatch(user.idUser,obj.idUser)
                             Toast.makeText(requireContext(), "Nuevo Match!!", Toast.LENGTH_SHORT)
                                 .show()
+                            swipeViewModel.addMatch(user.idUser,obj.idUser)
                         }
                     }
 
