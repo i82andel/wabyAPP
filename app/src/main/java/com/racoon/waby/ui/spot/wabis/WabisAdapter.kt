@@ -71,7 +71,7 @@ class WabisAdapter(private val context: Context) :
             }
 
             itemView.MatchName.text = user.userName
-            itemView.Matchid.text = user.getAge()
+            itemView.Matchid.text = user.gender
 
 
         }
