@@ -70,7 +70,7 @@ class SpotHomeFragment : Fragment() {
             binding.rateNumber.text = spotFinal.rating?.average()?.roundToInt().toString()
             binding.spotName.text = spotFinal.name
             binding.description.text = spotFinal.description
-
+            binding.website.text = spotFinal.website
             spotHomeViewModel.addAssistant(idSpot, userId)
         }
 
