@@ -63,11 +63,17 @@ class SwipeViewModel : ViewModel() {
     suspend fun getNotSeenUsers(arraySwipe: MutableList<User>, idUser: String) : ArrayList<User>{
             var auxiliarList = arrayListOf<User>()
             var arraySeenUsers = getSeenUsers(idUser)
+            var counter = 0
             for(i in arraySwipe.indices){
+                counter = 0
                 for(j in arraySeenUsers.indices){
-                    if(!arraySwipe[i].idUser.equals(arraySeenUsers[j])){
-                        auxiliarList.add(arraySwipe[i])
+                    if(arraySwipe[i].idUser.equals(arraySeenUsers[j])){
+                        break
                     }
+                    counter += 1
+                }
+                if(counter == arraySeenUsers.size){
+                    auxiliarList.add(arraySwipe[i])
                 }
             }
         return auxiliarList

@@ -61,6 +61,7 @@ class SwipeFragment : Fragment() {
             dataList = swipeViewModel.getUsersFromSpot(idSpot)
             println("datalist en fragment: ${dataList}")
             dataList = swipeViewModel.getNotSeenUsers(dataList, user.idUser!!)
+            println("USUARIOS NO VISTOS HASTA EL MOMENTO: ${dataList}")
             arrayAdapter = arrayAdapter(context, R.layout.item, dataList)
             binding.frame.adapter = arrayAdapter
             arrayAdapter!!.notifyDataSetChanged()
