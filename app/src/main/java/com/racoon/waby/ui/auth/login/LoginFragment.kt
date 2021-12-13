@@ -83,47 +83,6 @@ class LoginFragment : Fragment() {
         }
     }
 
-
-
-    /*private fun uploadDataFirestore() {
-        val birthdate = Calendar.getInstance()
-
-        birthdate.clear()
-        birthdate.set(Calendar.YEAR,YEAR)
-        birthdate.set(Calendar.MONTH,MONTH)
-        birthdate.set(Calendar.DAY_OF_MONTH,DAY)
-
-        val userId = Firebase.auth.currentUser?.uid.toString()
-        val url = "gs://racoonapps-cd246.appspot.com/profiles/placeholder.png"
-        val db = Firebase.firestore
-        val email = Firebase.auth.currentUser?.email.toString()
-
-        val data = hashMapOf(
-            "name" to "NAME",
-            "surname" to "SURNAME",
-            "gender" to "GENDER",
-            "birthdate" to Timestamp(birthdate.timeInMillis/1000,0),
-            "email" to email,
-            "username" to "USERNAME",
-            "tags" to TAGS,
-            "images" to url
-        )
-
-        db.collection("User")
-            .document(userId)
-            .set(data)
-            .addOnSuccessListener {
-                Toast.makeText(context, R.string.firestore_upload_success, Toast.LENGTH_SHORT)
-                    .show()
-
-            }.addOnFailureListener {
-
-                Toast.makeText(context, R.string.firestore_upload_failure, Toast.LENGTH_SHORT)
-                    .show()
-
-            }
-    }*/
-
     private fun setUpGoogle() {
         val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.google_token))
@@ -163,7 +122,7 @@ class LoginFragment : Fragment() {
                     }
                 }
             }catch (e: ApiException) {
-                println("Google exception")
+                println(e)
                 Toast.makeText(context, R.string.google_login_error, Toast.LENGTH_SHORT).show()
             }
 
