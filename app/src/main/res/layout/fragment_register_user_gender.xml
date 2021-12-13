@@ -52,27 +52,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:padding="16dp"
-        style="OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="373dp"
+        android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/textView17">
 
         <AutoCompleteTextView
             android:id="@+id/genderTypeTextView"
-            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:hint="Genero"
             android:inputType="none"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:background="@drawable/inputs"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
