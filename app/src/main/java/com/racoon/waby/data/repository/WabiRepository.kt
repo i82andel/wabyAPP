@@ -117,7 +117,7 @@ class WabiRepository {
     suspend fun getWabisList(idUser: String) : ArrayList<String>{
         var listWabis = arrayListOf<String>()
         val job1 = userList.document(idUser).get().addOnSuccessListener {
-            listWabis = (it.data?.get("wabis") as ArrayList<String>)
+            listWabis = (it.data?.get("matches") as ArrayList<String>)
         }
 
         job1.await()
