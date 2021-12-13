@@ -95,12 +95,6 @@ class MainHomeFragment : Fragment() {
         binding.mapButton.setOnClickListener {
             startActivity(Intent(context, MapActivity::class.java))
         }
-        binding.ola.setOnClickListener {
-            startActivity(Intent(context, ChatActivity::class.java))
-        }
-        binding.buttonRandom.setOnClickListener {
-            startActivity(Intent(context, SpotActivity::class.java))
-        }
 
         binding.nfcButton.setOnClickListener {
             showDefaultDialog()

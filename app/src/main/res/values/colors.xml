@@ -8,12 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#430095</color>
-    <color name="colorSecondary">#ae50fd</color>
+    <color name="colorSecondary">#B745CA</color>
     <color name="colorPrimaryDark">#8401ff</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorHint">#9E9E9E</color>
     <color name="colorHintDark">#828282</color>
-    <color name="colorBackground">#232f34</color>
+    <color name="colorBackground">#121212</color>
 
     <color name="mapboxWhite">#FFFFFF</color>
     <color name="mapboxPurple">#8E00E8</color>
