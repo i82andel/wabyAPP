@@ -39,5 +39,24 @@
     <fragment
         android:id="@+id/myProfileSpotFragment"
         android:name="com.racoon.waby.ui.spot.myprofile.MyProfileSpotFragment"
-        android:label="MyProfileSpotFragment" />
+        android:label="MyProfileSpotFragment" >
+        <action
+            android:id="@+id/action_myProfileSpotFragment_to_editProfileFragment2"
+            app:destination="@id/editProfileFragment2" />
+        <action
+            android:id="@+id/action_myProfileSpotFragment_to_settingsFragmentSpot"
+            app:destination="@id/settingsFragmentSpot" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment2"
+        android:name="com.racoon.waby.ui.spot.myprofile.EditProfileFragment"
+        android:label="EditProfileFragment" >
+        <action
+            android:id="@+id/action_editProfileFragment2_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragmentSpot"
+        android:name="com.racoon.waby.ui.spot.myprofile.SettingsFragmentSpot"
+        android:label="SettingsFragmentSpot" />
 </navigation>
