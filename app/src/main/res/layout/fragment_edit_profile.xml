@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginStart="35dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="35dp"
                 android:background="@drawable/inputs_2"
                 android:ems="10"
@@ -81,7 +81,7 @@
                 android:textColorHint="@color/colorHint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textRPass"
+                app:layout_constraintTop_toBottomOf="@+id/textUsername"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <EditText
@@ -158,8 +158,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="30dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -281,45 +282,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/textPass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="70dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/inputs"
-                android:ems="10"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                android:textColorHint="@color/colorHint"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textUsername"
-                android:drawableStart="@drawable/ic_password"
-                android:drawablePadding="20dp"
-                android:paddingStart="30dp"
-                android:minHeight="48dp"/>
-
-            <EditText
-                android:id="@+id/textRPass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/inputs"
-                android:ems="10"
-                android:hint="Repetir Contraseña"
-                android:inputType="textPassword"
-                android:textColorHint="@color/colorHint"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textPass"
-                android:drawableStart="@drawable/ic_password"
-                android:drawablePadding="20dp"
-                android:paddingStart="30dp"
-                android:minHeight="48dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
