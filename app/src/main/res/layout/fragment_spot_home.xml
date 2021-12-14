@@ -23,9 +23,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-30dp"
                 app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                app:cardMaxElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:barrierMargin="0dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -35,7 +38,7 @@
                         android:id="@+id/imageSpot"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:scaleType="fitXY"
+                        android:scaleType="centerCrop"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -43,6 +46,17 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0"
                         tools:src="@tools:sample/avatars" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/gradiation_black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/spot"
@@ -68,7 +82,7 @@
                         android:layout_marginEnd="30dp"
                         android:text="Descripción"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="normal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +98,7 @@
                         android:text="Spot Name"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
-                        android:textSize="25sp"
+                        android:textSize="30sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +116,7 @@
 
                     <Button
                         android:id="@+id/Rate"
-                        android:layout_width="150dp"
+                        android:layout_width="170dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="30dp"
@@ -123,7 +137,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
                         android:text="website"
-                        android:textColor="@color/colorSecondary"
+                        android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/spotName" />
 
@@ -131,13 +145,15 @@
                         android:id="@+id/cardView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="40dp"
                         app:barrierMargin="0dp"
                         app:cardBackgroundColor="@android:color/transparent"
                         app:cardElevation="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/spotName">
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/Rate"
+                        app:layout_constraintTop_toBottomOf="@+id/description">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -145,8 +161,8 @@
 
                             <ImageView
                                 android:id="@+id/imageView11"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_marginEnd="5dp"
                                 android:src="@drawable/ic_star"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -162,7 +178,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="5.1"
                                 android:textColor="@color/white"
-                                android:textSize="15sp"
+                                android:textSize="20sp"
                                 android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -176,7 +192,7 @@
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:text="Spots Relacionados"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -188,11 +204,14 @@
                 android:id="@+id/spotList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19"
+                app:layout_constraintVertical_bias="1.0"
                 tools:ignore="MissingConstraints"
                 tools:listitem="@layout/spot_item">
 
