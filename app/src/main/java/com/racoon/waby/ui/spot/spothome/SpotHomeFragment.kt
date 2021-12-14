@@ -10,6 +10,7 @@ import android.widget.LinearLayout.HORIZONTAL
 import android.widget.RatingBar.OnRatingBarChangeListener
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -29,11 +30,13 @@ import com.racoon.waby.databinding.FragmentSpotHomeBinding
 import com.racoon.waby.ui.spot.wabis.WabisViewModel
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.Channel
+import kotlinx.android.synthetic.main.fragment_spot_home.*
 import kotlinx.android.synthetic.main.star_dialog.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.internal.wait
+import javax.annotation.meta.When
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.roundToInt
@@ -49,6 +52,7 @@ class SpotHomeFragment : Fragment() {
     private lateinit var idSpot: String
     private val client = ChatClient.instance()
     private lateinit var spotFinal: Spot
+    private var imageNumber = 0
     var IMAGE = ""
 
     // This property is only valid between onCreateView and
@@ -75,11 +79,38 @@ class SpotHomeFragment : Fragment() {
             binding.description.text = spotFinal.description
             binding.website.text = spotFinal.website
             spotHomeViewModel.addAssistant(idSpot, userId)
+            setTags(spotFinal.badges)
         }
 
 
+    }
 
+    private fun setTags(badges: ArrayList<String>?) {
+        var countNumber = 0
+        if (badges != null) {
+            for (badge in badges){
 
+                when(countNumber){
+
+                    0 -> {binding.tag1.text = badge
+                        binding.Tag1.visibility = View.VISIBLE
+                    }
+                    1 -> {binding.tag2.text = badge
+                        binding.Tag2.visibility = View.VISIBLE
+                    }
+                    2 ->{binding.tag3.text = badge
+                        binding.Tag3.visibility = View.VISIBLE
+                    }
+                    3 -> {binding.tag4.text = badge
+                        binding.Tag4.visibility = View.VISIBLE
+                    }
+                    4 -> {binding.tag5.text = badge
+                        binding.Tag5.visibility = View.VISIBLE
+                    }
+                }
+                countNumber++
+            }
+        }
 
     }
 
@@ -111,6 +142,9 @@ class SpotHomeFragment : Fragment() {
             rateSpot()
         }
 
+        binding.nextImg.setOnClickListener {
+            nextImage()
+        }
         binding.imagePr.setOnClickListener{
             goToMyProfile()
         }
@@ -209,5 +243,14 @@ class SpotHomeFragment : Fragment() {
         }
     }
 
+
+    fun nextImage(){
+        imageNumber++
+        if (imageNumber == spotFinal.images?.size ){
+            imageNumber = 0
+        }
+        val media = spotFinal.images?.get(imageNumber) as String
+        Glide.with(requireContext()).load(media).into(binding.imageSpot)
+    }
 
 }

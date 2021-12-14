@@ -118,7 +118,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapboxMap.OnMapClic
                 .accessToken(
                     (if (Mapbox.getAccessToken() != null) Mapbox.getAccessToken() else getString(R.string.access_token))!!
                 ).placeOptions(PlaceOptions.builder()
-                    .backgroundColor(Color.parseColor("#EEEEEE"))
+                    .backgroundColor(Color.parseColor("#121212"))
                     .limit(10)
                     .build(PlaceOptions.MODE_CARDS))
                 .build(this@MapActivity)
@@ -173,7 +173,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, MapboxMap.OnMapClic
 
         getRoute(originPoint, destinationPoint)
         btnStart!!.isEnabled = true
-        btnStart!!.setBackgroundResource(R.color.mapboxPurple)
+        btnStart!!.setBackgroundResource(R.drawable.buttons_1)
         return true
     }
 

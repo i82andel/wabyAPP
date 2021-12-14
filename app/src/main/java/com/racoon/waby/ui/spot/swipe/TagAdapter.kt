@@ -5,8 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.racoon.waby.R
-import com.racoon.waby.data.model.Tag
-import kotlinx.android.synthetic.main.tag_item.view.*
 import kotlinx.android.synthetic.main.tag_item_swipe.view.*
 
 class TagAdapter(val tags : List<String>):RecyclerView.Adapter<TagAdapter.TagHolder>() {
@@ -27,7 +25,7 @@ class TagAdapter(val tags : List<String>):RecyclerView.Adapter<TagAdapter.TagHol
 
     class TagHolder(val view: View):RecyclerView.ViewHolder(view){
         fun render(tag: String){
-            view.item.text = tag
+            view.tag2.text = tag
         }
     }
 }
