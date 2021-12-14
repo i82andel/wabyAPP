@@ -118,7 +118,7 @@ class MyProfileSpotFragment : Fragment() {
             "image" to IMAGE,
             "tags" to TAGS
         )
-        findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment, bundle)
+        findNavController().navigate(R.id.action_myProfileSpotFragment_to_editProfileFragment2, bundle)
     }
 
 
@@ -134,7 +134,7 @@ class MyProfileSpotFragment : Fragment() {
             "image" to IMAGE,
             "tags" to TAGS
         )
-        findNavController().navigate(R.id.action_profileFragment_to_settingsFragment, bundle)
+        findNavController().navigate(R.id.action_myProfileSpotFragment_to_settingsFragmentSpot, bundle)
     }
 
     //Inicia el RecyclerView para mostrar Tags
