@@ -277,7 +277,7 @@ class MainHomeFragment : Fragment() {
                 val ndefRecord_0 = inNdefRecords[0]
 
                 val inMessage = String(ndefRecord_0.payload)
-                binding.nfcText.text = inMessage
+
             }
         }
     }

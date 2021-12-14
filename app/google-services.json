@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "378264786934-02utd4rphou801edr60ou66dun19kms8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.racoon.waby",
+            "certificate_hash": "07ce503f03415e0962ed7f7bd472f7627de876d2"
+          }
+        },
+        {
           "client_id": "378264786934-iqmrnrmh8eviu0dah9aolgcn4dm3b24a.apps.googleusercontent.com",
           "client_type": 3
         }
