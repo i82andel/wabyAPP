@@ -42,7 +42,7 @@
     <string name="firestore_upload_success">Genial</string>
     <string name="firestore_upload_failure">Ha ocurrido un error al subir los datos</string>
     <string name="login_notregistered_error">Aún no ha terminado de registrarse</string>
-    <string name="google_token">378264786934-iqmrnrmh8eviu0dah9aolgcn4dm3b24a.apps.googleusercontent.com</string>
+    <string name="google_token">378264786934-02utd4rphou801edr60ou66dun19kms8.apps.googleusercontent.com</string>
     <string name="google_login_error">Ha ocurrido un error</string>
 
     <!-- GENDERS -->
