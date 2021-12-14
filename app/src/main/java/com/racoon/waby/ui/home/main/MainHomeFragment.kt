@@ -81,7 +81,7 @@ class MainHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         readFromIntent(requireActivity().intent)
         pendingIntent = PendingIntent.getActivity(
             context, 0, Intent(context, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0

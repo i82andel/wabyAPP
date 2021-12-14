@@ -102,9 +102,12 @@ class SwipeFragment : Fragment() {
                 override fun onScroll(scrollProgressPercent: Float) {}
             })
             binding.likeButton.setOnClickListener {
-                arrayAdapter!!.notifyDataSetChanged()
+
             }
 
+            binding.likeButton.setOnClickListener(){
+
+            }
 
 
         }
