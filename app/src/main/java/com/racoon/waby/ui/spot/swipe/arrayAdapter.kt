@@ -25,8 +25,10 @@ class arrayAdapter(context: Context?, resourceId: Int, items: List<User?>?) : Ar
         }
         val name = convertView!!.findViewById<View>(R.id.name) as TextView
         val image = convertView.findViewById<View>(R.id.image) as ImageView
+        val descripcion = convertView.findViewById<View>(R.id.descriptioncard) as TextView
 
         name.text = card_item!!.name
+        descripcion.text = card_item!!.description
         when (card_item.images) {
             "default" -> Glide.with(convertView.context).load(R.mipmap.ic_launcher).into(image)
             else -> {
