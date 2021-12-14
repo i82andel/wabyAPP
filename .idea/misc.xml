@@ -7,7 +7,6 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3645833333333333" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/buttons_1.xml" value="0.2015625" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/buttons_2.xml" value="0.3828125" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/gradiation_black.xml" value="0.3828125" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_chat.xml" value="0.2015625" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2935185185185185" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_edit.xml" value="0.3828125" />
@@ -23,13 +22,8 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_profile.xml" value="0.3828125" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_star.xml" value="0.32916666666666666" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_swipe.xml" value="0.3645833333333333" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_tag.xml" value="0.3671875" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_wabis.xml" value="0.3645833333333333" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/inputs.xml" value="0.2935185185185185" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/like_green_24dp.xml" value="0.3296296296296296" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/rewind_blue_24dp.xml" value="0.3296296296296296" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/skip_red_24dp.xml" value="0.3296296296296296" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/skip_white_120dp.xml" value="0.3296296296296296" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/toolbar.xml" value="0.3828125" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_auxiliar.xml" value="0.28072916666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/activity_auxiliar2.xml" value="0.28072916666666664" />
@@ -57,48 +51,65 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_register_user.xml" value="0.35104166666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_register_user_birthdate.xml" value="0.24909420289855072" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_register_user_description.xml" value="0.33" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_register_user_gender.xml" value="0.33" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_register_user_gender.xml" value="0.18" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_register_user_images.xml" value="0.2916666666666667" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_register_user_tags.xml" value="0.36666666666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_sign_up.xml" value="0.2980072463768116" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_splash.xml" value="0.28072916666666664" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_spot_home.xml" value="0.25" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_spot_home.xml" value="0.22" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_swipe.xml" value="0.26811594202898553" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_user.xml" value="0.22447916666666667" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_verify_email.xml" value="0.22447916666666667" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/fragment_wabis.xml" value="0.33" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/item.xml" value="0.33" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/item.xml" value="0.36666666666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/spot_item.xml" value="0.22" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/star_dialog.xml" value="0.36666666666666664" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/tag_item.xml" value="0.33" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/tag_item_swipe.xml" value="0.3333333333333333" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/user_info_card.xml" value="0.22447916666666667" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/user_row_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/wabi_item.xml" value="0.75" />
         <entry key="..\:/Users/Jesús Bueno Ruiz/.gradle/caches/transforms-3/4ebbb3845df9370a798535fb40c438a7/transformed/jetified-mapbox-android-navigation-ui-0.42.6/res/layout/instruction_list_layout.xml" value="0.240625" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/border_left.xml" value="0.3671875" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/border_right.xml" value="0.3671875" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/buttons_1.xml" value="0.3671875" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/buttons_2.xml" value="0.3671875" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/buttons_3.xml" value="0.3671875" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/buttons_5.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/gradiation_black.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_chat.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_laucher_background.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_map.xml" value="0.3671875" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_nfc.xml" value="0.3671875" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/ic_wabis.xml" value="0.3828125" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/inputs_2.xml" value="0.3671875" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/like_green.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/like_green_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/like_white_120dp.xml" value="0.3828125" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/profile_bg.xml" value="0.3671875" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/skip_red_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/drawable/skip_white_120dp.xml" value="0.3828125" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/font/montserrat.xml" value="0.396875" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/activity_auxiliar2.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/activity_home.xml" value="0.2296195652173913" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/activity_main.xml" value="0.3451086956521739" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/activity_spot.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/activity_wabi_profile.xml" value="0.3365036231884058" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/drawer_header.xml" value="0.34193840579710144" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_channel.xml" value="0.3365036231884058" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_chat.xml" value="0.34193840579710144" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_edit_profile.xml" value="0.34193840579710144" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_extras.xml" value="0.2866847826086957" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_extras2.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_login_admin_user.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_login_user.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_main_home.xml" value="0.2866847826086957" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_match.xml" value="0.3365036231884058" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_my_profile_spot.xml" value="0.34193840579710144" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_notifications.xml" value="0.2848731884057971" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_profile.xml" value="0.3496376811594203" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_register_user_birthdate.xml" value="0.36666666666666664" />
@@ -109,16 +120,19 @@
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_single.xml" value="0.2984375" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_single_spot.xml" value="0.2984375" />
-        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_spot_home.xml" value="0.75" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_spot_home.xml" value="0.25" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_swipe.xml" value="0.2866847826086957" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_user.xml" value="0.34193840579710144" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_verify_email.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_wabis.xml" value="0.2848731884057971" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/fragment_wabis_home.xml" value="0.3140625" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/item.xml" value="0.3446557971014493" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/list_item.xml" value="0.276268115942029" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/spot_item.xml" value="0.33" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/star_dialog.xml" value="0.3451086956521739" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/tag_item.xml" value="0.3496376811594203" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/user_info_card.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/user_row_layout.xml" value="0.34193840579710144" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/layout/wabi_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/LuisAneri/Documents/GitHub/wabyAPP/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/crist/AndroidStudioProjects/Waby/app/src/main/res/drawable/ic_location_on_red_24dp.xml" value="0.14635416666666667" />
