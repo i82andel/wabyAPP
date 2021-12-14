@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -39,7 +40,9 @@ class arrayAdapter(context: Context?, resourceId: Int, items: List<User?>?) : Ar
         name.text = card_item!!.name
         descripcion.text = card_item!!.description
 
-        tags_items.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+        val myLinearLayoutManager = GridLayoutManager(context, 2, 0, false)
+
+        tags_items.layoutManager = myLinearLayoutManager
         val adapter = card_item!!.tags?.let { com.racoon.waby.ui.spot.swipe.TagAdapter(it) }
         tags_items.adapter = adapter
 
