@@ -40,9 +40,6 @@ class MyProfileFragment : Fragment() {
     }
 
     //Tags de prueba
-    var tags : List<String> = listOf(
-        ""
-    )
 
     //Variables del bundle
     private var NAME = ""
@@ -99,8 +96,8 @@ class MyProfileFragment : Fragment() {
 
        binding.textBD.setText(dateString)
 
-        tags = user.tags!!
-        initRecycler()
+        val tags = user.tags
+        setTags(tags)
         //Asigna valores al bundle
         NAME = user.name.toString()
         SURNAME = user.surname.toString()
@@ -108,7 +105,7 @@ class MyProfileFragment : Fragment() {
         DESCRIPTION = user.description.toString()
         EMAIL = user.email.toString()
         IMAGE = media
-        TAGS = tags
+        TAGS = tags!!
 
     }
 
@@ -141,12 +138,37 @@ class MyProfileFragment : Fragment() {
         findNavController().navigate(R.id.action_profileFragment_to_settingsFragment, bundle)
     }
 
-    //Inicia el RecyclerView para mostrar Tags
-    @SuppressLint("WrongConstant")
-    private fun initRecycler(){
-        TagsList.layoutManager = LinearLayoutManager(context)
-        //TagsList.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
-        val adapter = TagAdapter(tags)
-        TagsList.adapter = adapter
+
+    private fun setTags(tags: ArrayList<String>?) {
+        var countNumber = 0
+        if (tags != null) {
+            for (tag in tags) {
+
+                when (countNumber) {
+
+                    0 -> {
+                        binding.tag1.text = tag
+                        binding.Tag1.visibility = View.VISIBLE
+                    }
+                    1 -> {
+                        binding.tag2.text = tag
+                        binding.Tag2.visibility = View.VISIBLE
+                    }
+                    2 -> {
+                        binding.tag3.text = tag
+                        binding.Tag3.visibility = View.VISIBLE
+                    }
+                    3 -> {
+                        binding.tag4.text = tag
+                        binding.Tag4.visibility = View.VISIBLE
+                    }
+                    4 -> {
+                        binding.tag5.text = tag
+                        binding.Tag5.visibility = View.VISIBLE
+                    }
+                }
+                countNumber++
+            }
+        }
     }
 }

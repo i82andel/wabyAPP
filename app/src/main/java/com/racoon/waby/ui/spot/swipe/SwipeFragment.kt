@@ -112,6 +112,8 @@ class SwipeFragment : Fragment() {
 
         }
 
+
+
     }
 
     fun createChat(currentUserId: String, myFriendId: String) {
