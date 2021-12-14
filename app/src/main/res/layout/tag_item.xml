@@ -8,8 +8,8 @@
     android:layout_marginTop="20dp"
     android:layout_marginRight="30dp"
     android:minHeight="40dp"
-    app:cardBackgroundColor="@color/white"
 
+    app:cardBackgroundColor="@color/colorHint"
     app:cardCornerRadius="50dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="Ejemplo de TAG"
-            android:textColor="@color/colorHintDark"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView6"

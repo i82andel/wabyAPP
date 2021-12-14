@@ -23,6 +23,7 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_profile.xml" value="0.3828125" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_star.xml" value="0.32916666666666666" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_swipe.xml" value="0.3645833333333333" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_tag.xml" value="0.3671875" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/ic_wabis.xml" value="0.3645833333333333" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/inputs.xml" value="0.2935185185185185" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/drawable/toolbar.xml" value="0.3828125" />
@@ -67,7 +68,7 @@
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/list_item.xml" value="0.1" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/spot_item.xml" value="0.22" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/star_dialog.xml" value="0.36666666666666664" />
-        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/tag_item.xml" value="0.2006340579710145" />
+        <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/tag_item.xml" value="0.33" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/user_info_card.xml" value="0.22447916666666667" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/user_row_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Repositorios/wabyAPP/app/src/main/res/layout/wabi_item.xml" value="0.75" />

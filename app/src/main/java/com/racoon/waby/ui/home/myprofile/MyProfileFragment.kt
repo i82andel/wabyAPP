@@ -1,11 +1,13 @@
 package com.racoon.waby.ui.home.myprofile
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -21,6 +23,8 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class MyProfileFragment : Fragment() {
 
@@ -137,6 +141,7 @@ class MyProfileFragment : Fragment() {
     }
 
     //Inicia el RecyclerView para mostrar Tags
+    @SuppressLint("WrongConstant")
     private fun initRecycler(){
         TagsList.layoutManager = LinearLayoutManager(context)
         //TagsList.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
