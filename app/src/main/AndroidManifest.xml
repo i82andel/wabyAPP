@@ -23,10 +23,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.NfcActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.wabisHome.ChatHomeActivity"
             android:exported="false" />
-        <activity android:name=".ui.spot.wabiprofile.WabiProfileActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".ui.spot.wabiprofile.WabiProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.spot.chat.ChannelActivity"
             android:exported="false" />
