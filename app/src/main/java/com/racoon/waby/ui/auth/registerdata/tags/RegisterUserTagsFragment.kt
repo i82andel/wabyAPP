@@ -46,6 +46,9 @@ class RegisterUserTagsFragment : Fragment() {
         wabyId
 
     )
+    private var MATCHES = arrayListOf(
+        wabyId
+    )
     //private var PHONENUMBER = "phonenumber"
 
 
@@ -151,7 +154,8 @@ class RegisterUserTagsFragment : Fragment() {
             "username" to USERNAME,
             "tags" to TAGS,
             "wabis" to WABIS,
-            "seenUsers" to SEENUSERS
+            "seenUsers" to SEENUSERS,
+            "matches" to MATCHES
             //"phonenumber" to PHONENUMBER
         )
         val db = Firebase.firestore
