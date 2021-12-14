@@ -143,7 +143,7 @@ class MainHomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         readFromIntent(requireActivity().intent)
         pendingIntent = PendingIntent.getActivity(
             context, 0, Intent(context, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0
@@ -283,7 +283,7 @@ class MainHomeFragment : Fragment() {
                 val ndefRecord_0 = inNdefRecords[0]
 
                 val inMessage = String(ndefRecord_0.payload)
-                binding.textView6.text = inMessage
+                binding.nfcText.text = inMessage
             }
         }
     }
