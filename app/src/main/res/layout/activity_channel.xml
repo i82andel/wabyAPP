@@ -8,43 +8,57 @@
         android:id="@+id/messageListHeaderView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:backgroundTint="@color/colorBackground"
+        android:foregroundTint="@color/colorBackground"
+        android:paddingStart="30dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="30dp"
+        android:scrollbarThumbHorizontal="@color/colorBackground"
+        android:scrollbarThumbVertical="@color/colorBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorBackground"
-        app:streamUiMessageListHeaderBackButtonBadgeBackgroundColor="@color/colorHint"
+        app:streamUiMessageListHeaderBackButtonBadgeBackgroundColor="@color/white"
+        app:streamUiMessageListHeaderSearchingForNetworkProgressBarTint="@color/colorBackground"
+        app:streamUiMessageListHeaderShowBackButton="true"
         app:streamUiMessageListHeaderTitleTextColor="@color/white"
-         />
+        app:streamUiMessageListHeaderTitleTextSize="20sp" />
 
     <io.getstream.chat.android.ui.message.list.MessageListView
         android:id="@+id/messageListView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="-5dp"
         app:layout_constraintBottom_toTopOf="@+id/messageInputView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messageListHeaderView"
-        app:streamUiMessageBackgroundColorMine="@color/colorSecondary"
-        app:streamUiMessageReplyTextColorMine="@color/white"
-        app:streamUiMessageTextColorMine="@color/white"
-        app:streamUiMessageTextColorTheirs="@color/white"
-        app:streamUiMessageReplyTextColorTheirs="@color/white"
         app:streamUiBackgroundColor="@color/colorBackground"
-        app:streamUiMessageBackgroundColorTheirs="@color/colorPrimary"/>
+        app:streamUiDateSeparatorBackgroundColor="@color/colorHintDark"
+        app:streamUiGiphyCardButtonDividerColor="@color/colorBackground"
+        app:streamUiMessageBackgroundColorMine="@color/colorSecondary"
+        app:streamUiMessageBackgroundColorTheirs="@color/colorPrimary"
+        app:streamUiMessageReplyTextColorMine="@color/white"
+        app:streamUiMessageReplyTextColorTheirs="@color/white"
+        app:streamUiMessageTextColorMine="@color/white"
+        app:streamUiMessageTextColorTheirs="@color/white" />
 
     <io.getstream.chat.android.ui.message.input.MessageInputView
         android:id="@+id/messageInputView"
-        android:background="@color/colorBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:streamUiMessageInputDividerBackgroundDrawable="@color/colorBackground"
         app:streamUiMessageInputTextColor="@color/colorHint"
+
         app:streamUiSendButtonDisabledIconColor="@color/colorHint"
         app:streamUiSendButtonEnabledIconColor="@color/colorSecondary"
-        app:streamUiSendButtonPressedIconColor="@color/colorPrimary"
-
-        />
+        app:streamUiSendButtonPressedIconColor="@color/colorPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

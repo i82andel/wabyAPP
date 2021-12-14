@@ -25,7 +25,8 @@
             app:circularflow_radiusInDP="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:barrierMargin="20dp"
-
+            app:streamUiUnreadMessageCounterBackgroundColor="@color/colorSecondary"
+            app:streamUiChannelsItemSeparatorDrawable="@color/colorHintDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView29"
