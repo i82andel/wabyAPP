@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.spot.swipe.MatchFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
@@ -43,7 +44,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageView
-        android:id="@+id/imageSpot"
+        android:id="@+id/imageMatch"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -55,7 +56,20 @@
         app:layout_constraintVertical_bias="0.0"
         tools:src="@tools:sample/avatars" />
 
-    <ImageView
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageCircle"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.215"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
         android:id="@+id/gradient"
         android:layout_width="0dp"
         android:layout_height="0dp"

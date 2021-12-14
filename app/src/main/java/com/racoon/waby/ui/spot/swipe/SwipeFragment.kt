@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import com.racoon.waby.R
@@ -93,6 +95,7 @@ class SwipeFragment : Fragment() {
                             Toast.makeText(requireContext(), "Nuevo Match!!", Toast.LENGTH_SHORT)
                                 .show()
                             swipeViewModel.addMatch(user.idUser,obj.idUser)
+                            goToMatch(obj.images)
                         }
                     }
 
@@ -111,8 +114,6 @@ class SwipeFragment : Fragment() {
 
 
         }
-
-
 
     }
 
@@ -135,6 +136,11 @@ class SwipeFragment : Fragment() {
         _binding = null
     }
 
-
+    fun goToMatch(image : String){
+        val bundle = bundleOf(
+            "image" to image
+        )
+        findNavController().navigate(R.id.action_navigation_swipe_to_matchFragment,bundle)
+    }
 
 }

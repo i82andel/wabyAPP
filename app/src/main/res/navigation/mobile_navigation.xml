@@ -30,7 +30,11 @@
         android:id="@+id/navigation_swipe"
         android:name="com.racoon.waby.ui.spot.swipe.SwipeFragment"
         android:label="fragment_swipe"
-        tools:layout="@layout/fragment_swipe" />
+        tools:layout="@layout/fragment_swipe" >
+        <action
+            android:id="@+id/action_navigation_swipe_to_matchFragment"
+            app:destination="@id/matchFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_extras"
         android:name="com.racoon.waby.ui.spot.extras.ExtrasFragment"
@@ -59,4 +63,16 @@
         android:id="@+id/settingsFragmentSpot"
         android:name="com.racoon.waby.ui.spot.myprofile.SettingsFragmentSpot"
         android:label="SettingsFragmentSpot" />
+    <fragment
+        android:id="@+id/matchFragment"
+        android:name="com.racoon.waby.ui.spot.swipe.MatchFragment"
+        android:label="fragment_match"
+        tools:layout="@layout/fragment_match" >
+        <action
+            android:id="@+id/action_matchFragment_to_navigation_swipe"
+            app:destination="@id/navigation_swipe" />
+        <action
+            android:id="@+id/action_matchFragment_to_navigation_notifications"
+            app:destination="@id/navigation_notifications" />
+    </fragment>
 </navigation>
