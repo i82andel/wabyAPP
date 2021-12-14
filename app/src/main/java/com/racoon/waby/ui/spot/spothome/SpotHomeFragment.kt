@@ -214,7 +214,7 @@ class SpotHomeFragment : Fragment() {
 
     fun nextImage(){
         imageNumber++
-        if (imageNumber == spotFinal.images?.size?.minus(1) ){
+        if (imageNumber == spotFinal.images?.size ){
             imageNumber = 0
         }
         val media = spotFinal.images?.get(imageNumber) as String
