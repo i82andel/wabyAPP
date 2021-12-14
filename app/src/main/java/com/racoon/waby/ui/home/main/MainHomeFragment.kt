@@ -143,7 +143,7 @@ class MainHomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        
         readFromIntent(requireActivity().intent)
         pendingIntent = PendingIntent.getActivity(
             context, 0, Intent(context, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0
@@ -155,7 +155,7 @@ class MainHomeFragment : Fragment() {
 
     }
 
-    private fun readFromIntent(intent: Intent) {
+    private fun readFromIntent1(intent: Intent) {
         var action: String? = intent.action
         if (NfcAdapter.ACTION_TAG_DISCOVERED == action
             || NfcAdapter.ACTION_TECH_DISCOVERED == action
@@ -269,4 +269,22 @@ class MainHomeFragment : Fragment() {
         }
     }
 
+
+
+    fun readFromIntent(intent: Intent){
+        val action = intent.action
+        if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)
+            || NfcAdapter.ACTION_TECH_DISCOVERED.equals(action) || NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
+
+            val parcelables = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
+            with(parcelables) {
+                val inNdefMessage = this?.get(0) as NdefMessage
+                val inNdefRecords = inNdefMessage.records
+                val ndefRecord_0 = inNdefRecords[0]
+
+                val inMessage = String(ndefRecord_0.payload)
+                binding.textView6.text = inMessage
+            }
+        }
+    }
 }

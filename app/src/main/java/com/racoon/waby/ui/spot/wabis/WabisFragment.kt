@@ -21,7 +21,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlin.system.measureTimeMillis
 
-class WabisFragment : Fragment() {
+class WabisFragment : Fragment(){
 
     private val wabisViewModel by viewModels<WabisViewModel>()
     private var _binding: FragmentWabisBinding? = null
