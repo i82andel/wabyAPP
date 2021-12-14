@@ -188,7 +188,7 @@ class HomeActivity : AppCompatActivity() {
      * screen rotation.
      */
     override fun onSaveInstanceState(outState: Bundle) {
-        outState?.putCharSequence(KEY_LOG_TEXT, tv_messages.text)
+        //outState?.putCharSequence(KEY_LOG_TEXT, tv_messages.text)
         if (outState != null) {
             super.onSaveInstanceState(outState)
         }
@@ -200,7 +200,7 @@ class HomeActivity : AppCompatActivity() {
      * @param text optional parameter containing details about the message. Printed in plain text.
      */
     private fun logMessage(header: String, text: String?) {
-        tv_messages.append(if (text.isNullOrBlank()) fromHtml("<b>$header</b><br>") else fromHtml("<b>$header</b>: $text<br>"))
+        //tv_messages.append(if (text.isNullOrBlank()) fromHtml("<b>$header</b><br>") else fromHtml("<b>$header</b>: $text<br>"))
         scrollDown()
     }
 
@@ -223,7 +223,7 @@ class HomeActivity : AppCompatActivity() {
      * Scroll the ScrollView to the bottom, so that the latest appended messages are visible.
      */
     private fun scrollDown() {
-        sv_messages.post({ sv_messages.smoothScrollTo(0, sv_messages.bottom) })
+        //sv_messages.post({ sv_messages.smoothScrollTo(0, sv_messages.bottom) })
     }
 
     //para volver al fragment anterior
