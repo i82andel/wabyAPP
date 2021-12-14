@@ -56,6 +56,10 @@ class WabiProfileActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.Main) {
             setCurrentUser()
         }
+
+        binding.EditButton.setOnClickListener{
+
+        }
     }
 
     suspend fun setCurrentUser(){

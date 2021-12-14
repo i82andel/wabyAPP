@@ -199,4 +199,14 @@ class WabiRepository {
         }
     }
 
+    suspend fun removeMatch(idUser: String, idWabi: String){
+        var matchesUser = getMatchesList(idUser)
+        var matchesWabi = getMatchesList(idWabi)
+
+        matchesUser.remove(idWabi)
+        matchesWabi.remove(idUser)
+        userList.document(idUser).update("matches",matchesUser)
+        userList.document(idWabi).update("matches",matchesWabi)
+    }
+
 }
