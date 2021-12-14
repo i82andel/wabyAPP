@@ -81,6 +81,13 @@ class MainHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+        readFromIntent(requireActivity().intent)
+        pendingIntent = PendingIntent.getActivity(
+            context, 0, Intent(context, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0
+        )
+        val tagDetected = IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED)
+        tagDetected.addCategory(Intent.CATEGORY_DEFAULT)
 
         GlobalScope.launch(Dispatchers.Main) {
             val firebaseUser = wabisViewModel.getUser()
@@ -141,19 +148,6 @@ class MainHomeFragment : Fragment() {
         findNavController().navigate(R.id.action_mainHomeFragment_to_channelHomeFragment)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        readFromIntent(requireActivity().intent)
-        pendingIntent = PendingIntent.getActivity(
-            context, 0, Intent(context, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0
-        )
-
-        val tagDetected = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED)
-
-        tagDetected.addCategory(Intent.CATEGORY_DEFAULT)
-
-    }
 
     private fun readFromIntent1(intent: Intent) {
         var action: String? = intent.action
@@ -288,3 +282,4 @@ class MainHomeFragment : Fragment() {
         }
     }
 }
+
