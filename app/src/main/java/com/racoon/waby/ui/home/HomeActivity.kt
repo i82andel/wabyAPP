@@ -19,7 +19,6 @@ import com.racoon.waby.databinding.ActivityHomeBinding
 import com.racoon.waby.ui.spot.SpotActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
-
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
@@ -166,11 +165,16 @@ class HomeActivity : AppCompatActivity() {
                     if (curRecord.toUri() != null) {
                         // URI NDEF Tag
                             val spotRaw = curRecord.toUri().toString()
+
+                            val spot = spotRaw.substring(8,spotRaw.length)
+                        logMessage("- URI", spot)
+
                             val idSpot = spotRaw.substring(8,spotRaw.length)
                         if (idSpot != null){
                             startActivity(Intent(this, SpotActivity::class.java).putExtra("idSpot", idSpot))
                         }
                         logMessage("- URI", idSpot)
+
                     } else {
                         // Other NDEF Tags - simply print the payload
                         logMessage("- Contents", curRecord.payload.contentToString())
