@@ -8,11 +8,26 @@
     android:background="@color/colorBackground">
 
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/buttons_1"
+        android:fontFamily="@font/montserrat_normal"
+        android:text="BORRAR"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/MatchImage"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:src="@mipmap/ic_launcher"
@@ -25,31 +40,33 @@
         android:id="@+id/MatchName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         android:text="Match's Name"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/MatchImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/montserrat_normal"/>
 
     <TextView
         android:id="@+id/Matchid"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:text="Match's Age"
         android:textColor="@color/white"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/MatchImage"
         app:layout_constraintTop_toBottomOf="@+id/MatchName"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:fontFamily="@font/montserrat_normal"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
