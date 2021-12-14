@@ -16,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.racoon.waby.R
 import com.racoon.waby.databinding.ActivityHomeBinding
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_nfc.*
 
 class HomeActivity : AppCompatActivity() {
@@ -163,7 +164,9 @@ class HomeActivity : AppCompatActivity() {
                 for (curRecord in curMsg.records) {
                     if (curRecord.toUri() != null) {
                         // URI NDEF Tag
-                        logMessage("- URI", curRecord.toUri().toString())
+                            val spotRaw = curRecord.toUri().toString()
+                            val spot = spotRaw.substring(7,spotRaw.length)
+                        logMessage("- URI", spot)
                     } else {
                         // Other NDEF Tags - simply print the payload
                         logMessage("- Contents", curRecord.payload.contentToString())
