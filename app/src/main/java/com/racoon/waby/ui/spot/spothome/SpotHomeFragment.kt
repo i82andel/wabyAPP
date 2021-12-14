@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.HORIZONTAL
 import android.widget.RatingBar.OnRatingBarChangeListener
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
@@ -47,6 +49,7 @@ class SpotHomeFragment : Fragment() {
     private lateinit var idSpot: String
     private val client = ChatClient.instance()
     private lateinit var spotFinal: Spot
+    var IMAGE = ""
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -108,7 +111,18 @@ class SpotHomeFragment : Fragment() {
             rateSpot()
         }
 
+        binding.imagePr.setOnClickListener{
+            goToMyProfile()
+        }
 
+
+    }
+
+    private fun goToMyProfile() {
+        val bundle = bundleOf(
+            "image" to IMAGE
+        )
+        findNavController().navigate(R.id.action_navigation_home_to_myProfileSpotFragment, bundle)
     }
 
     fun observeData() {
@@ -190,6 +204,7 @@ class SpotHomeFragment : Fragment() {
                     Glide.with(requireContext()).load(it).into(binding.imagePr)
                 }
 
+                IMAGE = media
             }
         }
     }

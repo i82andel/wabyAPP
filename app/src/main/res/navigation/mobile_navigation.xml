@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.racoon.waby.ui.spot.spothome.SpotHomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_spot_home" />
+        tools:layout="@layout/fragment_spot_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_myProfileSpotFragment"
+            app:destination="@id/myProfileSpotFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_wabis"
@@ -32,4 +36,8 @@
         android:name="com.racoon.waby.ui.spot.extras.ExtrasFragment"
         android:label="fragment_extras2"
         tools:layout="@layout/fragment_extras2" />
+    <fragment
+        android:id="@+id/myProfileSpotFragment"
+        android:name="com.racoon.waby.ui.spot.myprofile.MyProfileSpotFragment"
+        android:label="MyProfileSpotFragment" />
 </navigation>
