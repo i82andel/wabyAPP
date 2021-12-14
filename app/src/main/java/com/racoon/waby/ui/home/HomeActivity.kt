@@ -17,7 +17,7 @@ import androidx.navigation.ui.NavigationUI
 import com.racoon.waby.R
 import com.racoon.waby.databinding.ActivityHomeBinding
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_nfc.*
+
 
 class HomeActivity : AppCompatActivity() {
 
