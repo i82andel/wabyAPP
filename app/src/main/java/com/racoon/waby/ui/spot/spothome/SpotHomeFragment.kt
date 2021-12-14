@@ -29,6 +29,7 @@ import com.racoon.waby.databinding.FragmentSpotHomeBinding
 import com.racoon.waby.ui.spot.wabis.WabisViewModel
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.Channel
+import kotlinx.android.synthetic.main.fragment_spot_home.*
 import kotlinx.android.synthetic.main.star_dialog.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -49,6 +50,7 @@ class SpotHomeFragment : Fragment() {
     private lateinit var idSpot: String
     private val client = ChatClient.instance()
     private lateinit var spotFinal: Spot
+    private var imageNumber = 0
     var IMAGE = ""
 
     // This property is only valid between onCreateView and
@@ -76,9 +78,6 @@ class SpotHomeFragment : Fragment() {
             binding.website.text = spotFinal.website
             spotHomeViewModel.addAssistant(idSpot, userId)
         }
-
-
-
 
 
     }
@@ -111,6 +110,9 @@ class SpotHomeFragment : Fragment() {
             rateSpot()
         }
 
+        binding.nextImg.setOnClickListener {
+            nextImage()
+        }
         binding.imagePr.setOnClickListener{
             goToMyProfile()
         }
@@ -209,5 +211,14 @@ class SpotHomeFragment : Fragment() {
         }
     }
 
+
+    fun nextImage(){
+        imageNumber++
+        if (imageNumber == spotFinal.images?.size?.minus(1) ){
+            imageNumber = 0
+        }
+        val media = spotFinal.images?.get(imageNumber) as String
+        Glide.with(requireContext()).load(media).into(binding.imageSpot)
+    }
 
 }
