@@ -8,13 +8,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import com.racoon.waby.R
 import com.racoon.waby.common.MyApplication
 import com.racoon.waby.data.model.User
 import com.racoon.waby.databinding.FragmentSwipeBinding
+import com.racoon.waby.ui.home.myprofile.TagAdapter
 import com.racoon.waby.ui.spot.wabis.WabisViewModel
 import io.getstream.chat.android.client.ChatClient
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.*
 
 class SwipeFragment : Fragment() {
@@ -126,5 +129,7 @@ class SwipeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 
 }
