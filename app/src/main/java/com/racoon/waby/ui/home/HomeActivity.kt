@@ -19,6 +19,16 @@ import com.racoon.waby.R
 import com.racoon.waby.databinding.ActivityHomeBinding
 import com.racoon.waby.ui.spot.SpotActivity
 import kotlinx.android.synthetic.main.activity_home.*
+import android.widget.ImageView
+
+import android.widget.Toast
+import android.view.ViewGroup
+
+
+
+
+
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -40,6 +50,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.homeFragmentContainerView) as NavHostFragment
@@ -167,11 +180,17 @@ class HomeActivity : AppCompatActivity() {
                             val spotRaw = curRecord.toUri().toString()
 
                             val spot = spotRaw.substring(8,spotRaw.length)
-                        logMessage("- URI", spot)
+                            logMessage("- URI", spot)
 
                             val idSpot = spotRaw.substring(8,spotRaw.length)
                         if (idSpot != null){
                             startActivity(Intent(this, SpotActivity::class.java).putExtra("idSpot", idSpot))
+                            val toast = Toast(this)
+                            val view = ImageView(this)
+                            view.setImageResource(R.drawable.like_green_24dp)
+                            toast.setView(view)
+                            toast.show()
+
                         }
                         logMessage("- URI", idSpot)
 

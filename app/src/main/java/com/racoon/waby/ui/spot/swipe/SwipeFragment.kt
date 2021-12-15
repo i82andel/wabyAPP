@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -86,7 +87,11 @@ class SwipeFragment : Fragment() {
                     GlobalScope.launch (Dispatchers.Main) {
                         swipeViewModel.addSeenUser(user.idUser, obj.idUser)
                     }
-                    Toast.makeText(requireContext(), "Left", Toast.LENGTH_SHORT).show()
+                    val toast = Toast(requireContext())
+                    val view = ImageView(requireContext())
+                    view.setImageResource(R.drawable.skip_white_120dp)
+                    toast.setView(view)
+                    toast.show()
                 }
 
                 override fun onRightCardExit(dataObject: Any) {
@@ -96,8 +101,11 @@ class SwipeFragment : Fragment() {
                         val wabiMatch =  swipeViewModel.makeWabi(user.idUser, obj.idUser)
                         if(wabiMatch == true) {
                             createChat(user.userName!!,obj.userName!!)
-                            Toast.makeText(requireContext(), "Nuevo Match!!", Toast.LENGTH_SHORT)
-                                .show()
+                            val toast = Toast(requireContext())
+                            val view = ImageView(requireContext())
+                            view.setImageResource(R.drawable.like_white_120dp)
+                            toast.setView(view)
+                            toast.show()
                             swipeViewModel.addMatch(user.idUser,obj.idUser)
                             goToMatch(obj.images)
                         }
