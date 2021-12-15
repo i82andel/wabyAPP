@@ -40,21 +40,22 @@ class WabisFragment : Fragment(){
         _binding = FragmentWabisBinding.inflate(inflater, container, false)
         GlobalScope.launch (Dispatchers.Main){
             observeData()
+            binding.wabisNumber.text = wabisViewModel.user.matches?.size.toString()
         }
 
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.wabisNumber.text = wabisViewModel.user.matches?.size.toString()
+
 
         println("hola")
         adapter = WabisAdapter(requireContext())
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
+
 
     }
 
@@ -64,6 +65,7 @@ class WabisFragment : Fragment(){
             adapter.setWabiList(it)
             adapter.notifyDataSetChanged()
         })
+
     }
 
     override fun onDestroyView() {

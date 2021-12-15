@@ -53,6 +53,8 @@ class MainHomeFragment : Fragment() {
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
     private val client = ChatClient.instance()
+    private var easterEgg = 0
+    private lateinit var mediaPlayer : MediaPlayer
 
     //nfc
     private val nfcAdapter: NfcAdapter? by lazy {
@@ -94,6 +96,19 @@ class MainHomeFragment : Fragment() {
             createUserGetStream(firebaseUser)
         }
 
+        binding.nfcText.setOnClickListener {
+            easterEgg++
+            if (easterEgg == 5){
+                Toast.makeText(requireContext(), "Hola Rutilofilo", Toast.LENGTH_SHORT).show()
+                shubidadudubida()
+            }
+            if (easterEgg == 10){
+                Toast.makeText(requireContext(), "Shubidown", Toast.LENGTH_SHORT).show()
+                stopShubi()
+                easterEgg = 0
+            }
+
+        }
 
         binding.myProfileButton.setOnClickListener {
             gotoMyProfile()
@@ -281,5 +296,15 @@ class MainHomeFragment : Fragment() {
             }
         }
     }
+
+    private fun shubidadudubida(){
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.jpe)
+        mediaPlayer.start()
+    }
+    private fun stopShubi(){
+
+        mediaPlayer.stop()
+    }
+
 }
 

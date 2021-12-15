@@ -11,22 +11,17 @@ import com.racoon.waby.data.model.Spot
 import com.racoon.waby.data.model.User
 import com.racoon.waby.data.repository.WabiRepository
 import com.racoon.waby.ui.spot.spothome.SpotListState
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class WabisViewModel : ViewModel() {
 
     private var wabiRepository = WabiRepository()
-    lateinit var user: User
+    var user = User()
     private val _state: MutableState<UserListState> = mutableStateOf(UserListState())
 
-    init {
-        GlobalScope.launch {
 
-            user = getUser()
-        }
-
-    }
     fun getAllUsers(): LiveData<MutableList<User>>{
         val mutableData = MutableLiveData<MutableList<User>>()
         wabiRepository.getAllUsers().observeForever{ wabiList ->
