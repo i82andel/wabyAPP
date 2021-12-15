@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -44,9 +46,10 @@ class WabisFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
 
-
+        binding.loadAnimationWabis.visibility = VISIBLE
         println("hola")
         adapter = WabisAdapter(requireContext())
+        binding.loadAnimationWabis.visibility = INVISIBLE
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
 

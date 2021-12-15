@@ -10,6 +10,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -85,6 +86,7 @@ class EditProfileFragment : Fragment() {
         }
 
         binding.buttonSave.setOnClickListener {
+
             if (binding.textName.text.isEmpty()) {
                 Toast.makeText(context, R.string.edit_name, Toast.LENGTH_SHORT)
                     .show()
@@ -106,8 +108,8 @@ class EditProfileFragment : Fragment() {
             }
 
             else{
+                binding.progressBar.visibility = View.VISIBLE
                 editProfile()
-
                 findNavController().navigate(R.id.action_editProfileFragment_to_mainHomeFragment2)
             }
 
