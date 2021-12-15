@@ -40,7 +40,7 @@ class WabisFragment : Fragment(){
         _binding = FragmentWabisBinding.inflate(inflater, container, false)
         GlobalScope.launch (Dispatchers.Main){
             observeData()
-            binding.wabisNumber.text = wabisViewModel.user.matches?.size.toString()
+            binding.wabisNumber.text = wabisViewModel.getUser().matches?.size.toString()
         }
 
         return binding.root
