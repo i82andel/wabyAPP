@@ -26,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var mediaPlayer : MediaPlayer
     private var nfcAdapter : NfcAdapter? = null
+    private lateinit var easterEgg : ArrayList<Int>
 
     // Pending intent for NFC intent foreground dispatch.
     // Used to read all NDEF tags while the app is running in the foreground.
@@ -44,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.homeFragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
-        shubidadudubida()
+        //shubidadudubida()
 
         // Check if NFC is supported and enabled
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
