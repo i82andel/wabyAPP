@@ -2,6 +2,7 @@ package com.racoon.waby.ui.home
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.media.MediaPlayer
 import android.nfc.NdefMessage
 import android.nfc.NfcAdapter
 import android.os.Build
@@ -23,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityHomeBinding
-
+    private lateinit var mediaPlayer : MediaPlayer
     private var nfcAdapter : NfcAdapter? = null
 
     // Pending intent for NFC intent foreground dispatch.
@@ -43,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.homeFragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
-
+        shubidadudubida()
 
         // Check if NFC is supported and enabled
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
@@ -235,5 +236,9 @@ class HomeActivity : AppCompatActivity() {
         return navController.navigateUp()
     }
 
+    private fun shubidadudubida(){
+        mediaPlayer = MediaPlayer.create(this, R.raw.jpe)
+        mediaPlayer.start()
+    }
 
 }
