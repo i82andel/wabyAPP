@@ -31,6 +31,7 @@ import com.racoon.waby.ui.spot.wabis.WabisViewModel
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.Channel
 import kotlinx.android.synthetic.main.fragment_spot_home.*
+import kotlinx.android.synthetic.main.fragment_spot_home.view.*
 import kotlinx.android.synthetic.main.star_dialog.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -74,8 +75,9 @@ class SpotHomeFragment : Fragment() {
 
             val media = spotFinal.images?.get(0) as String
             Glide.with(requireContext()).load(media).into(binding.imageSpot)
-            binding.rateNumber.text = spotFinal.rating?.average()?.roundToInt().toString()
+            binding.rateNumber.text = String.format("%.1f", spotFinal.rating?.average())
             binding.spotName.text = spotFinal.name
+            binding.assistants.text = spotFinal.assistants?.size.toString()
             binding.description.text = spotFinal.description
             binding.website.text = spotFinal.website
             spotHomeViewModel.addAssistant(idSpot, userId)

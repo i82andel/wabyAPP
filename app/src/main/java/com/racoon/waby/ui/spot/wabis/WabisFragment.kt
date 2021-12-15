@@ -49,6 +49,8 @@ class WabisFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.wabisNumber.text = wabisViewModel.user.matches?.size.toString()
+
         println("hola")
         adapter = WabisAdapter(requireContext())
         binding.recyclerView.layoutManager = LinearLayoutManager(context)

@@ -5,6 +5,7 @@ import android.app.Application
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
+import android.media.MediaPlayer
 import android.nfc.NdefMessage
 import android.nfc.NfcAdapter
 import android.nfc.Tag
@@ -49,7 +50,6 @@ class MainHomeFragment : Fragment() {
 
     //ViewBiding
     private var _binding: FragmentMainHomeBinding? = null
-
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
     private val client = ChatClient.instance()

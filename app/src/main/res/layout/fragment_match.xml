@@ -7,8 +7,6 @@
     tools:context=".ui.spot.swipe.MatchFragment">
 
 
-
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
         android:layout_width="match_parent"
@@ -122,4 +120,3 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
