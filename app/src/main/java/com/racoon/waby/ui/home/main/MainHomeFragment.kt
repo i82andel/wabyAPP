@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.provider.Settings
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -104,13 +105,20 @@ class MainHomeFragment : Fragment() {
                 shubidadudubida()
                 val toast = Toast(requireContext())
                 val view = ImageView(requireContext())
-                view.setImageResource(R.drawable.skip_white_120dp)
+                view.setImageResource(R.drawable.jpelirrojo)
                 toast.setView(view)
+                toast.setGravity(Gravity.CENTER_VERTICAL,0,0)
                 toast.show()
             }
             if (easterEgg == 10){
                 Toast.makeText(requireContext(), "Shubidown", Toast.LENGTH_SHORT).show()
                 stopShubi()
+                val toast = Toast(requireContext())
+                val view = ImageView(requireContext())
+                view.setImageResource(R.drawable.jp_triste)
+                toast.setView(view)
+                toast.setGravity(Gravity.CENTER_VERTICAL,0,0)
+                toast.show()
                 easterEgg = 0
             }
 
