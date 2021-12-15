@@ -16,6 +16,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -101,6 +102,11 @@ class MainHomeFragment : Fragment() {
             if (easterEgg == 5){
                 Toast.makeText(requireContext(), "Hola Rutilofilo", Toast.LENGTH_SHORT).show()
                 shubidadudubida()
+                val toast = Toast(requireContext())
+                val view = ImageView(requireContext())
+                view.setImageResource(R.drawable.skip_white_120dp)
+                toast.setView(view)
+                toast.show()
             }
             if (easterEgg == 10){
                 Toast.makeText(requireContext(), "Shubidown", Toast.LENGTH_SHORT).show()
