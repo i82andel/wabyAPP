@@ -48,8 +48,6 @@ class MatchFragment : Fragment() {
             Glide.with(requireContext()).load(it).into(binding.imageMatch)
             Glide.with(requireContext()).load(it).into(binding.imageCircle)
         }
-        Glide.with(requireContext()).load(image).into(binding.imageMatch)
-        Glide.with(requireContext()).load(image).into(binding.imageCircle)
 
         binding.KeepSwiping.setOnClickListener {
             findNavController().navigate(R.id.action_matchFragment_to_navigation_swipe)
