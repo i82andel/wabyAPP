@@ -91,7 +91,7 @@ class MyProfileSpotFragment : Fragment() {
         gsReference.downloadUrl.addOnSuccessListener {
             Glide.with(requireContext()).load(it).into(binding.ProfileImage)
         }
-        val dateString = user.birthdate!!.date.toString() + "/" + (user.birthdate!!.month.toInt()+1) + "/" + user.birthdate!!.year
+        val dateString = user.birthdate!!.date.toString() + "/" + (user.birthdate!!.month.toInt()+1) + "/" + (user.birthdate!!.year+1900)
 
         binding.textBD.setText(dateString)
 
