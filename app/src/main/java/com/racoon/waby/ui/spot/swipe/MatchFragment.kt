@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
 import com.racoon.waby.R
 import com.racoon.waby.databinding.FragmentMatchBinding
 import com.racoon.waby.databinding.FragmentSwipeBinding
@@ -40,13 +41,20 @@ class MatchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val storageReference = FirebaseStorage.getInstance()
+        val gsReference = storageReference.getReferenceFromUrl(image!!)
+        gsReference.downloadUrl.addOnSuccessListener {
+            Glide.with(requireContext()).load(it).into(binding.imageMatch)
+            Glide.with(requireContext()).load(it).into(binding.imageCircle)
+        }
         Glide.with(requireContext()).load(image).into(binding.imageMatch)
         Glide.with(requireContext()).load(image).into(binding.imageCircle)
 
         binding.KeepSwiping.setOnClickListener {
             findNavController().navigate(R.id.action_matchFragment_to_navigation_swipe)
         }
-        
+
         binding.SendMessageButon.setOnClickListener {
             findNavController().navigate(R.id.action_matchFragment_to_navigation_notifications)
         }
