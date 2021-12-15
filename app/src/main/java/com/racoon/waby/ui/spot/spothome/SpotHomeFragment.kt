@@ -195,6 +195,7 @@ class SpotHomeFragment : Fragment() {
         button.setOnClickListener {
             GlobalScope.launch(Dispatchers.Main) {
                 spotHomeViewModel.addRatingToSpot(ratingBar.rating, idSpot)
+                dialog.hide()
             }
         }
     }
