@@ -188,7 +188,7 @@ class MainHomeFragment : Fragment() {
             Log.e("Unsupported", e.toString())
         }
 
-        binding.textView6.setText("Contenido NFC:" + text)
+
     }
 
     private fun initScanner() {
