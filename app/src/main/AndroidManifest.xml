@@ -21,6 +21,7 @@
         android:roundIcon="@drawable/logo_colors_white_backgroud"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.NfcActivity"
