@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#430095</color>
-    <color name="colorSecondary">#DC21B8</color>
-    <color name="colorSecondaryTeal">#4AC0FC</color>
+    <color name="colorSecondary">#B65EBA</color>
+    <color name="colorSecondaryTeal">#7BF2E9</color>
     <color name="colorPrimaryDark">#8401ff</color>
     <color name ="colorTag">#4AC0FC</color>
     <color name="colorAccent">#03DAC5</color>
