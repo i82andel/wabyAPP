@@ -32,7 +32,12 @@ class MatchFragment : Fragment() {
 
         _binding = FragmentMatchBinding.inflate(inflater, container, false)
 
-
+        val storageReference = FirebaseStorage.getInstance()
+        val gsReference = storageReference.getReferenceFromUrl(image!!)
+        gsReference.downloadUrl.addOnSuccessListener {
+            Glide.with(requireContext()).load(it).into(binding.imageMatch)
+            Glide.with(requireContext()).load(it).into(binding.imageCircle)
+        }
 
         return binding.root
     }
@@ -42,12 +47,7 @@ class MatchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val storageReference = FirebaseStorage.getInstance()
-        val gsReference = storageReference.getReferenceFromUrl(image!!)
-        gsReference.downloadUrl.addOnSuccessListener {
-            Glide.with(requireContext()).load(it).into(binding.imageMatch)
-            Glide.with(requireContext()).load(it).into(binding.imageCircle)
-        }
+
 
         binding.KeepSwiping.setOnClickListener {
             findNavController().navigate(R.id.action_matchFragment_to_navigation_swipe)
