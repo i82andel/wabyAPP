@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
@@ -70,6 +71,7 @@ class SwipeFragment : Fragment() {
             arrayAdapter = arrayAdapter(context, R.layout.item, dataList)
             binding.frame.adapter = arrayAdapter
             arrayAdapter!!.notifyDataSetChanged()
+            binding.loadAnimation.visibility  = INVISIBLE
             binding.frame.setFlingListener(object : SwipeFlingAdapterView.onFlingListener {
                 override fun removeFirstObjectInAdapter() {
                     Log.d("LIST", "removed object!")
