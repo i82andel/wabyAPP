@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
@@ -99,9 +100,8 @@ class RegisterUserImagesFragment : Fragment() {
 
 
         binding.nextButton.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.progressBar.visibility = VISIBLE
             goNext()
-            binding.progressBar.visibility = View.GONE
 
         }
 
