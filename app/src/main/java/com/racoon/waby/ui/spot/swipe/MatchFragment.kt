@@ -31,7 +31,8 @@ class MatchFragment : Fragment() {
     ): View? {
 
         _binding = FragmentMatchBinding.inflate(inflater, container, false)
-
+        image = arguments?.getString("image").toString()
+        
         val storageReference = FirebaseStorage.getInstance()
         val gsReference = storageReference.getReferenceFromUrl(image!!)
         gsReference.downloadUrl.addOnSuccessListener {
