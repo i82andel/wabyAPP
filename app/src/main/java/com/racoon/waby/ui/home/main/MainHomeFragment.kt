@@ -147,10 +147,7 @@ class MainHomeFragment : Fragment() {
         println("ola- > ${firebaseUser.userName}")
         val user = io.getstream.chat.android.client.models.User(id = firebaseUser.userName!!).apply {
             name = firebaseUser.userName
-            val media = firebaseUser.images
-            val storageReference = FirebaseStorage.getInstance()
-            val gsReference = storageReference.getReferenceFromUrl(media)
-            image = image
+            image = firebaseUser.images
         }
         val token = client.devToken(user.id)
         println("id = ${firebaseUser.name}\n token = $token")
