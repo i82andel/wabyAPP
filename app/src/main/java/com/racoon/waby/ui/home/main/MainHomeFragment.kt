@@ -241,10 +241,7 @@ class MainHomeFragment : Fragment() {
             if (result.contents == null) {
                 Toast.makeText(context, "Cancelado", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(context,
-                    "El valor escaneado es ${result.contents.toString()}",
-                    Toast.LENGTH_SHORT).show()
-                    val idSpot = result.contents.toString()
+                val idSpot = result.contents.toString()
                 startActivity(Intent(context, SpotActivity::class.java).putExtra("idSpot", idSpot))
             }
         } else {
