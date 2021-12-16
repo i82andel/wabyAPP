@@ -27,9 +27,9 @@ class SpotHomeViewModel : ViewModel() {
     fun getSimilarSpotList(){
         
     }
-    fun getSpotList():LiveData<MutableList<Spot>> {
+    fun getSpotList(idSpot: String):LiveData<MutableList<Spot>> {
         val mutableData = MutableLiveData<MutableList<Spot>>()
-        spotRepository.getAllSpots().observeForever{ spotList ->
+        spotRepository.getAllSpots(idSpot).observeForever{ spotList ->
             mutableData.value = spotList
         }
         return mutableData

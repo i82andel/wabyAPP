@@ -159,7 +159,7 @@ class SpotHomeFragment : Fragment() {
     }
 
     fun observeData() {
-        spotHomeViewModel.getSpotList().observe(viewLifecycleOwner, Observer {
+        spotHomeViewModel.getSpotList(idSpot).observe(viewLifecycleOwner, Observer {
             adapter.setSpotList(it)
             adapter.notifyDataSetChanged()
         })
