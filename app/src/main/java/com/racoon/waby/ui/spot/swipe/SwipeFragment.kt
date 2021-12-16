@@ -65,6 +65,8 @@ class SwipeFragment : Fragment() {
 
         GlobalScope.launch(Dispatchers.Main) {
 
+            val toast = Toast(requireContext())
+            val view = ImageView(requireContext())
             user = swipeViewModel.getUser()
             dataList = swipeViewModel.getUsersFromSpot(idSpot)
             println("datalist en fragment: ${dataList}")
@@ -87,8 +89,7 @@ class SwipeFragment : Fragment() {
                     GlobalScope.launch (Dispatchers.Main) {
                         swipeViewModel.addSeenUser(user.idUser, obj.idUser)
                     }
-                    val toast = Toast(requireContext())
-                    val view = ImageView(requireContext())
+
                     view.setImageResource(R.drawable.skip_white_120dp)
                     toast.setView(view)
                     toast.show()
@@ -98,14 +99,12 @@ class SwipeFragment : Fragment() {
                     val obj = dataObject as User
                     GlobalScope.launch (Dispatchers.Main){
                         swipeViewModel.addSeenUser(user.idUser, obj.idUser)
+                        view.setImageResource(R.drawable.like_white_120dp)
+                        toast.setView(view)
+                        toast.show()
                         val wabiMatch =  swipeViewModel.makeWabi(user.idUser, obj.idUser)
                         if(wabiMatch == true) {
                             createChat(user.userName!!,obj.userName!!)
-                            val toast = Toast(requireContext())
-                            val view = ImageView(requireContext())
-                            view.setImageResource(R.drawable.like_white_120dp)
-                            toast.setView(view)
-                            toast.show()
                             swipeViewModel.addMatch(user.idUser,obj.idUser)
                             goToMatch(obj.images)
                         }
