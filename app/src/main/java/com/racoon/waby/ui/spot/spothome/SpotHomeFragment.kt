@@ -64,9 +64,6 @@ class SpotHomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         loadImage()
         idSpot = checkNotNull(activity?.intent?.getStringExtra("idSpot"))
-        Toast.makeText(context,
-            "Estoy en $idSpot",
-            Toast.LENGTH_SHORT).show()
 
         GlobalScope.launch(Dispatchers.Main) {
             spotFinal = spotHomeViewModel.getThisSpot(idSpot)

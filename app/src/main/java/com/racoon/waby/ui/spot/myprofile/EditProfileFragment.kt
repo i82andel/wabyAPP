@@ -221,7 +221,6 @@ class EditProfileFragment : Fragment() {
             Toast.makeText(context, R.string.register_images_error, Toast.LENGTH_SHORT).show()
         }.addOnSuccessListener { taskSnapshot ->
             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
-            Toast.makeText(context, R.string.register_images_success, Toast.LENGTH_SHORT).show()
         }
 
 
@@ -239,8 +238,6 @@ class EditProfileFragment : Fragment() {
             .document(userId)
             .update("images", url)
             .addOnSuccessListener {
-                Toast.makeText(context, R.string.firestore_upload_success, Toast.LENGTH_SHORT)
-                    .show()
 
             }.addOnFailureListener {
 

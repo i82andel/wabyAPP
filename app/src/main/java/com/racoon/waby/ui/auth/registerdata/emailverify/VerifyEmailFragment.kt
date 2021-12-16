@@ -73,7 +73,7 @@ class VerifyEmailFragment : Fragment() {
             successLD.observe(viewLifecycleOwner) {
                 activity?.also {
                     Toast.makeText(context,
-                        R.string.login_success,
+                        R.string.email_verified,
                         Toast.LENGTH_SHORT).show()
                 }
                 goToRegisterData()

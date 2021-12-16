@@ -111,8 +111,6 @@ class LoginFragment : Fragment() {
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
 
                         if (it.isSuccessful) {
-                            Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT)
-                                .show()
                             firstTimeGoogleSignUp()
 
                         }else {
@@ -163,7 +161,6 @@ class LoginFragment : Fragment() {
             }
             successLD.observe(viewLifecycleOwner) {
                 activity?.also {
-                    Toast.makeText(context, R.string.login_success, Toast.LENGTH_SHORT).show()
                 }
                 openHome(view)
             }

@@ -59,8 +59,7 @@ class RegisterUserDescriptionFragment : Fragment() {
             .document(userId)
             .update("description", description)
             .addOnSuccessListener {
-                Toast.makeText(context, R.string.firestore_upload_success, Toast.LENGTH_SHORT)
-                    .show()
+
 
             }.addOnFailureListener {
 

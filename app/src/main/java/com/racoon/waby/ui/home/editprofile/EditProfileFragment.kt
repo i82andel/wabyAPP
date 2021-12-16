@@ -168,7 +168,7 @@ class EditProfileFragment : Fragment() {
                         as Map<String, Any>
             )
             .addOnSuccessListener {
-                Toast.makeText(context, "Datos actualizados", Toast.LENGTH_SHORT)
+                Toast.makeText(context, "Datos actualizados con éxito", Toast.LENGTH_SHORT)
                     .show()
 
             }.addOnFailureListener {

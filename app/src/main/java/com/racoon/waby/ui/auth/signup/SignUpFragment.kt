@@ -85,7 +85,6 @@ class SignUpFragment : Fragment() {
                 openEmailVerify()
 
                 activity?.also {
-                    Toast.makeText(context,R.string.signup_success,Toast.LENGTH_SHORT).show()
                 }
 
             }

@@ -163,8 +163,6 @@ class RegisterUserTagsFragment : Fragment() {
             .document(userId)
             .set(data)
             .addOnSuccessListener {
-                Toast.makeText(context, R.string.firestore_upload_success, Toast.LENGTH_SHORT)
-                    .show()
 
             }.addOnFailureListener {
 

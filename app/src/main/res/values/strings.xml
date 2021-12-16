@@ -19,18 +19,19 @@
 
     <!-- AUTH -->
     <string name="login_success">Success</string>
-    <string name="login_error">The username or password are wrong</string>
-    <string name="login_email">Email is not verified</string>
-    <string name="signup_username">Enter your username</string>
-    <string name="signup_password">Enter your password</string>
-    <string name="signup_password_repeat">Enter your password again</string>
+    <string name="email_verified">Email verificado con éxito</string>
+    <string name="login_error">El email o la contraseña no son correctos</string>
+    <string name="login_email">Debes verificar tu email</string>
+    <string name="signup_username">Introduce un nombre de usuario</string>
+    <string name="signup_password">Introduce una contraseña</string>
+    <string name="signup_password_repeat">Introduce la contraseña repetida</string>
     <string name="signup_button">Signup</string>
-    <string name="signup_error_username">You should enter a valid username</string>
-    <string name="signup_error_password">You should enter a valid password</string>
-    <string name="signup_error_email">You should enter a valid email</string>
-    <string name="signup_error_password_notequals">You should enter the same password twice</string>
+    <string name="signup_error_username">El nombre de usuario no es valido</string>
+    <string name="signup_error_password">La contraseña no es valida</string>
+    <string name="signup_error_email">El email no es valido</string>
+    <string name="signup_error_password_notequals">La contraseña no coincide</string>
     <string name="signup_success">Sign up success</string>
-    <string name="signup_error">An error has occurred</string>
+    <string name="signup_error">A ocurrido un error en el registro</string>
     <string name="login_error_email">Debes introducir un email</string>
     <string name="login_error_passwd">Debe introducir una contraseña</string>
     <string name="register_success">Genial</string>

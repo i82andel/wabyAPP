@@ -60,7 +60,6 @@ class RegisterUserGenderFragment : Fragment(), AdapterView.OnItemClickListener {
 
         binding.nextButton.setOnClickListener {
             if (GENDER != "gender") {
-                Toast.makeText(context, R.string.register_success, Toast.LENGTH_SHORT).show()
                 goNext()
             }else {
                 Toast.makeText(context,R.string.register_gender_error, Toast.LENGTH_SHORT).show()
@@ -86,8 +85,6 @@ class RegisterUserGenderFragment : Fragment(), AdapterView.OnItemClickListener {
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val item = parent?.getItemAtPosition(position).toString()
-        Toast.makeText(context,item,Toast.LENGTH_SHORT).show()
-
         GENDER = item
 
     }

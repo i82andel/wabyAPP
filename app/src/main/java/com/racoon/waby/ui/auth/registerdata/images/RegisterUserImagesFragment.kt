@@ -172,8 +172,6 @@ class RegisterUserImagesFragment : Fragment() {
             .document(userId)
             .update("images", url)
             .addOnSuccessListener {
-                Toast.makeText(context, R.string.firestore_upload_success, Toast.LENGTH_SHORT)
-                    .show()
 
             }.addOnFailureListener {
 

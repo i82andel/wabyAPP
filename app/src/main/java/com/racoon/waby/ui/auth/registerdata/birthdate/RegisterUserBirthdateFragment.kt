@@ -79,7 +79,6 @@ class RegisterUserBirthdateFragment : Fragment() {
         YEAR = year
 
         if (DAY != 0 && MONTH != 0 && YEAR != 0) {
-            Toast.makeText(context,R.string.register_success,Toast.LENGTH_SHORT).show()
             goNext()
         }else {
             Toast.makeText(context,R.string.register_bithdate_error,Toast.LENGTH_SHORT).show()

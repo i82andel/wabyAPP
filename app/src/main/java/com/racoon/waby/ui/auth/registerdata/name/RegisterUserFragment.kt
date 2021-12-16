@@ -71,7 +71,6 @@ class RegisterUserFragment : Fragment() {
 
             successLD.observe(viewLifecycleOwner) {
                 activity?.also {
-                    Toast.makeText(context, R.string.register_success, Toast.LENGTH_SHORT).show()
                 }
                 goNext()
             }
